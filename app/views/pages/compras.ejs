@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/product.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap"
+        rel="stylesheet">
+
+
+    <title>PetSpace Compras</title>
+</head>
+<body>
+
+<% if (!usuario) { %>
+
+    <%- include("../partials/header-index") %>
+
+<% } else if (usuario.premium) { %>
+
+    <%- include("../partials/header-premium") %>
+
+<% } else { %>
+
+    <%- include("../partials/header-logado") %>
+
+<% } %>
+
+
+    <section class="hero">
+        
+        <article class="hero-text">
+
+            <h1> </h1>
+            <p></p>
+
+        </article>
+
+
+
+
+    </section>
+
+    <main class="main">
+        <section class="container" id="produtos">
+            <article class="products-grid" id="productsGrid">
+                <!--produtos por java-->
+
+                
+ 
+
+
+
+
+
+
+
+            </article>
+
+        </section>
+    </main>
+
+
+
+    <footer class="footer">
+        <p>PetSpice - Originals</p>
+    </footer>
+<script>
+    
+const menuBtn = document.querySelector(".menu-btn");
+const nav = document.querySelector("nav");
+
+menuBtn.addEventListener("click", () => {
+    nav.classList.toggle("active");
+});e("active");
+
+</script>
+    <script src="scripts/scripts.js"></script>
+
+
+</body>
+
+</html>

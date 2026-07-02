@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="css/login.css">
+    <title>cadastro</title>
+
+</head>
+<body>
+    
+
+<section
+ class="container">
+    <section
+     class="form"> 
+        <form action="/cadastro" id="formCadastro"> 
+            <section
+             class="form-header">
+                <section
+                 class="title">
+                    <h1>Cadastre-se</h1>
+                </section
+                >
+            </section>
+      
+            <section
+             class="input-group">
+                <section
+                 class="input-box">
+                    <label for="firtname">Primeiro Nome </label>
+                    <input  
+                    type="text" 
+                    id="nome"
+                    name="firstname" 
+                    placeholder="Digite o Primeiro nome" 
+                    name="nome"
+                    pattern="[A-Za-zÀ-ÿ ]+"
+                     required
+                     minlength="3">
+                </section
+                >
+                           <section
+                            class="input-box">
+                    <label for="lastname">Sobrenome </label>
+                    <input  
+                    type="text"
+                    name="lastname" 
+                    placeholder="Digite o sobrenome nome" 
+                    type="text"
+                    required
+                    minlength="3">
+                </section
+                >
+                           <section
+                            class="input-box">
+                    <label for="email">Email </label>
+                         <input 
+                         placeholder="Email" 
+                         type="email"
+                         required>
+                
+                </section>
+                           <section
+                            class="input-box">
+                    <label for="password"> Senha </label>
+                    <input  
+                    type="password"
+                    name="password"
+                    placeholder="Digite sua senha"
+                    minlength="6"
+                    required
+>
+                </section
+                >
+            </section
+            >
+            <section
+             class="gender-inputs">
+                <section
+                 class="gender-title">
+                    <h4>Generos</h4>
+                </section
+                >
+                <section
+                 class="gender-group">
+                    <section
+                     class="gender-input">
+                        <input type="radio" id="female" name="gender">
+                        <label for="female">Feminino</label>
+                    </section
+                    >
+                        <section
+                         class="gender-input">
+                        <input type="radio" id="male" name="gender">
+                        <label for="male">Masculino</label>
+                    </section
+                    >
+                        <section
+                         class="gender-input">
+                        <input type="radio" id="others" name="gender">
+                        <label for="others">Outros</label>
+                    </section
+                    >
+                        <section
+                         class="gender-input">
+                        <input type="radio" id="none" name="gender">
+                        <label for="none">Prefiro não dizer</label>
+                    </section
+                    >
+
+                </section
+                >
+
+            </section
+            >
+                <button type="submit" class="login">Continue</button>
+
+            </section>
+
+<script>
+const form = document.getElementById('formCadastro');
+const nome = document.getElementById('nome').value;
+
+form.addEventListener('submit', function(event) {
+
+
+    // verifica a validação HTML
+    if (!form.checkValidity()) {
+        return;
+    }
+
+    event.preventDefault();
+
+    const nome = document.getElementById('nome').value;
+
+    if (nome === 'admin') {
+        alert('Esse nome não pode ser utilizado.');
+        return;
+    }
+
+    alert('Formulário válido!');
+
+    
+});
+
+
+</script>
+
+        </form>
+    </section>
+</section>
+</body>
+</html>

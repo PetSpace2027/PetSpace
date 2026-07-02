@@ -1,0 +1,162 @@
+:root{
+    --paw-dark: #301266;
+    --paw-medium: 	#8123fc;
+    --paw-light: #782bd1;
+    --paw-accent: #e5c7fd;
+    --paw-cream: #f8eeff;
+    --paw-violet: #6e00fd;
+    --paw-violett:#ffbe46;
+    --paw-gold:#ffb413;
+    --text-light: #ffffff;
+    --paw-goldligth:#ffcb21;
+    --paw-roxoescuro:#1f044b;
+
+
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background:url('/imagem/lula.jpg');
+    background-size:cover;
+    background-position: center;
+   
+}
+
+.container{
+    width: 420px; ;
+    background-color: transparent;
+    border: 2px solid rgba(255, 217, 0, 0.438) ;
+    border-radius: 12px;
+    color:white;
+    padding: 30px 40px;
+    box-shadow: rgba(170, 117, 2, 0.644) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    backdrop-filter: blur(20px);
+    .container{
+    animation: flutuar 3s ease-in-out infinite;
+}
+
+@keyframes flutuar{
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-10px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+} 
+
+.container h1{ 
+    font-size: 36px;
+    text-align: center;
+}
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 40px;
+    outline: none;
+    font-size: 16px;
+    color: #ffffff;
+    padding: 20px 45px 20px 20px;
+     transition: all 0.3s ease;
+
+
+}
+.input-box input:hover{
+    transform: scale(1.03);
+}
+
+.input-box input::placeholder{
+    color: #ffcb5b;
+}
+
+.input-box i{
+    position: absolute;
+    right: 20px;
+    font-size: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.remember-forgot{
+    display: flex;
+    justify-content: space-between;
+    margin: -15px 0 15px;
+ 
+
+}
+
+.remember-forgot label input{
+    margin-right: 5px;
+}
+.remember-forgot a{
+    text-decoration: none;
+    color: #ffbb00;
+}
+.remember-forgot a:hover{
+    text-decoration: underline;
+        transition: all .3s ease;
+
+} 
+.login{
+    width: 100%;
+    height: 50px;
+    background-color:rgb(255, 187, 0);
+    border: 2px;  
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    color: rgb(0, 0, 0)f;
+    font-weight: 600; 
+    box-shadow: 0 0 10px var(--paw-gold); 
+    margin-top: 25PX;
+}
+.login:hover{
+    background-color: transparent;
+    border: 1px solid rgb(255, 183, 0);
+    transition: 0.5s;
+    color: #ffffff;
+} 
+.register-link{
+    font-size: 14px;
+    text-align: center;
+    margin: 20px 0 15px;
+
+}
+.register-link a{
+    text-decoration: none;
+    color: #ffbb00;
+    font-weight: 600;
+
+}
+.register-link a:hover{
+    text-decoration: underline;
+
+}
+
+
+
