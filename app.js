@@ -41,6 +41,9 @@ app.use("/", rota);
 //iniciar o servidor
 app.listen(porta, ()=>{
     console.log(`Servidor on-line \nhttp://localhost:${porta}`)
-})
+}) 
+{
+    
+}
 
 
