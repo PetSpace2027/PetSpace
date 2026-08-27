@@ -1,3 +1,5 @@
+console.log("Script carregado!");
+
 const produtos = [
     {
         id: 1,
@@ -200,9 +202,7 @@ function renderProdutos(produtos) {
 
 function searchProducts() {
     const searchInput = document
-        .getElementById('searchInput')
-        .value
-        .toLowerCase();
+        .getElementById('searchInput').value.toLowerCase();
 
     const filteredProducts = produtos.filter(produto =>
         produto.title.toLowerCase().includes(searchInput)
@@ -223,48 +223,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document
         .getElementById('searchBtn')
         .addEventListener('click', searchProducts);
+
+     document
+        .getElementById('searchInput')
+        .addEventListener('input', searchProducts);
 });
 
-/* <% if (!usuario) { %>
-
-    <%- include("../partials/header-index") %>
-
-<% } else if (usuario.premium) { %>
-
-    <%- include("../partials/header-premium") %>
-
-<% } else { %>
-
-    <%- include("../partials/header-logado") %>
-
-<% } %>
-
-
-<header>
-  <div class="container">
-    <a href="/" class="logo">
-      <i class="fa-solid fa-paw logo-icon"></i>
-      <span class="logo-text">PetSpice</span>
-    </a>
-
-    <form class="search-container">
-      <input type="search" class="search-input" placeholder="O que você procura?">
-      <button class="search-btn" type="submit">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
-    </form>
-
-    <nav>
-      <ul>
-        <li><a href="/">Início</a></li>
-        <li><a href="#produtos" class="linkproduto">Produtos</a></li>
-        <li><a href="/contato">Contato</a></li>
-      </ul>
-    </nav>
-
-    <div class="nav-buttons">
-      <a href="/login" class="btn-login">Entrar</a>
-      <a href="/petguardioes" class="btn-pro"><i class="fa-solid fa-crown"></i> PetGuardião PRO</a>
-    </div>
-  </div>
-</header> */

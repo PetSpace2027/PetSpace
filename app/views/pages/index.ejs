@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetSpice</title>
+    <title>PetSpace</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -29,21 +29,24 @@
     <header>
         <section class="container header-container">
 
-            <a href="#" class="logo">
+            <a class="logo">
                 <i class="fa-solid fa-paw logo-icon"></i>
-                <section class="logo-text">PetSpice</section>
+                <section class="logo-text">PetSpace</section>
             </a>
 
             <nav>
 
-                <button id="menu-btn" class="menu-btn">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
+          <button
+    id="menu-btn"
+    class="menu-btn"
+    aria-label="Abrir menu"
+    alt="Abrir menu">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+</button>
                 <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#product">Produtos</a></li>
+                    <li><a href="/">Início</a></li>
                     <li><a href="/compras">Compras</a></li>
-                    <li><a href="/app/views/pages/contato.ejs">Contato</a></li>
+                    <li><a href="/contato">Contato</a></li>
                 </ul>
 
 
@@ -53,7 +56,7 @@
             <section class="nav-buttons">
                 <a href="login" class="btn btn-secondary">Entrar</a>
                 <a href="cadastro" class="btn btn-primary">Cadastre-se</a>
-                <a href="/app/views/pages/petguardioes.ejs" class="btn-pro">
+                <a href="petguardioes" class="btn-pro">
                     <i class="fa-solid fa-crown"></i>
                     PetGuardião PRO
                 </a>
@@ -91,13 +94,7 @@
             <hr>
 
             <ul>
-                <li>
-                    <a href="#">
-                        <i class="fa-solid fa-house"></i>
-                        Início
-                    </a>
-                </li>
-
+              
                 <li>
                     <a href="#product">
                         <i class="fa-solid fa-bag-shopping"></i>
@@ -123,51 +120,58 @@
         </section>
 
     </nav>
-    <section class="hero">
+<section class="hero">
 
-        <section class="container">
+    <!-- VÍDEO DE FUNDO -->
+    <video class="hero-video" id="heroVideo" autoplay muted playsinline>
+        <source src="imagem/video.mp4" type="video/mp4">
+    </video>
 
-            <article class="hero-content">
+    <!-- ESCURECIMENTO DO VÍDEO -->
+    <div class="hero-overlay"></div>
+    <div class="hero-gradient"></div>
 
-                <section class="hero-subtitle">
-                    <i class="fa-solid fa-paw"></i>
-                    Cuidado e amor para seu pet
-                </section>
 
-                <h1 class="hero-title">
-                    Tudo para o bem-estar<br>
-                    <span>do seu melhor amigo</span>
-                </h1>
+    <section class="container">
 
-                <p class="hero-text">
-                    Um lugar especial para cuidar do seu pet.
-                    Na PetSpice, oferecemos produtos e serviços
-                    de qualidade com muito amor, carinho e dedicação.
-                </p>
+        <article class="hero-content">
 
-                <section class="hero-buttons">
-                    <a href="#product" class="btn btn-primary">
-                        Ver Produtos
-                    </a>
+            <section class="hero-subtitle">
+                <i class="fa-solid fa-paw"></i>
+                Cuidado e amor para seu pet
+            </section>
 
-                    <a href="cadastro.html" class="btn btn-secondary">
-                        Conheça nossos Serviços
-                    </a>
-                </section>
+            <h1 class="hero-title">
+                Tudo para o bem-estar<br>
+                <span>do seu melhor amigo</span>
+            </h1>
 
-            </article>
+            <p class="hero-text">
+                Um lugar especial para cuidar do seu pet.
+                Na PetSpace, oferecemos produtos e serviços
+                de qualidade com muito amor, carinho e dedicação.
+            </p>
 
-            <figure class="hero-image">
-                <img src="imagem/fundopreto.avif" alt="Cachorro feliz" width="570">
-            </figure>
+            <section class="hero-buttons">
 
-        </section>
+                <a href="/compras" class="btn btn-primary">
+                    Ver Produtos
+                </a>
+
+                <a href="cadastro.html" class="btn btn-secondary">
+                    Conheça nossos Serviços
+                </a>
+
+            </section>
+
+        </article>
 
     </section>
 
+</section>
     <section class="products" id="product">
 
-        <section class="container">
+        <section class="container-product">
 
             <section class="section-header">
                 <p class="section-subtitle">Nossos Produtos</p>
@@ -192,7 +196,7 @@
 
                         <footer class="product-footer">
                             <span class="product-price">R$ 59,90</span>
-                            <a href="#" class="btn btn-primary">
+                            <a href="/compras" class="btn btn-primary">
                                 Comprar
                             </a>
                         </footer>
@@ -201,7 +205,7 @@
 
                 <!-- Produto 2 -->
                 <section class="product-card">
-                    <img src="imagem/2.jpg" alt="Brinquedo Interativo">
+                    <img src="imagem/brinquedo-interativo.webp" alt="Brinquedo Interativo">
 
                     <section class="product-info">
                         <h3>Brinquedo Interativo</h3>
@@ -211,7 +215,7 @@
 
                         <section class="product-footer">
                             <span class="product-price">R$ 5,90</span>
-                            <a href="#" class="btn btn-primary">
+                            <a href="/compras" class="btn btn-primary">
                                 Comprar
                             </a>
                         </section>
@@ -230,16 +234,13 @@
 
                         <section class="product-footer">
                             <span class="product-price">R$ 100,90</span>
-                            <a href="#" class="btn btn-primary">
+                            <a href="/compras" class="btn btn-primary">
                                 Comprar
                             </a>
                         </section>
                     </section>
                 </section>
-                <section class="product-card">
-
-
-                </section>
+    
 
             </section>
 
@@ -253,28 +254,28 @@
                 ê garante mais segurança, economia e
                 bem-estar para seu melhor amigo, tudo por apena <span>R$59,90 Mensal</span>
             </p>
-            <div class="beneficios-pro">
-                <div class="card-pro">
+            <section class="beneficios-pro">
+                <section class="card-pro">
                     <i class="fa-solid fa-shield-dog"></i>
                     <h3>Proteção Completa</h3>
                     <p>Mais segurança e suporte para você e seu pet,com um plano de saude para seu pet.</p>
-                </div>
-                <div class="card-pro">
+                </section>
+                <section class="card-pro">
                     <i class="fa-solid fa-stethoscope"></i>
                     <h3>Saúde Animal</h3>
                     <p>Dicas, orientações e acesso a parceiros especializados.</p>
-                </div>
-                <div class="card-pro">
+                </section>
+                <section class="card-pro">
                     <i class="fa-solid fa-tags"></i>
                     <h3>Descontos Exclusivos</h3>
                     <p>Economize em produtos, serviços e acessórios.</p>
-                </div>
-                <div class="card-pro">
+                </section>
+                <section class="card-pro">
                     <i class="fa-solid fa-crown"></i>
                     <h3>Benefícios Premium</h3>
                     <p>Promoções especiais e vantagens exclusivas para assinantes.</p>
-                </div>
-            </div>
+                </section>
+            </section>
             <section class="nav-buttons">
 
                 <a href="premium.html" class="btn-center">
@@ -330,12 +331,12 @@
 
 
         <footer>
-            <section class="container">
+            <section class="tudo-footer">
                 <section class="footer-content">
                     <section class="footer-column">
                         <h3>Sobre </h3>
-                        <p style="color:var( --paw-cream);margin-bottom: 20px;">PetSpice dedicado a um mundo mais
-                            sustentavel, e facil para voce e seus amiguinhos PetSpice
+                        <p style="color:var( --paw-cream);margin-bottom: 20px;">PetSpace dedicado a um mundo mais
+                            sustentavel, e facil para voce e seus amiguinhos PetSpace
                             um perfeito desenvolvimento ambiental.
                         </p>
                         <section class="social-links">
@@ -362,7 +363,7 @@
                         <ul class="footer-links">
                             <li><i class="fa-solid fa-phone" style="color: rgb(255, 193, 59);"></i>+55 (99) 99999-9999
                             </li>
-                            <li><i class="fa-solid fa-envelope" style="color: rgb(255, 193, 59);"></i>PetSpice@gmail.com
+                            <li><i class="fa-solid fa-envelope" style="color: rgb(255, 193, 59);"></i>PetSpace@gmail.com
                             </li>
                             <li><i class="fa-solid fa-clock" style="color: rgb(255, 193, 59);"></i>9:00 as 18:00</li>
                             <li><i class="fa-regular fa-map" style="color: rgb(255, 193, 59);"></i>9:00 as 18:00</li>
@@ -376,12 +377,11 @@
                 </section>
             </section>
 
-            <section class="copyright">
-                &copy; 2026 PetSpice
-
-            </section>
 
         </footer>
+
+        <script src="scripts/script-index.js"></script>
+
 
         <script>
             const menuBtn = document.getElementById("menu-btn");
@@ -393,6 +393,8 @@
 
             });
         </script>
+
+        
 </body>
 
 </html>

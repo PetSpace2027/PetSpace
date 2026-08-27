@@ -10,6 +10,8 @@
     --text-light: #ffffff;
     --paw-goldligth: #ffcb21;
     --paw-roxoescuro: #1f044b;
+    --paw-price:#9c5d00;
+
 
 
 }
@@ -106,15 +108,19 @@ header {
 nav {
     margin: 0;
 }
-
+.button-nav{
+    margin-left: 20px;
+    position: relative;
+    top: 10px;
+}
 nav ul {
     display: flex;
     list-style: none;
-    gap: 20px;
 }
 
 nav a {
     color: white;
+    margin-left: 20px;
     text-decoration: none;
     font-weight: bold;
     transition: .3s;
@@ -164,25 +170,32 @@ nav a:hover {
 }
 
 .btn-pro {
-
-    background: linear-gradient(135deg,
-            #f0a503 0%,
-            #4a08ff 50%,
-            #3d1a8f 100%);
-    color: #ffffff;
-    display: inline-block;
-    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
     border-radius: 30px;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(135deg,
+        #ffd311,
+        #8113ff,
+        #5f1db4,
+        #f1dcff);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
     transition: all 0.3s ease;
     cursor: pointer;
     font-size: 16px;
 }
 
 .btn-pro:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 5px 15px rgba(255, 136, 0, 0.3);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgb(255, 208, 122);
+}
+
+.btn-pro i {
+    margin-right: 8px;
 }
 
 .logo-icon {
@@ -246,18 +259,92 @@ nav a:hover {
     animation: zoomHero 1.2s ease;
 
 }
+.tudo-footer{
+    background-color:#3d2172 ;
+    width: 100%;
+    height:40vh;
+    max-width: 100vw;
+    margin: 0 auto;
+}
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 50px;
+}
+.footer-column{
+    margin-left: 50px;
+    margin-top: 25px;
+}
+.footer-column h3 {
+    font-size: 22px;
+    margin-bottom: 25px;
+    margin-left: px;
+    position: relative;
+    padding-bottom: 15px;
+    color: var(--paw-cream);
 
-.footer {
-    background-color: #3d2172;
-    padding: 20px;
-    text-align: center;
-    margin-top: 50px;
-    border-top: 5px solid var(--paw-gold);
 }
 
-.footer p {
-    color: #e5c7fd;
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--paw-gold);
+}
+
+.footer-links {
+    list-style: none;
+    color: var(--paw-cream);
+
+}
+
+.footer-links li {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: var(--paw-accent);
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+}
+
+.footer-links a:hover {
+    color: var(--paw-accent);
+    padding-left: 5px;
+
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #bd981f;
+    border-radius: 50%;
+    color: var(--paw-gold);
     font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: var(--paw-gold);
+    transform: translateY(-3px);
+}
+
+.product-footer .btn {
+    padding: 10px 18px;
 }
 
 h2 {
@@ -302,7 +389,7 @@ h2 {
 .produtos-price {
     font-size: 28px;
     font-weight: bold;
-    color: #ffb413;
+    color:#9c5d00;
     margin-bottom: 5px;
 }
 
@@ -379,6 +466,13 @@ h2 {
     .btn-pro {
         white-space: nowrap;
     }
+       .tudo-footer{
+    background-color:#3d2172 ;
+    width: 100%;
+    height:120vh;
+    max-width: 100vw;
+    margin: 0 auto;
+}
 }
 
 
@@ -499,4 +593,11 @@ h2 {
         font-size: 28px;
         cursor: pointer;
     }
+    .tudo-footer{
+    background-color:#3d2172 ;
+    width: 100%;
+    height:120vh;
+    max-width: 100vw;
+    margin: 0 auto;
+}
 }
