@@ -1,8 +1,23 @@
+<% if (!usuario) { %>
+
+    <%- include("../partials/header-index") %>
+
+<% } else if (usuario.premium) { %>
+
+    <%- include("../partials/header-premium") %>
+
+<% } else { %>
+
+    <%- include("../partials/header-logado") %>
+
+<% } %>
+
+
 <header>
-  <section class="container">
+  <div class="container">
     <a href="/" class="logo">
       <i class="fa-solid fa-paw logo-icon"></i>
-      <span class="logo-text">PetSpace</span>
+      <span class="logo-text">PetSpice</span>
     </a>
 
     <form class="search-container">
@@ -15,16 +30,18 @@
     <nav>
       <ul>
         <li><a href="/">Início</a></li>
-        <li><a href="/compras">Produtos</a></li>
+        <li><a href="#produtos" class="linkproduto">Produtos</a></li>
         <li><a href="/contato">Contato</a></li>
       </ul>
     </nav>
 
-    <section class="nav-buttons">
+    <div class="nav-buttons">
+      <a href="/login" class="btn-login">Entrar</a>
       <a href="/petguardioes" class="btn-pro"><i class="fa-solid fa-crown"></i> PetGuardião PRO</a>
-      <a href="/perfil" class="profile-btn">
-        <img src="imagem/passarinho.webp" alt="Perfil">
-      </a>
-    </section>
-  </section>
+    </div>
+  </div>
 </header>
+
+
+
+fazer isso com o compras

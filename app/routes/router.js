@@ -44,6 +44,10 @@ router.get("/cadastro", (req, res)=>{
     res.render("pages/cadastro");
 });
 
+router.get("/petguardioes", (req, res)=>{
+    res.render("pages/petguardioes");
+});
+
 
 router.get("/compras", (req, res) => {
 
@@ -52,6 +56,9 @@ router.get("/compras", (req, res) => {
     });
 });
 
+router.get("/contato", (req, res)=>{
+    res.render("pages/contato");
 
+});
 
 module.exports = router;

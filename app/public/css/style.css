@@ -10,6 +10,7 @@
     --text-light: #ffffff;
     --paw-goldligth: #ffcb21;
     --paw-roxoescuro: #1f044b;
+    --paw-price:#9c5d00;
 
 
 }
@@ -30,8 +31,8 @@ body {
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
+    width: 100%;
+    max-width: 100vw;
     margin: 0 auto;
 }
 
@@ -58,6 +59,7 @@ header {
     gap: 12px;
     text-decoration: none;
 }
+
 
 .logo-icon {
     color: var(--paw-violett);
@@ -123,7 +125,7 @@ nav a:hover::after {
 }
 
 .btn-primary {
-    background: var(--paw-gold);
+    background: var(--paw-goldligth);
     color: rgb(41, 16, 129);
 
 
@@ -163,37 +165,163 @@ nav a:hover::after {
 
 
 
+/* =========================
+   HERO
+========================= */
+
 .hero {
-    display: flex;
     position: relative;
-    overflow: hidden;
+    display: flex;
     min-height: 100vh;
+    overflow: hidden;
 }
 
-.hero::before {
-    content: "";
+/* Vídeo de fundo */
+.hero-video {
     position: absolute;
     inset: 0;
-
-    background: linear-gradient(135deg,
-            #330969 0%,
-            #000000 50%,
-            #000000 100%);
-
-    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
 }
 
+/* Máscara escura durante o vídeo */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.212);
+    opacity: 1;
+    transition: opacity 1s ease;
+    pointer-events: none;
+}
+
+/* Gradiente roxo que aparece quando o vídeo termina */
+.hero-gradient {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(
+        to right,
+        #261241 0%,
+        rgba(71, 21, 136, 0.8) 20%,
+        rgba(105, 23, 212, 0.15) 60%,
+        transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    pointer-events: none;
+}
+
+/* Conteúdo acima das camadas */
 .hero .container {
+    position: relative;
+    z-index: 3;
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 40px;
+    padding-top: 100px;
+    padding-bottom: 40px;
 }
 
+
+.hero.show .hero-gradient {
+    opacity: 1;
+}
+
+/* Conteúdo começa escondido */
 .hero-content {
     max-width: 700px;
+    margin-left: 50px;
     color: var(--text-light);
-    animation: fadeInUP 1s ease-out;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        visibility 0.8s ease;
+}
+
+/* Conteúdo aparece depois do vídeo */
+.hero.show .hero-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Elementos individuais */
+.hero-content .hero-subtitle,
+.hero-content .hero-title,
+.hero-content .hero-text,
+.hero-content .hero-buttons {
+    opacity: 0;
+}
+
+.hero.show .hero-subtitle {
+    animation: heroSubtitle 0.8s ease forwards;
+}
+
+.hero.show .hero-title {
+    animation: heroTitle 0.9s ease 0.25s forwards;
+}
+
+.hero.show .hero-text {
+    animation: heroText 0.8s ease 0.55s forwards;
+}
+
+.hero.show .hero-buttons {
+    animation: heroButtons 0.8s ease 0.8s forwards;
+}
+
+/* Animações */
+@keyframes heroSubtitle {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroTitle {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes heroText {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroButtons {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-title {
@@ -212,18 +340,6 @@ nav a:hover::after {
     font-size: 1.1rem;
 }
 
-@keyframes fadeInUP {
-    from {
-        opacity: 0;
-        transform: translateY(60px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .hero-buttons {
     display: flex;
     gap: 20px;
@@ -232,7 +348,11 @@ nav a:hover::after {
 }
 
 /*sessao dos produtos*/
-
+.container-product{
+    width: 90%;
+    max-width: 100vw;
+    margin: 0 auto;
+}
 .products {
     padding: 120px 0;
     position: relative;
@@ -328,7 +448,7 @@ nav a:hover::after {
 .product-price {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--paw-gold);
+    color: var(--paw-price);
 }
 
 .racing {
@@ -338,18 +458,27 @@ nav a:hover::after {
 
 h1,
 h2,
-h3 h4 {
+h3,
+h4 {
     font-weight: 700;
     letter-spacing: 0.5px;
 }
-
+.tudo-footer{
+    width: 100%;
+    height:30vh;
+    max-width: 100vw;
+    margin: 0 auto;
+}
 .footer-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 40px;
     margin-bottom: 50px;
 }
-
+.footer-column{
+    margin-left: 50px;
+    margin-top: 25px;
+}
 .footer-column h3 {
     font-size: 22px;
     margin-bottom: 25px;
@@ -555,7 +684,7 @@ h3 h4 {
 }
 
 .ods-card {
-    width: 300px;
+    width: 250px;
     background: rgba(255, 255, 255, 0.08);
     border-radius: 15px;
     padding: 25px;
@@ -606,7 +735,7 @@ h3 h4 {
 }
 
 .card-pro {
-    width: 260px;
+    width: 250px;
     background: rgba(255, 255, 255, 0.08);
     border-radius: 15px;
     padding: 25px;
@@ -657,232 +786,7 @@ h3 h4 {
     transition: .3s;
 }
 
-/* ========================= */
-/* RESPONSIVIDADE COMPLETA */
-/* ========================= */
 
-@media (max-width: 1024px) {
-
-    .header-container {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    .hero .container {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 120px;
-    }
-
-    .hero-content {
-        max-width: 100%;
-    }
-
-    .hero-image img {
-        width: 100%;
-        max-width: 500px;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-    }
-}
-
-@media (max-width: 768px) {
-
-    header {
-        height: auto;
-        padding: 15px;
-    }
-
-.header-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-}
-
-    .nav-buttons{
-        display:none;
-    }
-
-    nav ul{
-        display:none;
-    }
-
-   nav{
-    position: relative;
-}
-
-.menu-btn{
-    display: block;
-}
-
-.mobile-menu{
-    display: none;
-    position: absolute;
-    top: 55px;
-    right: 0;
-    width: 280px;
-    background: #301266;
-    border-radius: 15px;
-    padding: 20px;
-    z-index: 9999;
-}
-
-.mobile-menu.active{
-    display: block;
-}
-
-    .mobile-buttons{
-        display:flex;
-        flex-direction:column;
-        gap:15px;
-
-    }
-
-    .mobile-menu hr{
-        margin:20px 0;
-        border:none;
-        border-top:1px solid rgba(255,255,255,.2);
-    }
-
-    .mobile-menu ul{
-        display:flex;
-        flex-direction:column;
-        gap:18px;
-        list-style:none;
-    }
-
-    .mobile-menu a{
-        color:white;
-        text-decoration:none;
-        display:flex;
-        align-items:center;
-        gap:12px;
-        font-size:17px;
-    }
-
-    .mobile-menu a:hover{
-        color:#ffb000;
-    }
-
-
-
-    .nav-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .nav-buttons a {
-        width: 100%;
-        text-align: center;
-    }
-
-    .hero {
-        min-height: auto;
-        padding: 120px 0 60px;
-    }
-
-    .hero-title {
-        font-size: 2.2rem;
-    }
-
-    .hero-text {
-        font-size: 1rem;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .hero-buttons a {
-        width: 100%;
-        max-width: 300px;
-        text-align: center;
-    }
-
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .beneficios-pro {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card-pro {
-        width: 100%;
-        max-width: 350px;
-    }
-
-    .ods-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .ods-card {
-        width: 100%;
-        max-width: 350px;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .footer-column h3::after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .social-links {
-        justify-content: center;
-    }
-
-    .product-footer {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .product-footer .btn {
-        width: 100%;
-        text-align: center;
-    }
-};
-
-@media (max-width:480px) {
-
-    .logo-text {
-        font-size: 22px;
-    }
-
-    .hero-title {
-        font-size: 1.8rem;
-    }
-
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .petguardioes-pro h2 {
-        font-size: 2rem;
-    }
-
-    .ods h2 {
-        font-size: 2rem;
-    }
-
-    .btn,
-    .btn-pro,
-    .btn-center {
-        width: 100%;
-        text-align: center;
-        justify-content: center;
-    }
-}
 
 /* ========================= */
 /* HEADER PREMIUM */
@@ -893,7 +797,7 @@ h3 h4 {
             #1f044b,
             #330969,
             #12003a);
-   
+
     position: fixed;
     width: 100%;
     top: 0;
@@ -979,4 +883,1473 @@ h3 h4 {
     color: #ffae00fb  ;
     transform: translateY(-4px);
 
-};
+}
+
+
+#acc-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 56px; height: 56px;
+    background: var(--paw-goldligth);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1000;
+    box-shadow: 0 4px 16px var(--paw-gold);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  #acc-btn:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(74,140,92,0.5); }
+  #acc-btn svg { width: 28px; height: 28px; fill: rgb(255, 255, 255); }
+
+  /* ─── ACCESSIBILITY PANEL ─── */
+  #acc-panel {
+    position: fixed;
+    bottom: 96px;
+    right: 28px;
+    width: 300px;
+    background: white;
+    border-radius: 16px;
+    border: 0.5px solid #c0c2e0;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    z-index: 999;
+    overflow: hidden;
+    display: none;
+    font-family: 'Nunito', sans-serif;
+  }
+  #acc-panel.open { display: block; }
+
+  .acc-header {
+    background: var(--pet-green);
+    color: white;
+    padding: 14px 18px;
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 700; font-size: 15px;
+  }
+  .acc-header svg { width: 20px; height: 20px; fill: white; flex-shrink: 0; }
+
+  .acc-reset {
+    margin-left: auto;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+  }
+  .acc-reset:hover { background: rgba(255,255,255,0.35); }
+
+  .acc-section {
+    padding: 14px 18px 10px;
+    border-bottom: 0.5px solid #e0e2f0;
+  }
+  .acc-section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--pet-muted);
+    margin-bottom: 10px;
+  }
+
+  .acc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+  }
+  .acc-tile {
+    background: #b8cae6;
+    border: 0.5px solid #cbc8e8;
+    border-radius: 10px;
+    padding: 10px 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.15s, border-color 0.15s;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .acc-tile:hover { background: #cccffc; border-color: #2d1a7e; }
+  .acc-tile.active { background: #e8f5ec; border-color: var(--pet-green); }
+  .acc-tile-icon { font-size: 20px; }
+  .acc-tile-label { font-size: 10px; font-weight: 700; color: #0c0c13; line-height: 1.2; }
+
+  .acc-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .acc-row-label { font-size: 13px; color: #244c7a; font-weight: 600; }
+  .acc-row-ctrl { display: flex; align-items: center; gap: 8px; }
+  .acc-count-btn {
+    width: 28px; height: 28px;
+    background: #e0e0f5; border: 0.5px solid #273e7c;
+    border-radius: 50%; cursor: pointer; font-size: 16px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--pet-brown); transition: background 0.15s;
+  }
+  .acc-count-btn:hover { background: #c0c6e8; }
+  .acc-count-val { font-size: 13px; font-weight: 700; min-width: 30px; text-align: center; color: var(--pet-brown); }
+
+    /* ─── CURSOR ─── */
+  body.big-cursor * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M8 2 L8 26 L14 20 L20 30 L23 28.5 L17 18.5 L26 18.5 Z' fill='%23333' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E") 0 0, auto !important; }
+
+  /* ─── READING GUIDE ─── */
+  #reading-guide {
+    position: fixed;
+    left: 0; right: 0;
+    height: 40px;
+    background: rgba(232,114,42,0.15);
+    border-top: 2px solid var(--pet-orange);
+    border-bottom: 2px solid var(--pet-orange);
+    pointer-events: none;
+    z-index: 998;
+    display: none;
+    transform: translateY(-50%);
+  }
+
+  /* ─── HIGH CONTRAST ─── */
+  body.high-contrast {
+    --pet-cream: #000;
+    --pet-light: #000;
+    --pet-text: #fff;
+    --pet-muted: #ddd;
+    --pet-brown: #fff;
+    background: #000 !important;
+  }
+  body.high-contrast .pet-card,
+  body.high-contrast .service-card,
+  body.high-contrast #acc-panel { background: #111 !important; border-color: #fff !important; }
+  body.high-contrast .hero { background: #000 !important; }
+  body.high-contrast .pet-card-emoji { background: #1a1a1a !important; }
+
+
+  /* ======================== */
+/*       CONTATO */
+/* ======================== */
+
+.body-contato{
+      margin: 0;
+    font-family: 'Montserrat', sans-serif;
+
+    background-image: url("../imagem/lula.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    min-height: 100vh;
+}
+
+
+
+
+.main-contato{
+   text-align:center;
+}
+.h1-contato{
+   color:white;
+   font-size:50px;
+   margin-top:90px;
+   margin-bottom:25px;
+   font-weight:bold;
+
+}
+.h2-contato{
+    margin-bottom:20px;
+   color:white;
+   font-size:28px;
+   border-bottom:1px solid rgba(255,255,255,0.4);
+   padding-bottom:15px;
+}
+.h2-form{
+    margin-bottom:10px;
+   color:white;
+   font-size:20px;
+   border-bottom:1px solid rgba(255,255,255,0.4);
+    padding-bottom:10px;
+}
+
+.input-contato{
+   width:90%;
+   max-width:650px;
+   height:50px;
+   margin-top:20px;
+   padding-left:20px;
+   border-radius:30px;
+   border:1px solid rgba(255,255,255,0.4);
+   background:rgba(255,255,255,0.20);
+   backdrop-filter:blur(10px);
+   -webkit-backdrop-filter:blur(10px);
+   color:white;
+   font-size:18px;
+}
+
+.input-contato::placeholder{
+   color:white;
+}
+
+
+.caixa-ajuda {
+    position: relative;
+    top: 100px;
+    width: 90%;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    text-align: left;
+
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.3);
+
+    z-index: 5;
+}
+
+
+.formulario-contato{
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    gap: 20px;
+    width: 18vw;
+    height: 58vh;
+    flex-direction: column;
+    position: fixed;
+    top:22% ;
+    left:-19.5% ;
+    background:transparent;
+    backdrop-filter: blur(10px);
+    padding-left: 20px;
+
+    z-index: 1;
+    transition: 0.3s ease-in-out;
+    border: 1px solid var(--paw-gold);
+}
+
+.mascara-form{
+    
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    
+
+visibility: hidden;
+}
+  
+
+
+.formulario-contato:hover{
+        transform:scale(1.03);
+
+}
+.formulario-contato textarea{
+     border-radius: 10px;
+    padding: 10px 10px;
+    height: 85px;
+    outline-color: #795f2896;
+    font-size: 15px;
+    font-weight: 400;
+    color: #f3eded;
+   background: rgba(190, 189, 190, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+   
+}
+.formulario-contato textarea::placeholder{
+    font-family: 'Montserrat', sans-serif;;
+    color:white;
+    font-size: 15px;
+}
+
+
+
+.p-contato{
+   padding:18px 0;
+   border-bottom:1px solid rgba(255,255,255,0.3);
+   margin:0;
+   font-size:20px;
+   color:white;
+   transition:0.3s;
+}
+
+
+.p-contato:hover{
+   background:rgba(255,255,255,0.15);
+   border-radius:10px;
+   cursor:pointer;
+   padding-left:15px;
+}
+
+.span-contato{
+   float:right;
+}
+
+.caixa-link-whatsapp{
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+}
+
+.link-whatsapp img{
+     width: 60px;
+         animation: pulsar 1.2s infinite;
+
+}
+
+@keyframes pulsar {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.botao-contato{
+    background: var(--paw-dark);
+    backdrop-filter: blur(10px);
+    color: white;
+    -webkit-backdrop-filter: blur(10px);
+    padding: 15px 20px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+
+}
+
+.botao-contato:hover{
+    transform: translateY(-2px);
+    color: #fcfcfc;
+    backdrop-filter: blur(10px);
+}
+
+
+/* ========================= */
+/* RESPONSIVIDADE COMPLETA */
+/* ========================= */
+
+@media (max-width: 1024px) {
+
+    .header-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .hero .container {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 120px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+    .hero-buttons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+
+    header {
+        height: auto;
+        padding: 15px;
+    }
+
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}    .nav-buttons{
+        display:none;
+    }
+
+    nav ul{
+        display:none;
+    }
+
+   nav{
+    position: relative;
+}
+
+.menu-btn{
+    display: block;
+}
+
+.mobile-menu{
+    display: none;
+    position: absolute;
+    top: 55px;
+    right: 0;
+    width: 280px;
+    background: #301266;
+    border-radius: 15px;
+    padding: 20px;
+    z-index: 9999;
+}
+
+.mobile-menu.active{
+    display: block;
+}
+
+    .mobile-buttons{
+        display:flex;
+        flex-direction:column;
+        gap:15px;
+
+    }
+
+    .mobile-menu hr{
+        margin:20px 0;
+        border:none;
+        border-top:1px solid rgba(255,255,255,.2);
+    }
+
+    .mobile-menu ul{
+        display:flex;
+        flex-direction:column;
+        gap:18px;
+        list-style:none;
+    }
+
+    .mobile-menu a{
+        color:white;
+        text-decoration:none;
+        display:flex;
+        align-items:center;
+        gap:12px;
+        font-size:17px;
+    }
+
+    .mobile-menu a:hover{
+        color:#ffb000;
+    }
+
+
+    .hero {
+        min-height: 100vh;
+    }
+
+    .hero-content {
+        margin-left: 0;
+        padding: 0 20px;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-text {
+        font-size: 1rem;
+    }
+
+    .hero-gradient {
+        background: linear-gradient(
+            to right,
+            #6917d4 0%,
+            rgba(105, 23, 212, 0.75) 35%,
+            rgba(105, 23, 212, 0.25) 70%,
+            transparent 100%
+        );
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .beneficios-pro {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-pro {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .ods-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ods-card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .product-footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .product-footer .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width:480px) {
+
+    .logo-text {
+        font-size: 22px;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .petguardioes-pro h2 {
+        font-size: 2rem;
+    }
+
+    .ods h2 {
+        font-size: 2rem;
+    }
+
+    .btn,
+    .btn-pro,
+    .btn-center {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+       .h1-contato{
+       font-size:32px;
+   }
+   .input-contato{
+       width:90%;
+   }
+   .caixa-ajuda{
+       width:90%;
+   }
+}
+
+ 
+/* =========================================
+   PET GUARDIOES 
+========================================= */
+ 
+:root {
+ 
+    --guardioes-roxo: #3f2177;
+    --guardioes-roxo2: #190027;
+    --guardioes-roxo-card: #24103d;
+    --guardioes-amarelo: #ffbf1f;
+    --guardioes-branco: #ffffff;
+    --guardioes-preto: #000000;
+    --guardioes-fundo: #120019;
+    --guardioes-footer: #0a0011;
+    --guardioes-borda: #444444;
+ 
+}
+ 
+ 
+/* =========================================
+   RESET
+========================================= */
+ 
+* {
+ 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+ 
+}
+ 
+ 
+html {
+ 
+    scroll-behavior: smooth;
+ 
+}
+ 
+ 
+body.guardioes {
+ 
+    background: var(--guardioes-fundo);
+    color: var(--guardioes-branco);
+    min-height: 100vh;
+ 
+}
+ 
+ 
+/* =========================================
+   HEADER
+========================================= */
+ 
+.guardioes-header {
+ 
+    background: var(--guardioes-roxo);
+    padding: 20px 8%;
+ 
+}
+ 
+ 
+.guardioes-header-container {
+ 
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 40px;
+ 
+}
+ 
+ 
+/* =========================================
+   LOGO
+========================================= */
+ 
+.guardioes-logo {
+ 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--guardioes-branco);
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.5rem;
+    white-space: nowrap;
+ 
+}
+ 
+ 
+.guardioes-logo-icon {
+ 
+    color: var(--guardioes-amarelo);
+    font-size: 1.7rem;
+ 
+}
+ 
+ 
+.guardioes-logo-text {
+ 
+    color: var(--guardioes-amarelo);
+ 
+}
+ 
+ 
+/* =========================================
+   NAVEGAÇÃO
+========================================= */
+ 
+.guardioes-nav {
+ 
+    display: flex;
+    align-items: center;
+ 
+}
+ 
+ 
+.guardioes-nav ul {
+ 
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 30px;
+ 
+}
+ 
+ 
+.guardioes-nav a {
+ 
+    color: var(--guardioes-branco);
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+ 
+}
+ 
+ 
+.guardioes-nav a:hover {
+ 
+    color: var(--guardioes-amarelo);
+ 
+}
+ 
+ 
+/* =========================================
+   BOTÕES DO HEADER
+========================================= */
+ 
+.guardioes-nav-buttons {
+ 
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+ 
+}
+ 
+ 
+.guardioes-btn {
+ 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.3s;
+ 
+}
+ 
+ 
+.guardioes-btn-primary {
+ 
+    padding: 12px 24px;
+    border-radius: 50px;
+    background: var(--guardioes-amarelo);
+    color: var(--guardioes-preto);
+ 
+}
+ 
+ 
+.guardioes-btn-primary:hover {
+ 
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 191, 31, 0.25);
+ 
+}
+ 
+ 
+.guardioes-btn-secondary {
+ 
+    padding: 11px 24px;
+    border-radius: 50px;
+    border: 2px solid var(--guardioes-amarelo);
+    background: transparent;
+    color: var(--guardioes-branco);
+ 
+}
+ 
+ 
+.guardioes-btn-secondary:hover {
+ 
+    background: var(--guardioes-amarelo);
+    color: var(--guardioes-preto);
+ 
+}
+ 
+ 
+/* =========================================
+   HERO
+========================================= */
+ 
+.guardioes-hero {
+ 
+    padding: 120px 10%;
+    text-align: center;
+ 
+    background:
+        linear-gradient(
+            180deg,
+            var(--guardioes-roxo),
+            var(--guardioes-roxo2)
+        );
+ 
+}
+ 
+ 
+.guardioes-hero h1 {
+ 
+    font-size: 4rem;
+    line-height: 1.15;
+    font-weight: 800;
+ 
+}
+ 
+ 
+.guardioes-hero h1 span {
+ 
+    display: block;
+    color: var(--guardioes-amarelo);
+ 
+}
+ 
+ 
+.guardioes-hero p {
+ 
+    max-width: 700px;
+    margin: 30px auto;
+    line-height: 1.7;
+    color: #eeeeee;
+ 
+}
+ 
+ 
+/* =========================================
+   BOTÃO PREMIUM
+========================================= */
+ 
+.guardioes-botaopremium {
+ 
+    background: var(--guardioes-amarelo);
+    color: var(--guardioes-preto);
+ 
+    min-height: 60px;
+    width: 300px;
+ 
+    padding: 15px 30px;
+ 
+    border-radius: 40px;
+ 
+    font-weight: 800;
+    font-size: 17px;
+ 
+    transition: 0.4s;
+ 
+}
+ 
+ 
+.guardioes-botaopremium:hover {
+ 
+    background: transparent;
+    transform: translateY(-3px);
+    border: 2px solid var(--guardioes-amarelo);
+    color: var(--guardioes-amarelo);
+ 
+}
+ 
+ 
+/* =========================================
+   BENEFÍCIOS
+========================================= */
+ 
+.guardioes-beneficios {
+ 
+    padding: 80px 10%;
+ 
+}
+ 
+ 
+.guardioes-beneficios h2 {
+ 
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+ 
+}
+ 
+ 
+/* =========================================
+   TABELA
+========================================= */
+ 
+.guardioes-tabela-container {
+ 
+    width: 100%;
+    overflow-x: auto;
+ 
+}
+ 
+ 
+.guardioes-tabela {
+ 
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 550px;
+ 
+}
+ 
+ 
+.guardioes-tabela th,
+.guardioes-tabela td {
+ 
+    padding: 15px;
+    border-bottom: 1px solid var(--guardioes-borda);
+    text-align: center;
+ 
+}
+ 
+ 
+.guardioes-tabela th {
+ 
+    background: var(--guardioes-roxo);
+    color: var(--guardioes-amarelo);
+    font-weight: 700;
+ 
+}
+ 
+ 
+.guardioes-tabela th:first-child,
+.guardioes-tabela td:first-child {
+ 
+    text-align: left;
+ 
+}
+ 
+ 
+.guardioes-check {
+ 
+    color: #4ade80;
+    font-size: 1.2rem;
+    font-weight: 800;
+ 
+}
+ 
+ 
+.guardioes-x {
+ 
+    color: #ef4444;
+    font-size: 1.2rem;
+    font-weight: 800;
+ 
+}
+ 
+ 
+/* =========================================
+   PLANOS
+========================================= */
+ 
+.guardioes-planos {
+ 
+    padding: 80px 10%;
+ 
+    display: grid;
+ 
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(280px, 1fr)
+        );
+ 
+    gap: 25px;
+ 
+}
+ 
+ 
+.guardioes-card {
+ 
+    background: var(--guardioes-roxo-card);
+ 
+    padding: 30px;
+ 
+    border-radius: 20px;
+ 
+    border: 2px solid transparent;
+ 
+    transition: 0.3s;
+ 
+}
+ 
+ 
+.guardioes-card:hover {
+ 
+    transform: translateY(-7px);
+    border-color: rgba(255, 191, 31, 0.5);
+ 
+}
+ 
+ 
+.guardioes-destaque {
+ 
+    border: 2px solid var(--guardioes-amarelo);
+ 
+    box-shadow:
+        0 10px 30px
+        rgba(255, 191, 31, 0.12);
+ 
+}
+ 
+ 
+/* =========================================
+   TAG DOS PLANOS
+========================================= */
+ 
+.guardioes-tag {
+ 
+    display: inline-block;
+ 
+    background: var(--guardioes-amarelo);
+    color: var(--guardioes-preto);
+ 
+    padding: 6px 15px;
+ 
+    border-radius: 30px;
+ 
+    font-size: 0.8rem;
+    font-weight: 700;
+ 
+}
+ 
+ 
+.guardioes-card h3 {
+ 
+    margin-top: 20px;
+    font-size: 1.5rem;
+ 
+}
+ 
+ 
+.guardioes-preco {
+ 
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 15px 0;
+ 
+}
+ 
+ 
+/* =========================================
+   LISTA DOS PLANOS
+========================================= */
+ 
+.guardioes-card ul {
+ 
+    list-style: none;
+    margin: 20px 0;
+ 
+}
+ 
+ 
+.guardioes-card li {
+ 
+    margin-bottom: 10px;
+    color: #eeeeee;
+ 
+}
+ 
+ 
+.guardioes-card li::before {
+ 
+    content: "✓";
+    color: var(--guardioes-amarelo);
+    font-weight: 800;
+    margin-right: 8px;
+ 
+}
+ 
+ 
+/* =========================================
+   BOTÃO ASSINAR
+========================================= */
+ 
+.guardioes-assinar {
+ 
+    width: 100%;
+ 
+    padding: 15px;
+ 
+    border: none;
+ 
+    background: var(--guardioes-amarelo);
+    color: var(--guardioes-preto);
+ 
+    font-weight: 700;
+ 
+    border-radius: 50px;
+ 
+    cursor: pointer;
+ 
+    transition: 0.3s;
+ 
+}
+ 
+ 
+.guardioes-assinar:hover {
+ 
+    transform: translateY(-3px);
+ 
+    box-shadow:
+        0 8px 20px
+        rgba(255, 191, 31, 0.25);
+ 
+}
+ 
+ 
+/* =========================================
+   FOOTER
+========================================= */
+ 
+.guardioes-footer {
+ 
+    text-align: center;
+ 
+    padding: 40px;
+ 
+    background: var(--guardioes-footer);
+ 
+    color: #cccccc;
+ 
+}
+ 
+ 
+/* =========================================
+   MODAL
+========================================= */
+ 
+.guardioes-dialog {
+ 
+    border: none;
+ 
+    border-radius: 20px;
+ 
+    padding: 30px;
+ 
+    background: var(--guardioes-roxo-card);
+ 
+    color: var(--guardioes-branco);
+ 
+    width: min(350px, 90%);
+ 
+    margin: auto;
+ 
+}
+ 
+ 
+.guardioes-dialog::backdrop {
+ 
+    background: rgba(0, 0, 0, 0.7);
+ 
+}
+ 
+ 
+.guardioes-login-form {
+ 
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+ 
+}
+ 
+ 
+.guardioes-login-form h2 {
+ 
+    margin-bottom: 5px;
+ 
+}
+ 
+ 
+.guardioes-login-form input {
+ 
+    width: 100%;
+ 
+    padding: 12px;
+ 
+    border: none;
+ 
+    border-radius: 10px;
+ 
+    outline: none;
+ 
+    font-size: 1rem;
+ 
+}
+ 
+ 
+.guardioes-login-form input:focus {
+ 
+    outline: 2px solid var(--guardioes-amarelo);
+ 
+}
+ 
+ 
+.guardioes-dialog-menu {
+ 
+    display: flex;
+ 
+    justify-content: flex-end;
+ 
+    gap: 10px;
+ 
+    padding: 0;
+ 
+    margin: 5px 0 0;
+ 
+}
+ 
+ 
+.guardioes-modal-cancelar,
+.guardioes-modal-entrar {
+ 
+    padding: 10px 18px;
+ 
+    border-radius: 30px;
+ 
+    cursor: pointer;
+ 
+    font-weight: 700;
+ 
+}
+ 
+ 
+.guardioes-modal-cancelar {
+ 
+    border: 1px solid #777;
+ 
+    background: transparent;
+ 
+    color: var(--guardioes-branco);
+ 
+}
+ 
+ 
+.guardioes-modal-entrar {
+ 
+    border: none;
+ 
+    background: var(--guardioes-amarelo);
+ 
+    color: var(--guardioes-preto);
+ 
+}
+ 
+ 
+/* =========================================
+   TOAST
+========================================= */
+ 
+#guardioes-toast {
+ 
+    position: fixed;
+ 
+    bottom: 30px;
+    right: 30px;
+ 
+    background: var(--guardioes-amarelo);
+ 
+    color: var(--guardioes-preto);
+ 
+    padding: 15px 25px;
+ 
+    border-radius: 10px;
+ 
+    font-weight: 700;
+ 
+    transform: translateY(150px);
+ 
+    opacity: 0;
+ 
+    transition:
+        transform 0.4s,
+        opacity 0.4s;
+ 
+    z-index: 9999;
+ 
+}
+ 
+ 
+#guardioes-toast.guardioes-show {
+ 
+    transform: translateY(0);
+ 
+    opacity: 1;
+ 
+}
+ 
+ 
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+ 
+@media (max-width: 900px) {
+ 
+    .guardioes-header-container {
+ 
+        flex-wrap: wrap;
+ 
+        gap: 20px;
+ 
+    }
+ 
+ 
+    .guardioes-nav {
+ 
+        order: 3;
+ 
+        width: 100%;
+ 
+        justify-content: center;
+ 
+    }
+ 
+ 
+    .guardioes-nav ul {
+ 
+        gap: 20px;
+ 
+        flex-wrap: wrap;
+ 
+        justify-content: center;
+ 
+    }
+ 
+ 
+    .guardioes-nav-buttons {
+ 
+        margin-left: auto;
+ 
+    }
+ 
+ 
+    .guardioes-hero h1 {
+ 
+        font-size: 3rem;
+ 
+    }
+ 
+}
+ 
+ 
+@media (max-width: 600px) {
+ 
+    .guardioes-header {
+ 
+        padding: 18px 5%;
+ 
+    }
+ 
+ 
+    .guardioes-header-container {
+ 
+        justify-content: center;
+ 
+    }
+ 
+ 
+    .guardioes-logo {
+ 
+        width: 100%;
+ 
+        justify-content: center;
+ 
+    }
+ 
+ 
+    .guardioes-nav-buttons {
+ 
+        width: 100%;
+ 
+        justify-content: center;
+ 
+        margin-left: 0;
+ 
+    }
+ 
+ 
+    .guardioes-nav {
+ 
+        width: 100%;
+ 
+    }
+ 
+ 
+    .guardioes-nav ul {
+ 
+        gap: 15px;
+ 
+    }
+ 
+ 
+    .guardioes-nav a {
+ 
+        font-size: 0.9rem;
+ 
+    }
+ 
+ 
+    .guardioes-hero {
+ 
+        padding: 80px 6%;
+ 
+    }
+ 
+ 
+    .guardioes-hero h1 {
+ 
+        font-size: 2.3rem;
+ 
+    }
+ 
+ 
+    .guardioes-hero p {
+ 
+        font-size: 0.95rem;
+ 
+    }
+ 
+ 
+    .guardioes-botaopremium {
+ 
+        width: 100%;
+        max-width: 300px;
+ 
+    }
+ 
+ 
+    .guardioes-beneficios,
+    .guardioes-planos {
+ 
+        padding: 60px 6%;
+ 
+    }
+ 
+ 
+    .guardioes-beneficios h2 {
+ 
+        font-size: 1.8rem;
+ 
+    }
+ 
+ 
+    #guardioes-toast {
+ 
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+ 
+        text-align: center;
+ 
+    }
+ 
+}
+ 

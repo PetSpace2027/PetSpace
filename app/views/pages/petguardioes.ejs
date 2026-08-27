@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <title>PetGuardião Premium</title>
+ 
+    <!-- Fonte Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+ 
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+ 
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+ 
+<body class="guardioes">
+ 
+    <header class="guardioes-header">
+ 
+        <section class="guardioes-header-container">
+ 
+            <a href="#" class="guardioes-logo">
+                <i class="fa-solid fa-paw guardioes-logo-icon"></i>
+ 
+                <span class="guardioes-logo-text">
+                    PetSpace
+                </span>
+            </a>
+ 
+            <nav class="guardioes-nav">
+                <ul>
+                    <li>
+                        <a href="/">Início</a>
+                    </li>
+ 
+                    <li>
+                        <a href="/compras">Compras</a>
+                    </li>
+ 
+                    <li>
+                        <a href="/contato">Contato</a>
+                    </li>
+                </ul>
+            </nav>
+ 
+            <section class="guardioes-nav-buttons">
+ 
+                <button
+                    type="button"
+                    class="guardioes-btn guardioes-btn-secondary"
+                    id="guardioes-abrir-login"
+                >
+                    Entrar
+                </button>
+ 
+                <a
+                    href="cadastro.html"
+                    class="guardioes-btn guardioes-btn-primary"
+                >
+                    Cadastre-se
+                </a>
+ 
+            </section>
+ 
+        </section>
+ 
+    </header>
+ 
+ 
+    <main>
+ 
+        <!-- HERO -->
+        <section
+            class="guardioes-hero"
+            id="guardioes-inicio"
+        >
+ 
+            <h1>
+                Proteção Premium para
+                <span>
+                    o seu melhor amigo
+                </span>
+            </h1>
+ 
+            <p>
+                Monitoramento, vacinas, histórico médico,
+                alertas inteligentes e suporte especializado
+                para cuidar do seu pet.
+            </p>
+ 
+            <a
+                href="#guardioes-planos"
+                class="guardioes-btn guardioes-botaopremium"
+            >
+                Experimente por R$ 1,90
+            </a>
+ 
+        </section>
+ 
+ 
+        <!-- BENEFÍCIOS -->
+        <section
+            class="guardioes-beneficios"
+            id="guardioes-beneficios"
+        >
+ 
+            <h2>
+                Experimente a diferença
+            </h2>
+ 
+            <div class="guardioes-tabela-container">
+ 
+                <table class="guardioes-tabela">
+ 
+                    <thead>
+                        <tr>
+                            <th>Benefícios</th>
+                            <th>Grátis</th>
+                            <th>Premium</th>
+                        </tr>
+                    </thead>
+ 
+                    <tbody>
+ 
+                        <tr>
+                            <td>Histórico de Vacinas</td>
+                            <td class="guardioes-check">✓</td>
+                            <td class="guardioes-check">✓</td>
+                        </tr>
+ 
+                        <tr>
+                            <td>Alertas Automáticos</td>
+                            <td class="guardioes-x">✕</td>
+                            <td class="guardioes-check">✓</td>
+                        </tr>
+ 
+                        <tr>
+                            <td>Consultas Online</td>
+                            <td class="guardioes-x">✕</td>
+                            <td class="guardioes-check">✓</td>
+                        </tr>
+ 
+                        <tr>
+                            <td>Suporte Prioritário</td>
+                            <td class="guardioes-x">✕</td>
+                            <td class="guardioes-check">✓</td>
+                        </tr>
+ 
+                        <tr>
+                            <td>Backup na Nuvem</td>
+                            <td class="guardioes-x">✕</td>
+                            <td class="guardioes-check">✓</td>
+                        </tr>
+ 
+                    </tbody>
+ 
+                </table>
+ 
+            </div>
+ 
+        </section>
+ 
+ 
+        <!-- PLANOS -->
+        <section
+            class="guardioes-planos"
+            id="guardioes-planos"
+        >
+ 
+            <!-- INDIVIDUAL -->
+            <article class="guardioes-card">
+ 
+                <span class="guardioes-tag">
+                    POPULAR
+                </span>
+ 
+                <h3>
+                    Individual
+                </h3>
+ 
+                <p class="guardioes-preco">
+                    R$ 19,90/mês
+                </p>
+ 
+                <ul>
+                    <li>1 Pet</li>
+                    <li>Vacinas</li>
+                    <li>Alertas</li>
+                    <li>Suporte</li>
+                </ul>
+ 
+                <button
+                    type="button"
+                    class="guardioes-assinar"
+                    data-plano="Individual"
+                >
+                    Assinar
+                </button>
+ 
+            </article>
+ 
+ 
+            <!-- DUO -->
+            <article class="guardioes-card">
+ 
+                <span class="guardioes-tag">
+                    ECONOMIA
+                </span>
+ 
+                <h3>
+                    Duo
+                </h3>
+ 
+                <p class="guardioes-preco">
+                    R$ 29,90/mês
+                </p>
+ 
+                <ul>
+                    <li>2 Pets</li>
+                    <li>Histórico Completo</li>
+                    <li>Alertas</li>
+                    <li>Suporte</li>
+                </ul>
+ 
+                <button
+                    type="button"
+                    class="guardioes-assinar"
+                    data-plano="Duo"
+                >
+                    Assinar
+                </button>
+ 
+            </article>
+ 
+ 
+            <!-- FAMÍLIA -->
+            <article class="guardioes-card guardioes-destaque">
+ 
+                <span class="guardioes-tag">
+                    MAIS VENDIDO
+                </span>
+ 
+                <h3>
+                    Família
+                </h3>
+ 
+                <p class="guardioes-preco">
+                    R$ 49,90/mês
+                </p>
+ 
+                <ul>
+                    <li>Até 5 Pets</li>
+                    <li>Consultas</li>
+                    <li>Relatórios</li>
+                    <li>Suporte VIP</li>
+                </ul>
+ 
+                <button
+                    type="button"
+                    class="guardioes-assinar"
+                    data-plano="Família"
+                >
+                    Assinar
+                </button>
+ 
+            </article>
+ 
+ 
+            <!-- PRO -->
+            <article class="guardioes-card">
+ 
+                <span class="guardioes-tag">
+                    PRO
+                </span>
+ 
+                <h3>
+                    PetGuardião PRO
+                </h3>
+ 
+                <p class="guardioes-preco">
+                    R$ 79,90/mês
+                </p>
+ 
+                <ul>
+                    <li>Pets ilimitados</li>
+                    <li>IA Veterinária</li>
+                    <li>Backup Premium</li>
+                    <li>Suporte 24h</li>
+                </ul>
+ 
+                <button
+                    type="button"
+                    class="guardioes-assinar"
+                    data-plano="PRO"
+                >
+                    Assinar
+                </button>
+ 
+            </article>
+ 
+        </section>
+ 
+    </main>
+ 
+ 
+    <!-- FOOTER -->
+    <footer class="guardioes-footer">
+ 
+        <p>
+            ©️ 2025 PetGuardião Premium
+        </p>
+ 
+    </footer>
+ 
+ 
+    <!-- MODAL DE LOGIN -->
+    <dialog
+        id="guardioes-loginModal"
+        class="guardioes-dialog"
+    >
+ 
+        <form
+            method="dialog"
+            class="guardioes-login-form"
+        >
+ 
+            <h2>
+                Entrar
+            </h2>
+ 
+            <input
+                type="email"
+                placeholder="Seu e-mail"
+                required
+                autocomplete="email"
+            >
+ 
+            <input
+                type="password"
+                placeholder="Senha"
+                required
+                autocomplete="current-password"
+            >
+ 
+            <menu class="guardioes-dialog-menu">
+ 
+                <button
+                    type="button"
+                    value="cancel"
+                    id="guardioes-fechar-login"
+                    class="guardioes-modal-cancelar"
+                >
+                    Cancelar
+                </button>
+ 
+                <button
+                    type="submit"
+                    id="guardioes-loginBtn"
+                    class="guardioes-modal-entrar"
+                >
+                    Entrar
+                </button>
+ 
+            </menu>
+ 
+        </form>
+ 
+    </dialog>
+ 
+ 
+    <!-- TOAST -->
+    <div
+        id="guardioes-toast"
+        role="status"
+        aria-live="polite"
+    ></div>
+ 
+ 
+    <!-- JAVASCRIPT -->
+    <script>
+ 
+        document.addEventListener("DOMContentLoaded", function () {
+ 
+            /* =========================================
+               BOTÕES DOS PLANOS
+            ========================================= */
+ 
+            const botoesAssinar =
+                document.querySelectorAll(".guardioes-assinar");
+ 
+            const toast =
+                document.querySelector("#guardioes-toast");
+ 
+ 
+            function mostrarToast(mensagem) {
+ 
+                if (!toast) {
+                    return;
+                }
+ 
+                toast.textContent = mensagem;
+ 
+                toast.classList.add("guardioes-show");
+ 
+                setTimeout(function () {
+ 
+                    toast.classList.remove("guardioes-show");
+ 
+                }, 3000);
+            }
+ 
+ 
+            botoesAssinar.forEach(function (botao) {
+ 
+                botao.addEventListener("click", function () {
+ 
+                    const plano =
+                        botao.getAttribute("data-plano");
+ 
+                    mostrarToast(
+                        "Você selecionou o plano " + plano + "!"
+                    );
+ 
+                });
+ 
+            });
+ 
+ 
+            /* =========================================
+               BOTÃO PREMIUM
+            ========================================= */
+ 
+            const botaoPremium =
+                document.querySelector(".guardioes-botaopremium");
+ 
+ 
+            if (botaoPremium) {
+ 
+                botaoPremium.addEventListener(
+                    "click",
+                    function (evento) {
+ 
+                        evento.preventDefault();
+ 
+                        const planos =
+                            document.querySelector(
+                                "#guardioes-planos"
+                            );
+ 
+                        if (planos) {
+ 
+                            planos.scrollIntoView({
+                                behavior: "smooth"
+                            });
+ 
+                        }
+ 
+                    }
+                );
+ 
+            }
+ 
+ 
+            /* =========================================
+               MODAL DE LOGIN
+            ========================================= */
+ 
+            const loginModal =
+                document.querySelector(
+                    "#guardioes-loginModal"
+                );
+ 
+            const abrirLogin =
+                document.querySelector(
+                    "#guardioes-abrir-login"
+                );
+ 
+            const fecharLogin =
+                document.querySelector(
+                    "#guardioes-fechar-login"
+                );
+ 
+            const loginBtn =
+                document.querySelector(
+                    "#guardioes-loginBtn"
+                );
+ 
+ 
+            /* Abrir modal */
+ 
+            if (abrirLogin && loginModal) {
+ 
+                abrirLogin.addEventListener(
+                    "click",
+                    function () {
+ 
+                        loginModal.showModal();
+ 
+                    }
+                );
+ 
+            }
+ 
+ 
+            /* Fechar modal */
+ 
+            if (fecharLogin && loginModal) {
+ 
+                fecharLogin.addEventListener(
+                    "click",
+                    function () {
+ 
+                        loginModal.close();
+ 
+                    }
+                );
+ 
+            }
+ 
+ 
+            /* Login */
+ 
+            if (loginBtn && loginModal) {
+ 
+                loginBtn.addEventListener(
+                    "click",
+                    function (evento) {
+ 
+                        const email =
+                            loginModal.querySelector(
+                                'input[type="email"]'
+                            );
+ 
+                        const senha =
+                            loginModal.querySelector(
+                                'input[type="password"]'
+                            );
+ 
+ 
+                        if (
+                            email.value.trim() !== "" &&
+                            senha.value.trim() !== ""
+                        ) {
+ 
+                            evento.preventDefault();
+ 
+                            loginModal.close();
+ 
+                            mostrarToast(
+                                "Login realizado com sucesso!"
+                            );
+ 
+                        }
+ 
+                    }
+                );
+ 
+            }
+ 
+ 
+            /* Fechar modal clicando fora */
+ 
+            if (loginModal) {
+ 
+                loginModal.addEventListener(
+                    "click",
+                    function (evento) {
+ 
+                        const areaModal =
+                            loginModal.getBoundingClientRect();
+ 
+                        const clicouFora =
+                            evento.clientX < areaModal.left ||
+                            evento.clientX > areaModal.right ||
+                            evento.clientY < areaModal.top ||
+                            evento.clientY > areaModal.bottom;
+ 
+                        if (clicouFora) {
+ 
+                            loginModal.close();
+ 
+                        }
+ 
+                    }
+                );
+ 
+            }
+ 
+        });
+ 
+    </script>
+ 
+</body>
+ 
+</html>

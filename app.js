@@ -42,5 +42,3 @@ app.use("/", rota);
 app.listen(porta, ()=>{
     console.log(`Servidor on-line \nhttp://localhost:${porta}`)
 })
-
-
