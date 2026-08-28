@@ -176,6 +176,17 @@ nav a:hover::after {
     overflow: hidden;
 }
 
+/* Imagem mobile */
+.imagem-responsivo{
+    display: none;
+}
+
+.imagem-responsivo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 /* Vídeo de fundo */
 .hero-video {
     position: absolute;
@@ -1434,6 +1445,30 @@ visibility: hidden;
 
 @media (max-width:480px) {
 
+   .hero {
+        height: 650px;
+    }
+    .hero-video{
+        display: none;
+    }
+ .imagem-responsivo {
+        display: block;
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+    }
+
+       .hero-overlay {
+        background: rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-gradient {
+        background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.25),
+            rgba(0, 0, 0, 0.65)
+        );
+    }
     .logo-text {
         font-size: 22px;
     }
@@ -2352,4 +2387,1332 @@ body.guardioes {
     }
  
 }
+
+/* ==========================================================
+   PÁGINA DO FORNECEDOR — PETSPACE
+   ----------------------------------------------------------
+   CSS específico da página.
+   A responsividade, header, footer e estilos globais
+   continuam sendo responsabilidade do CSS principal.
+========================================================== */
+
+
+.hero-fornecedor,
+.resumo-fornecedor,
+.sobre-fornecedor,
+.informacoes-fornecedor,
+.produtos-fornecedor,
+.avaliacoes-fornecedor,
+.cta-fornecedor {
+    --fornecedor-roxo: var(--paw-roxoescuro);
+    --fornecedor-roxo-medio: var(--paw-dark);
+    --fornecedor-violeta: var(--paw-violet);
+    --fornecedor-violeta-claro: var(--paw-medium);
+    --fornecedor-dourado: var(--paw-gold);
+    --fornecedor-dourado-claro: var(--paw-goldligth);
+    --fornecedor-creme: var(--paw-cream);
+}
+
+
+/* ==========================================================
+   CLASSES AUXILIARES
+========================================================== */
+
+.sr-only-fornecedor {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+
+/* ==========================================================
+   HERO DO FORNECEDOR
+========================================================== */
+
+.hero-fornecedor {
+    position: relative;
+    min-height: 510px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            135deg,
+            var(--paw-roxoescuro),
+            var(--paw-dark)
+        );
+    color: var(--text-light);
+    margin-top: 80px;
+}
+
+
+/* Imagem de capa */
+
+.capa-fornecedor {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(31, 4, 75, .94),
+            rgba(48, 18, 102, .72),
+            rgba(120, 43, 209, .28)
+        ),
+        url("../imagem/capa-fornecedor.webp");
+}
+
+
+/* Camada adicional */
+
+.overlay-fornecedor {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(31, 4, 75, .96) 0%,
+            rgba(31, 4, 75, .70) 30%,
+            rgba(31, 4, 75, .12) 75%,
+            rgba(31, 4, 75, .20) 100%
+        );
+
+    pointer-events: none;
+}
+
+
+/* Conteúdo */
+
+.conteudo-hero-fornecedor {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 40px;
+
+    padding: 70px 0 55px;
+}
+
+
+/* ==========================================================
+   IDENTIDADE DO FORNECEDOR
+========================================================== */
+
+.identidade-fornecedor {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+
+/* Logo */
+
+.logo-loja-fornecedor {
+    width: 150px;
+    height: 150px;
+
+    flex-shrink: 0;
+
+    margin: 0;
+
+    padding: 7px;
+
+    background: rgba(255, 255, 255, .96);
+
+    border: 4px solid var(--paw-gold);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, .35);
+}
+
+
+.logo-loja-fornecedor img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+
+/* Informações */
+
+.informacoes-hero-fornecedor {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.informacoes-hero-fornecedor h1 {
+    margin: 0;
+
+    color: var(--text-light);
+
+    font-size: 3rem;
+    font-weight: 800;
+
+    line-height: 1.15;
+
+    letter-spacing: -.5px;
+}
+
+
+.informacoes-hero-fornecedor > p {
+    margin: 0;
+}
+
+
+/* Categoria */
+
+#categoria-fornecedor {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: rgba(255, 255, 255, .88);
+
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+
+#categoria-fornecedor i {
+    color: var(--paw-gold);
+}
+
+
+/* ==========================================================
+   STATUS
+========================================================== */
+
+.status-fornecedor {
+    display: inline-flex;
+    align-items: center;
+
+    width: fit-content;
+
+    gap: 8px;
+
+    color: var(--paw-goldligth);
+
+    font-size: .9rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+
+.status-ponto-fornecedor {
+    width: 9px;
+    height: 9px;
+
+    display: inline-block;
+
+    border-radius: 50%;
+
+    background: #55d66b;
+
+    box-shadow:
+        0 0 0 4px rgba(85, 214, 107, .15);
+}
+
+
+.status-fechado-fornecedor {
+    background: #e57373;
+
+    box-shadow:
+        0 0 0 4px rgba(229, 115, 115, .15);
+}
+
+
+/* ==========================================================
+   AVALIAÇÃO DO HERO
+========================================================== */
+
+.avaliacao-hero-fornecedor {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: .95rem;
+}
+
+
+.estrelas-fornecedor {
+    color: var(--paw-gold);
+
+    font-size: 1rem;
+
+    letter-spacing: 2px;
+}
+
+
+.avaliacao-hero-fornecedor strong {
+    color: var(--text-light);
+
+    font-weight: 800;
+}
+
+
+.avaliacao-hero-fornecedor span:last-child {
+    color: rgba(255, 255, 255, .70);
+}
+
+
+/* ==========================================================
+   BOTÕES ESPECÍFICOS
+========================================================== */
+
+.acoes-hero-fornecedor {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.btn-fornecedor {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    min-height: 46px;
+
+    padding: 10px 22px;
+
+    border-radius: 30px;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    font-size: .95rem;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        background .3s ease,
+        color .3s ease;
+}
+
+
+.btn-primary-fornecedor {
+    background: var(--paw-goldligth);
+
+    color: var(--paw-roxoescuro);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, .20);
+}
+
+
+.btn-primary-fornecedor:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, .30);
+}
+
+
+.btn-secondary-fornecedor {
+    background: rgba(255, 255, 255, .07);
+
+    color: var(--text-light);
+
+    border: 2px solid rgba(255, 255, 255, .55);
+
+    backdrop-filter: blur(8px);
+}
+
+
+.btn-secondary-fornecedor:hover {
+    background: rgba(255, 255, 255, .14);
+
+    transform: translateY(-3px);
+}
+
+
+.btn-whatsapp-fornecedor {
+    width: 100%;
+
+    margin-top: 22px;
+
+    background: #25d366;
+
+    color: #fff;
+
+    box-shadow:
+        0 8px 20px rgba(37, 211, 102, .18);
+}
+
+
+.btn-whatsapp-fornecedor:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(37, 211, 102, .28);
+}
+
+
+.btn-comprar-fornecedor {
+    min-height: 38px;
+
+    padding: 7px 17px;
+
+    background: var(--paw-goldligth);
+
+    color: var(--paw-roxoescuro);
+
+    font-size: .85rem;
+}
+
+
+/* ==========================================================
+   RESUMO DO FORNECEDOR
+========================================================== */
+
+.resumo-fornecedor {
+    position: relative;
+
+    background: #fff;
+
+    border-bottom:
+        1px solid rgba(48, 18, 102, .10);
+
+    box-shadow:
+        0 8px 30px rgba(31, 4, 75, .08);
+}
+
+
+.grid-resumo-fornecedor {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    margin: 0;
+
+    padding: 0;
+}
+
+
+.card-resumo-fornecedor {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    min-height: 125px;
+
+    padding: 24px 28px;
+
+    border-right:
+        1px solid rgba(48, 18, 102, .10);
+}
+
+
+.card-resumo-fornecedor:last-child {
+    border-right: none;
+}
+
+
+.card-resumo-fornecedor dt {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 5px;
+
+    color: var(--paw-dark);
+
+    font-size: .85rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: .4px;
+}
+
+
+.card-resumo-fornecedor dt i {
+    color: var(--paw-violet);
+
+    font-size: 1rem;
+}
+
+
+.card-resumo-fornecedor dd {
+    margin: 0;
+
+    color: #4e4161;
+
+    font-size: .92rem;
+
+    font-weight: 500;
+}
+
+
+/* ==========================================================
+   SEÇÕES GERAIS
+========================================================== */
+
+.secao-fornecedor {
+    padding: 85px 0;
+}
+
+
+.sobre-fornecedor {
+    background: var(--paw-cream);
+}
+
+
+.informacoes-fornecedor {
+    background: #fff;
+}
+
+
+.produtos-fornecedor {
+    background:
+        linear-gradient(
+            180deg,
+            #f8eeff 0%,
+            #ffffff 100%
+        );
+}
+
+
+.avaliacoes-fornecedor {
+    background: var(--paw-roxoescuro);
+
+    color: #fff;
+}
+
+
+/* ==========================================================
+   CABEÇALHOS DAS SEÇÕES
+========================================================== */
+
+.cabecalho-bloco-fornecedor,
+.cabecalho-secao-fornecedor {
+    margin-bottom: 28px;
+}
+
+
+.subtitulo-fornecedor {
+    margin: 0 0 6px;
+
+    color: var(--paw-violet);
+
+    font-size: .82rem;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+}
+
+
+.titulo-fornecedor {
+    margin: 0;
+
+    color: var(--paw-dark);
+
+    font-size: 2.2rem;
+
+    font-weight: 800;
+
+    line-height: 1.2;
+}
+
+
+.descricao-secao-fornecedor {
+    max-width: 700px;
+
+    margin: 12px 0 0;
+
+    color: #665b73;
+
+    font-size: 1rem;
+}
+
+
+/* ==========================================================
+   SOBRE
+========================================================== */
+
+.grid-sobre-fornecedor {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.5fr)
+        minmax(330px, .8fr);
+
+    gap: 70px;
+
+    align-items: start;
+}
+
+
+.descricao-fornecedor {
+    max-width: 800px;
+
+    margin: 0;
+
+    color: #594d66;
+
+    font-size: 1.05rem;
+
+    line-height: 1.9;
+}
+
+
+/* ==========================================================
+   TAGS
+========================================================== */
+
+.tags-fornecedor {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin: 25px 0 0;
+
+    padding: 0;
+
+    list-style: none;
+}
+
+
+.tags-fornecedor li {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 15px;
+
+    border-radius: 30px;
+
+    background: rgba(129, 35, 252, .08);
+
+    color: var(--paw-dark);
+
+    font-size: .85rem;
+
+    font-weight: 700;
+}
+
+
+.tags-fornecedor i {
+    color: var(--paw-violet);
+}
+
+
+/* ==========================================================
+   BLOCO DE CONTATO
+========================================================== */
+
+.bloco-contato-fornecedor {
+    padding: 30px;
+
+    border-radius: 20px;
+
+    background: #fff;
+
+    border:
+        1px solid rgba(48, 18, 102, .08);
+
+    box-shadow:
+        0 12px 35px rgba(31, 4, 75, .09);
+}
+
+
+.bloco-contato-fornecedor .titulo-fornecedor {
+    font-size: 1.8rem;
+}
+
+
+.bloco-contato-fornecedor address {
+    font-style: normal;
+}
+
+
+/* ==========================================================
+   LISTA DE CONTATO
+========================================================== */
+
+.lista-contato-fornecedor {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    margin: 25px 0 0;
+
+    padding: 0;
+
+    list-style: none;
+}
+
+
+.lista-contato-fornecedor li {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.lista-contato-fornecedor li > i {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: rgba(129, 35, 252, .08);
+
+    color: var(--paw-violet);
+
+    font-size: .95rem;
+}
+
+
+.lista-contato-fornecedor li div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1px;
+}
+
+
+.lista-contato-fornecedor span {
+    color: #867b90;
+
+    font-size: .75rem;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: .5px;
+}
+
+
+.lista-contato-fornecedor strong {
+    color: var(--paw-dark);
+
+    font-size: .9rem;
+
+    font-weight: 700;
+}
+
+
+/* ==========================================================
+   GRID DE INFORMAÇÕES
+========================================================== */
+
+.grid-informacoes-fornecedor {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+
+.card-informacao-fornecedor {
+    padding: 30px 25px;
+
+    border-radius: 18px;
+
+    background: #fff;
+
+    border:
+        1px solid rgba(48, 18, 102, .08);
+
+    box-shadow:
+        0 8px 25px rgba(31, 4, 75, .06);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.card-informacao-fornecedor:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 15px 35px rgba(31, 4, 75, .11);
+}
+
+
+.card-informacao-fornecedor > i {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(129, 35, 252, .09);
+
+    color: var(--paw-violet);
+
+    font-size: 1.2rem;
+}
+
+
+.card-informacao-fornecedor h3 {
+    margin: 0 0 10px;
+
+    color: var(--paw-dark);
+
+    font-size: 1.05rem;
+
+    font-weight: 800;
+}
+
+
+.card-informacao-fornecedor p {
+    margin: 0;
+
+    color: #6d6276;
+
+    font-size: .88rem;
+
+    line-height: 1.7;
+}
+
+
+/* ==========================================================
+   PRODUTOS
+========================================================== */
+
+.grid-produtos-fornecedor {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+.card-produto-fornecedor {
+    overflow: hidden;
+
+    background: #fff;
+
+    border:
+        1px solid rgba(48, 18, 102, .08);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(31, 4, 75, .07);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.card-produto-fornecedor:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 18px 40px rgba(31, 4, 75, .13);
+}
+
+
+/* Imagem */
+
+.imagem-produto-fornecedor {
+    height: 245px;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    background: #f3eafa;
+}
+
+
+.imagem-produto-fornecedor img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform .4s ease;
+}
+
+
+.card-produto-fornecedor:hover
+.imagem-produto-fornecedor img {
+    transform: scale(1.04);
+}
+
+
+/* Informações */
+
+.info-produto-fornecedor {
+    padding: 24px;
+}
+
+
+.categoria-produto-fornecedor {
+    margin: 0 0 6px;
+
+    color: var(--paw-violet);
+
+    font-size: .75rem;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+.info-produto-fornecedor h3 {
+    margin: 0 0 8px;
+
+    color: var(--paw-dark);
+
+    font-size: 1.15rem;
+
+    font-weight: 800;
+}
+
+
+.info-produto-fornecedor > p {
+    min-height: 48px;
+
+    margin: 0;
+
+    color: #756a7d;
+
+    font-size: .88rem;
+
+    line-height: 1.65;
+}
+
+
+/* Rodapé do produto */
+
+.rodape-produto-fornecedor {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 22px;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid rgba(48, 18, 102, .08);
+}
+
+
+.rodape-produto-fornecedor strong {
+    color: var(--paw-price);
+
+    font-size: 1.25rem;
+
+    font-weight: 800;
+}
+
+
+/* ==========================================================
+   CENTRALIZAÇÃO
+========================================================== */
+
+.centralizar-fornecedor {
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 45px;
+}
+
+
+/* ==========================================================
+   AVALIAÇÕES
+========================================================== */
+
+.avaliacoes-fornecedor .subtitulo-fornecedor {
+    color: var(--paw-gold);
+}
+
+
+.avaliacoes-fornecedor .titulo-fornecedor {
+    color: #fff;
+}
+
+
+.area-avaliacoes-fornecedor {
+    display: grid;
+
+    grid-template-columns:
+        260px
+        minmax(0, 1fr);
+
+    gap: 40px;
+
+    align-items: start;
+}
+
+
+/* Nota geral */
+
+.nota-avaliacoes-fornecedor {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 230px;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, .07);
+
+    border:
+        1px solid rgba(255, 255, 255, .10);
+}
+
+
+.nota-avaliacoes-fornecedor strong {
+    color: var(--paw-goldligth);
+
+    font-size: 4rem;
+
+    font-weight: 800;
+
+    line-height: 1;
+}
+
+
+.nota-avaliacoes-fornecedor .estrelas-fornecedor {
+    margin-top: 15px;
+
+    font-size: 1.2rem;
+}
+
+
+.nota-avaliacoes-fornecedor small {
+    margin-top: 10px;
+
+    color: rgba(255, 255, 255, .65);
+
+    font-size: .8rem;
+}
+
+
+/* Lista */
+
+.lista-avaliacoes-fornecedor {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+
+.card-avaliacao-fornecedor {
+    padding: 22px 25px;
+
+    border-radius: 16px;
+
+    background:
+        rgba(255, 255, 255, .07);
+
+    border:
+        1px solid rgba(255, 255, 255, .09);
+}
+
+
+.card-avaliacao-fornecedor header {
+    position: static;
+
+    width: auto;
+
+    height: auto;
+
+    padding: 0;
+
+    background: transparent;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.card-avaliacao-fornecedor header strong {
+    color: #fff;
+
+    font-size: .95rem;
+
+    font-weight: 700;
+}
+
+
+.card-avaliacao-fornecedor header .estrelas-fornecedor {
+    font-size: .85rem;
+}
+
+
+.card-avaliacao-fornecedor p {
+    margin: 10px 0 0;
+
+    color: rgba(255, 255, 255, .72);
+
+    font-size: .9rem;
+
+    line-height: 1.7;
+}
+
+
+/* ==========================================================
+   CTA FINAL
+========================================================== */
+
+.cta-fornecedor {
+    padding: 80px 0;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--paw-dark),
+            var(--paw-violet)
+        );
+
+    color: #fff;
+}
+
+
+.cta-fornecedor .container {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+.cta-fornecedor > .container > i {
+    color: var(--paw-gold);
+
+    font-size: 2.3rem;
+
+    margin-bottom: 15px;
+}
+
+
+.cta-fornecedor h2 {
+    margin: 0;
+
+    color: #fff;
+
+    font-size: 2.2rem;
+
+    font-weight: 800;
+}
+
+
+.cta-fornecedor p {
+    margin: 10px 0 25px;
+
+    color: rgba(255, 255, 255, .78);
+
+    font-size: 1rem;
+}
+
+
+/* ==========================================================
+   MENU MOBILE ESPECÍFICO
+   ----------------------------------------------------------
+   Sem responsividade aqui.
+   O CSS principal decidirá quando o menu aparecer.
+========================================================== */
+
+.mobile-menu-fornecedor {
+    background: var(--paw-roxoescuro);
+
+    border-radius: 0 0 15px 15px;
+
+    padding: 20px;
+}
+
+
+.mobile-menu-fornecedor a {
+    display: block;
+
+    padding: 12px 0;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, .08);
+}
+
+
+.mobile-menu-fornecedor a:last-child {
+    border-bottom: none;
+}
+
+
+.mobile-menu-fornecedor a:hover {
+    color: var(--paw-gold);
+}
+
+
+.ativo-mobile-fornecedor {
+    display: block;
+}
+
+
+/* ==========================================================
+   AJUSTES VISUAIS
+========================================================== */
+
+#whatsapp-fornecedor i {
+    font-size: 1.1rem;
+}
+
+
+#instagram-fornecedor {
+    color: var(--paw-violet);
+}
+
+
+#email-fornecedor {
+    word-break: break-word;
+}
+
+
+/* ==========================================================
+   ESTADO DE IMAGEM
+========================================================== */
+
+.imagem-produto-fornecedor img,
+.logo-loja-fornecedor img {
+    background: #f5eff9;
+}
+
+
+/* ==========================================================
+   LINKS DA PÁGINA
+========================================================== */
+
+.hero-fornecedor a,
+.sobre-fornecedor a,
+.informacoes-fornecedor a,
+.produtos-fornecedor a,
+.avaliacoes-fornecedor a,
+.cta-fornecedor a {
+    text-decoration: none;
+}
+
+
+/* ==========================================================
+   FOCO DE ACESSIBILIDADE
+========================================================== */
+
+.hero-fornecedor a:focus-visible,
+.sobre-fornecedor a:focus-visible,
+.informacoes-fornecedor a:focus-visible,
+.produtos-fornecedor a:focus-visible,
+.avaliacoes-fornecedor a:focus-visible,
+.cta-fornecedor a:focus-visible,
+.mobile-menu-fornecedor a:focus-visible,
+.btn-fornecedor:focus-visible {
+    outline: 3px solid var(--paw-gold);
+
+    outline-offset: 4px;
+}
+
+
+/* ==========================================================
+   FIM — FORNECEDOR
+========================================================== */
  

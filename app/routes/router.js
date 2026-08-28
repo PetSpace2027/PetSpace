@@ -61,4 +61,9 @@ router.get("/contato", (req, res)=>{
 
 });
 
+router.get("/fornecedor", (req, res)=>{
+    res.render("pages/fornecedor");
+
+});
+
 module.exports = router;
