@@ -45,3 +45,170 @@
 
 
 fazer isso com o compras
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+ 
+@media (max-width: 900px) {
+ 
+    .guardioes-header-container {
+ 
+        flex-wrap: wrap;
+ 
+        gap: 20px;
+ 
+    }
+ 
+ 
+    .guardioes-nav {
+ 
+        order: 3;
+ 
+        width: 100%;
+ 
+        justify-content: center;
+ 
+    }
+ 
+ 
+    .guardioes-nav ul {
+ 
+        gap: 20px;
+ 
+        flex-wrap: wrap;
+ 
+        justify-content: center;
+ 
+    }
+ 
+ 
+    .guardioes-nav-buttons {
+ 
+        margin-left: auto;
+ 
+    }
+ 
+ 
+    .guardioes-hero h1 {
+ 
+        font-size: 3rem;
+ 
+    }
+ 
+}
+ 
+ 
+@media (max-width: 600px) {
+ 
+    .guardioes-header {
+ 
+        padding: 18px 5%;
+ 
+    }
+ 
+ 
+    .guardioes-header-container {
+ 
+        justify-content: center;
+ 
+    }
+ 
+ 
+    .guardioes-logo {
+ 
+        width: 100%;
+ 
+        justify-content: center;
+ 
+    }
+ 
+ 
+    .guardioes-nav-buttons {
+ 
+        width: 100%;
+ 
+        justify-content: center;
+ 
+        margin-left: 0;
+ 
+    }
+ 
+ 
+    .guardioes-nav {
+ 
+        width: 100%;
+ 
+    }
+ 
+ 
+    .guardioes-nav ul {
+ 
+        gap: 15px;
+ 
+    }
+ 
+ 
+    .guardioes-nav a {
+ 
+        font-size: 0.9rem;
+ 
+    }
+ 
+ 
+    .guardioes-hero {
+ 
+        padding: 80px 6%;
+ 
+    }
+ 
+ 
+    .guardioes-hero h1 {
+ 
+        font-size: 2.3rem;
+ 
+    }
+ 
+ 
+    .guardioes-hero p {
+ 
+        font-size: 0.95rem;
+ 
+    }
+ 
+ 
+    .guardioes-botaopremium {
+ 
+        width: 100%;
+        max-width: 300px;
+ 
+    }
+ 
+ 
+    .guardioes-beneficios,
+    .guardioes-planos {
+ 
+        padding: 60px 6%;
+ 
+    }
+ 
+ 
+    .guardioes-beneficios h2 {
+ 
+        font-size: 1.8rem;
+ 
+    }
+ 
+ 
+    #guardioes-toast {
+ 
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+ 
+        text-align: center;
+ 
+    }
+ 
+}
