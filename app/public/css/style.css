@@ -1473,8 +1473,9 @@ visibility: hidden;
 
 @media (max-width:480px) {
 
-   .hero {
-        height: 650px;
+      .hero {
+        min-height: 40vh;
+        height: 30vh;
     }
     .hero-video{
         display: none;
