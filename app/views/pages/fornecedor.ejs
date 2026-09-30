@@ -60,192 +60,20 @@
          HEADER ORIGINAL
     ====================================================== -->
 
-<!-- =====================================================
-     HEADER ORIGINAL PETSPACE
-====================================================== -->
+<% if (!usuario) { %>
 
-<header>
+    <%- include("../partials/header-index") %>
 
-    <section class="container">
+<% } else if (usuario.premium) { %>
 
-        <a href="/" class="logo">
+    <%- include("../partials/header-premium") %>
 
-            <i class="fa-solid fa-paw logo-icon"></i>
+<% } else { %>
 
-            <span class="logo-text">
-                PetSpace
-            </span>
+    <%- include("../partials/header-logado") %>
 
-        </a>
+<% } %>
 
-
-        <button
-            class="menu-btn"
-            aria-label="Abrir menu"
-        >
-
-            <i class="fa-solid fa-bars"></i>
-
-        </button>
-
-
-        <form class="search-container">
-
-            <input
-                type="search"
-                class="search-input"
-                placeholder="O que você procura?"
-            >
-
-            <button
-                class="search-btn"
-                type="submit"
-            >
-
-                <i class="fa-solid fa-magnifying-glass"></i>
-
-            </button>
-
-        </form>
-
-
-        <nav>
-
-            <ul>
-
-                <li>
-                    <a href="/">
-                        Início
-                    </a>
-                </li>
-
-                <li>
-                    <a
-                        href="/compras"
-                        class="linkproduto"
-                    >
-                        Produtos
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/contato">
-                        Contato
-                    </a>
-                </li>
-
-                <li>
-                    <a
-                        href="/login"
-                        class="btn-login"
-                    >
-                        Entrar
-                    </a>
-                </li>
-
-                <li>
-                    <a
-                        href="/petguardioes"
-                        class="btn-pro"
-                    >
-
-                        <i class="fa-solid fa-crown"></i>
-
-                        PetGuardião PRO
-
-                    </a>
-                </li>
-
-            </ul>
-
-        </nav>
-
-    </section>
-
-</header>
-
-    <!-- =====================================================
-         MENU MOBILE ORIGINAL
-    ====================================================== -->
-
-    <nav class="navbar">
-
-        <button
-            id="menu-btn-mobile"
-            class="menu-btn"
-            aria-label="Abrir menu"
-        >
-
-            <i class="fa-solid fa-bars"></i>
-
-        </button>
-
-
-        <section
-            id="mobile-menu"
-            class="mobile-menu"
-        >
-
-            <section class="mobile-buttons">
-
-                <a
-                    href="/login"
-                    class="btn btn-secondary"
-                >
-                    <i class="fa-solid fa-user"></i>
-                    Entrar
-                </a>
-
-                <a
-                    href="/cadastro"
-                    class="btn btn-primary"
-                >
-                    <i class="fa-solid fa-user-plus"></i>
-                    Cadastre-se
-                </a>
-
-                <a
-                    href="/petguardioes"
-                    class="btn-pro"
-                >
-                    <i class="fa-solid fa-crown"></i>
-                    PetGuardião PRO
-                </a>
-
-            </section>
-
-
-            <hr>
-
-
-            <ul>
-
-                <li>
-                    <a href="#produtos-fornecedor">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        Produtos
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/compras">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        Compras
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/contato">
-                        <i class="fa-solid fa-phone"></i>
-                        Contato
-                    </a>
-                </li>
-
-            </ul>
-
-        </section>
-
-    </nav>
 
 
     <!-- =====================================================

@@ -45,25 +45,29 @@ router.get("/cadastro", (req, res)=>{
 });
 
 router.get("/petguardioes", (req, res)=>{
-    res.render("pages/petguardioes");
+    res.render("pages/petguardioes",{
+        usuario: req.session.usuario || null
+    });
 });
 
 
 router.get("/compras", (req, res) => {
 
-    res.render("pages/compras", {
+    res.render("pages/compras",{
         usuario: req.session.usuario || null
     });
 });
 
 router.get("/contato", (req, res)=>{
-    res.render("pages/contato");
-
+    res.render("pages/contato", {
+        usuario: req.session.usuario || null
+    });
 });
 
 router.get("/fornecedor", (req, res)=>{
-    res.render("pages/fornecedor");
-
+    res.render("pages/fornecedor",{
+        usuario: req.session.usuario || null
+    });
 });
 
 module.exports = router;
