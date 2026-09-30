@@ -42,7 +42,7 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
-    padding: 10px 15px;
+    padding: 2px 15px;
     transition: all 0.4s ease;
     height: 80px;
 }
@@ -104,16 +104,19 @@ nav a:after {
 nav a:hover::after {
     width: 100%;
 }
-
 .nav-buttons {
     display: flex;
-    gap: 15px;
+    align-items: center;
+    margin-right: 100px;
+    gap: 25px;
 }
 
 
 
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 8px 20px;
     border-radius: 30px;
     text-decoration: none;
@@ -122,6 +125,7 @@ nav a:hover::after {
     cursor: pointer;
     border: none;
     font-size: 16px;
+    white-space: nowrap;
 }
 
 .btn-primary {
@@ -562,12 +566,10 @@ h4 {
  /* ------------- PARTIALS */
 .btn-pro {
     display: flex;
+    margin: 10px;
+    height: 6vh;
     align-items: center;
-    gap: 8px;
-    padding: 10px 22px;
-    border-radius: 30px;
     text-decoration: none;
-    font-weight: 700;
     color: #ffffff;
     background: linear-gradient(135deg,
             #ffd311,
@@ -844,7 +846,7 @@ h4 {
 
 .premium-nav ul {
     display: flex;
-    gap: 30px;
+    gap: 25px;
     list-style: none;
 }
 
@@ -1280,196 +1282,531 @@ visibility: hidden;
 }
 
 @media (max-width: 768px) {
-
+ 
+    /* =========================
+       HEADER
+    ========================= */
+ 
     header {
-        height: auto;
-        padding: 15px;
+        height: 70px;
+        padding: 10px 15px;
     }
-
-    .formulario-contato{
-        z-index: 5;
-        position: relative;
-        top: 40px;
-        width: 100%;
-      
+ 
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
     }
-
-    .caixa-ajuda {
-    position: relative;
-    top: 0px;
-    width: 90%;
-    max-width: 600px;
-    margin: 30px auto;
-    padding: 20px;
-    text-align: left;
-
-    background: rgba(255,255,255,0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.3);
-    z-index: 5;
-
-}
-
-.header-container{
+ 
+    .nav-buttons {
+        display: none;
+    }
+ 
+    header nav ul {
+        display: none;
+    }
+ 
+ 
+    /* =========================
+       BARRA INFERIOR
+    ========================= */
+ 
+.navbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+ 
+    width: 100%;
+    height: 70px;
+ 
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    flex-direction: row;
-}    .nav-buttons{
-        display:none;
-    }
-
-    nav ul{
-        display:none;
-    }
-
-   nav{
-    position: relative;
-}
-
-.menu-btn{
-    display: block;
-}
-
-.mobile-menu{
-    display: none;
-    position: absolute;
-    top: 55px;
-    right: 0;
-    width: 280px;
+    justify-content: flex-end;
+ 
+    padding-right: 15px;
+ 
     background: #301266;
-    border-radius: 15px;
-    padding: 20px;
+    border-top: 2px solid var(--paw-gold);
+ 
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.30);
+ 
     z-index: 9999;
 }
-
-.mobile-menu.active{
-    display: block;
+ 
+ 
+ 
+    /* =========================
+       BOTÃO SANDUÍCHE
+    ========================= */
+ 
+    .navbar .menu-btn {
+    display: flex;
+ 
+    align-items: center;
+    justify-content: center;
+ 
+    width: 55px;
+    height: 55px;
+ 
+    margin: 0;
+ 
+    background: transparent;
+    border: none;
+ 
+    color: white;
+    font-size: 30px;
+ 
+    cursor: pointer;
+ 
+    transition: 0.3s ease;
 }
-
-    .mobile-buttons{
-        display:flex;
-        flex-direction:column;
-        gap:15px;
-
+ 
+.navbar .menu-btn:hover {
+    color: var(--paw-gold);
+    transform: scale(1.1);
+}
+ 
+ 
+    /* =========================
+       MENU ABERTO
+    ========================= */
+    .mobile-menu {
+        position: fixed;
+ 
+        right: 15px;
+        left: auto;
+ 
+        bottom: 80px;
+ 
+        width: 250px;
+        max-width: calc(100vw - 30px);
+ 
+        background: #301266;
+ 
+        border: 1px solid var(--paw-gold);
+        border-radius: 15px;
+ 
+        padding: 15px;
+ 
+        z-index: 10000;
+ 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     }
-
-    .mobile-menu hr{
-        margin:20px 0;
-        border:none;
-        border-top:1px solid rgba(255,255,255,.2);
+ 
+ 
+ 
+    .mobile-menu.active {
+        display: block;
     }
-
-    .mobile-menu ul{
-        display:flex;
-        flex-direction:column;
-        gap:18px;
-        list-style:none;
+ 
+ 
+    /* =========================
+       BOTÕES DO MENU
+    ========================= */
+ 
+    .mobile-buttons {
+        display: flex;
+ 
+        flex-direction: column;
+ 
+        gap: 12px;
+ 
+        width: 100%;
     }
-
-    .mobile-menu a{
-        color:white;
-        text-decoration:none;
-        display:flex;
-        align-items:center;
-        gap:12px;
-        font-size:17px;
+ 
+    .mobile-buttons a {
+        width: 100%;
+ 
+        display: flex;
+ 
+        align-items: center;
+        justify-content: center;
+ 
+        gap: 8px;
+ 
+        text-decoration: none;
     }
-
-    .mobile-menu a:hover{
-        color:#ffb000;
+ 
+ 
+    /* =========================
+       LINHA
+    ========================= */
+ 
+    .mobile-menu hr {
+        margin: 20px 0;
+ 
+        border: none;
+ 
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
-
-
+ 
+ 
+    /* =========================
+       LINKS
+    ========================= */
+ 
+    .mobile-menu ul {
+        display: flex;
+ 
+        flex-direction: column;
+ 
+        gap: 5px;
+ 
+        padding: 0;
+        margin: 0;
+ 
+        list-style: none;
+    }
+ 
+    .mobile-menu li {
+        width: 100%;
+    }
+ 
+    .mobile-menu li a {
+        width: 100%;
+ 
+        min-height: 50px;
+ 
+        display: flex;
+ 
+        align-items: center;
+ 
+        gap: 15px;
+ 
+        padding: 12px 15px;
+ 
+        color: white;
+ 
+        text-decoration: none;
+ 
+        font-size: 16px;
+ 
+        border-radius: 10px;
+ 
+        transition: 0.2s ease;
+    }
+ 
+    .mobile-menu li a i {
+        width: 25px;
+ 
+        text-align: center;
+ 
+        font-size: 19px;
+ 
+        color: var(--paw-gold);
+    }
+ 
+    .mobile-menu li a:hover {
+        background: rgba(255, 255, 255, 0.08);
+ 
+        color: var(--paw-gold);
+    }
+ 
+ 
+    /* =========================
+       ESPAÇO PARA BARRA
+    ========================= */
+ 
+    body {
+        padding-bottom: 70px;
+    }
+ 
+ 
+    /* =========================
+       HERO
+    ========================= */
+ 
     .hero {
         min-height: 100vh;
     }
-
-    .hero-content {
-        margin-left: 0;
-        padding: 0 20px;
+ 
+    .hero .container {
+        min-height: 100vh;
+ 
+        padding-top: 90px;
+        padding-bottom: 90px;
+ 
+        display: flex;
+ 
+        align-items: center;
+        justify-content: center;
     }
-
+ 
+    .hero-content {
+        width: 100%;
+ 
+        max-width: 600px;
+ 
+        margin-left: 0;
+ 
+        padding: 0 20px;
+ 
+        text-align: center;
+    }
+ 
     .hero-title {
         font-size: 2.2rem;
+ 
+        line-height: 1.2;
     }
-
+ 
     .hero-text {
         font-size: 1rem;
     }
-
-    .hero-gradient {
-        background: linear-gradient(
-            to right,
-            #6917d4 0%,
-            rgba(105, 23, 212, 0.75) 35%,
-            rgba(105, 23, 212, 0.25) 70%,
-            transparent 100%
-        );
-    }
-
+ 
     .hero-buttons {
         flex-direction: column;
+ 
         align-items: center;
+ 
+        gap: 12px;
     }
-
+ 
     .hero-buttons a {
         width: 100%;
+ 
         max-width: 300px;
+ 
         text-align: center;
     }
-
+ 
+ 
+    /* =========================
+       GRADIENTE HERO
+    ========================= */
+ 
+    .hero-gradient {
+        background: linear-gradient(to right,
+                #6917d4 0%,
+                rgba(105, 23, 212, 0.75) 35%,
+                rgba(105, 23, 212, 0.25) 70%,
+                transparent 100%);
+    }
+ 
+ 
+    /* =========================
+       PRODUTOS
+    ========================= */
+ 
     .product-grid {
         grid-template-columns: 1fr;
     }
-
+ 
+ 
+    /* =========================
+       PET GUARDIÕES
+    ========================= */
+ 
     .beneficios-pro {
         flex-direction: column;
+ 
         align-items: center;
     }
-
+ 
     .card-pro {
         width: 100%;
+ 
         max-width: 350px;
     }
-
+ 
+ 
+    /* =========================
+       ODS
+    ========================= */
+ 
     .ods-container {
         flex-direction: column;
+ 
         align-items: center;
     }
-
+ 
     .ods-card {
         width: 100%;
+ 
         max-width: 350px;
     }
-
+ 
+ 
+    /* =========================
+       FOOTER
+    ========================= */
+ 
     .footer-content {
         grid-template-columns: 1fr;
+ 
         text-align: center;
     }
-
+ 
+    .footer-column {
+        margin-left: 0;
+    }
+ 
     .footer-column h3::after {
         left: 50%;
+ 
         transform: translateX(-50%);
     }
-
+ 
     .social-links {
         justify-content: center;
     }
-
+ 
+ 
+    /* =========================
+       PRODUTO
+    ========================= */
+ 
     .product-footer {
         flex-direction: column;
+ 
         gap: 15px;
     }
-
+ 
     .product-footer .btn {
         width: 100%;
+ 
         text-align: center;
     }
 }
+ 
+@media (max-width: 480px) {
+ 
+    /* HEADER */
+
+      .hero {
+        min-height: 40vh;
+        height: 65vh;
+    }
+    .hero-video{
+        display: none;
+    }
+ .imagem-responsivo {
+        display: block;
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+    }
+
+ 
+    header {
+        height: 50px;
+ 
+        padding: 8px 12px;
+    }
+ 
+    .logo-text {
+        font-size: 22px;
+    }
+ 
+    .logo-icon {
+        font-size: 23px;
+    }
+ 
+ 
+    /* BARRA INFERIOR */
+ 
+    .navbar {
+        height: 65px;
+    }
+ 
+    .navbar .menu-btn {
+        width: 55px;
+ 
+        height: 55px;
+ 
+        font-size: 27px;
+    }
+ 
+ 
+    /* MENU */
+ 
+  .mobile-menu {
+        width: 250px;
+        max-width: calc(100vw - 20px);
+ 
+        right: 10px;
+        left: auto;
+ 
+        bottom: 75px;
+ 
+        padding: 12px;
+ 
+        border-radius: 15px;
+    }
+ 
+    .mobile-menu .mobile-buttons {
+        gap: 8px;
+    }
+ 
+    .mobile-menu li a {
+        min-height: 40px;
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+ 
+    .mobile-menu li a i {
+        font-size: 16px;
+    }
+ 
+    .mobile-menu hr {
+        margin: 12px 0;
+    }
+}
+ 
+ 
+    /* HERO */
+ 
+    .hero-title {
+        font-size: 1.8rem;
+    }
+ 
+    .hero-text {
+        font-size: 0.95rem;
+    }
+ 
+ 
+    /* TÍTULOS */
+ 
+    .section-title {
+        font-size: 2rem;
+    }
+ 
+    .petguardioes-pro h2 {
+        font-size: 2rem;
+    }
+ 
+    .ods h2 {
+        font-size: 2rem;
+    }
+ 
+ 
+    /* BOTÕES */
+ 
+    .btn,
+    .btn-pro,
+    .btn-center {
+        width: 100%;
+ 
+        text-align: center;
+ 
+        justify-content: center;
+    }
+ 
+ 
+    /* CONTATO */
+ 
+    .h1-contato {
+        font-size: 32px;
+    }
+ 
+    .input-contato {
+        width: 90%;
+    }
+ 
+    .caixa-ajuda {
+        width: 90%;
+    }
 
 @media (max-width:480px) {
 
