@@ -17,7 +17,7 @@ const produtos = [
         title: "Brinquedo Mordedor ",
         price: 4.90,
         categoria: "Brinquedos",
-        image: "./imagem/2.jpg",
+        image: "./imagem/2.webp",
         estoque: 15,
         discount:8
     },
@@ -202,15 +202,19 @@ function renderProdutos(produtos) {
 
 function searchProducts() {
     const searchInput = document
-        .getElementById('searchInput').value.toLowerCase();
+        .getElementById('searchInput')
+        .value
+        .toLowerCase()
+        .trim();
 
     const filteredProducts = produtos.filter(produto =>
-        produto.title.toLowerCase().includes(searchInput)
+        produto.title.toLowerCase().includes(searchInput) ||
+        produto.vendedor.toLowerCase().includes(searchInput) ||
+        produto.categoria.toLowerCase().includes(searchInput)
     );
 
     renderProdutos(filteredProducts);
 }
-
 //includes verifica se o txt passa no parametro
 //filter filtra oque eu passar pra ele
 //EventListener -ouvinte de eventos,ficade olho tudo que acontece por la no html

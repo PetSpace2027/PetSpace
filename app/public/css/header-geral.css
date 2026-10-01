@@ -227,3 +227,33 @@ nav a:hover::after {
     transform: translateY(-4px);
 
 }
+
+
+.btn-pro {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(135deg,
+        #ffd311,
+        #8113ff,
+        #5f1db4,
+        #f1dcff);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-pro:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgb(255, 208, 122);
+}
+
+.btn-pro i {
+    margin-right: 8px;
+}
