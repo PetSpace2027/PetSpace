@@ -47,7 +47,7 @@
     <!-- CSS ESPECÍFICO DO FORNECEDOR -->
     <link
         rel="stylesheet"
-        href="css/fornecedor.css"
+        href="css/header-geral.css"
     >
 
 </head>
@@ -62,15 +62,15 @@
 
 <% if (!usuario) { %>
 
-    <%- include("../partials/header-index") %>
+    <%- include("../partials/header-principal-1") %>
 
 <% } else if (usuario.premium) { %>
 
-    <%- include("../partials/header-premium") %>
+    <%- include("../partials/header-principal-3") %>
 
 <% } else { %>
 
-    <%- include("../partials/header-logado") %>
+    <%- include("../partials/header-principal-2") %>
 
 <% } %>
 
