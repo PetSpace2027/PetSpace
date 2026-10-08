@@ -1505,18 +1505,12 @@ visibility: hidden;
 @media (max-width:480px) {
 
       .hero {
-        min-height: 40vh;
-        height: 30vh;
+        display: none;
     }
     .hero-video{
         display: none;
     }
- .imagem-responsivo {
-        display: block;
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-    }
+
 
        .hero-overlay {
         background: rgba(0, 0, 0, 0.35);

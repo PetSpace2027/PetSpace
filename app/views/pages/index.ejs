@@ -43,79 +43,20 @@
          HEADER
     ====================================================== -->
  
-    <header>
- 
-        <section class="container header-container">
- 
-            <!-- LOGO -->
-            <a href="/" class="logo" aria-label="PetSpace
- - Página inicial">
- 
-                <i
-                    class="fa-solid fa-paw logo-icon"
-                    aria-hidden="true">
-                </i>
- 
-                <span class="logo-text">
-                    PetSpace
-        
-                </span>
- 
-            </a>
- 
- 
-            <!-- MENU DESKTOP -->
-            <nav class="desktop-nav"
-                aria-label="Navegação principal">
- 
-                <ul>
- 
-                    <li>
-                        <a href="#product">
-                            Produtos
-                        </a>
-                    </li>
- 
-                    <li>
-                        <a href="/compras">
-                            Compras
-                        </a>
-                    </li>
- 
-                    <li>
-                        <a href="/contato">
-                            Contato
-                        </a>
-                    </li>
- 
-                </ul>
- 
-            </nav>
- 
- 
-            <!-- BOTÕES DESKTOP -->
-            <section class="nav-buttons">
- 
-                <a
-                    href="/login"
-                    class="btn btn-secondary">
-                    Entrar
-                </a>
- 
-                <a
-                    href="/cadastro"
-                    class="btn btn-primary">
-                    Cadastre-se
-                </a>
- 
-                <a href="/petguardioes" class="btn-pro"><i class="fa-solid fa-crown"></i> PetGuardião PRO</a>
+   
+<% if (!usuario) { %>
 
+    <%- include("../partials/header-principal-1") %>
 
-            </section>
- 
-        </section>
- 
-    </header>
+<% } else if (usuario.premium) { %>
+
+    <%- include("../partials/header-principal-3") %>
+
+<% } else { %>
+
+    <%- include("../partials/header-principal-2") %>
+
+<% } %>
  
  
  
@@ -269,6 +210,7 @@
                 type="video/mp4">
  
         </video>
+
  
  
         <!-- ESCURECIMENTO -->

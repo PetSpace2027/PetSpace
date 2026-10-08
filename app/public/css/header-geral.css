@@ -74,7 +74,7 @@ header {
     letter-spacing: 1px;
 }
 
-nav ul {
+ ul {
     display: flex;
     list-style: none;
     gap: 35px;
@@ -256,4 +256,14 @@ nav a:hover::after {
 
 .btn-pro i {
     margin-right: 8px;
+}
+
+@media (max-width: 768px){
+    header{
+        display: none;
+    }
+}
+
+@media (max-width:480px){
+    
 }
