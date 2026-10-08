@@ -937,7 +937,7 @@ h4 {
 
 .caixa-ajuda {
     position: relative;
-    top: 100px;
+    top: 0;
     width: 90%;
     max-width: 600px;
     margin: 30px auto;
@@ -1559,7 +1559,367 @@ visibility: hidden;
    .caixa-ajuda{
        width:90%;
    }
+.container-product {
+  width: 90%;
+    max-width: 100vw;
+    margin: 0 auto;
+   }
+
+    header nav {
+        display: none !important;
+    }
+
+    header .menu-btn {
+        display: none !important;
+    }
+
+
+    /* =================================================
+       BARRA INFERIOR
+    ================================================= */
+
+    .navbar {
+        position: fixed !important;
+
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        top: auto !important;
+
+        width: 100% !important;
+        height: 70px !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+        justify-content: flex-end !important;
+
+        padding: 0 15px !important;
+
+        background: #301266 !important;
+
+        border-top: 3px solid #ffb413 !important;
+
+        box-shadow:
+            0 -5px 20px rgba(0, 0, 0, .45);
+
+        z-index: 99999 !important;
+
+        .premium-header{
+            display: none;
+        }
+    }
+
+
+    /* =================================================
+       BOTÃO HAMBÚRGUER
+    ================================================= */
+
+    .navbar .menu-btn {
+        display: flex !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        width: 55px !important;
+        height: 55px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        border: none !important;
+
+        background: transparent !important;
+
+        color: white !important;
+
+        font-size: 30px !important;
+
+        cursor: pointer;
+
+        position: static !important;
+
+        transform: none !important;
+    }
+
+
+    .navbar .menu-btn:hover {
+        color: #ffb413 !important;
+    }
+
+
+    /* =================================================
+       MENU QUE SOBE
+    ================================================= */
+
+    .navbar .mobile-menu {
+
+        display: none;
+
+        position: fixed !important;
+
+        right: 15px !important;
+        left: auto !important;
+
+        bottom: 82px !important;
+        top: auto !important;
+
+        width: 250px !important;
+        max-width: calc(100vw - 30px) !important;
+
+        padding: 12px !important;
+
+        background: #301266 !important;
+
+        border: 2px solid #ffb413 !important;
+
+        border-radius: 15px !important;
+
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, .5);
+
+        z-index: 100000 !important;
+    }
+
+
+    .navbar .mobile-menu.active {
+        display: block !important;
+    }
+
+
+    /* =================================================
+       BOTÕES
+    ================================================= */
+
+    .navbar .mobile-buttons {
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        gap: 3px !important;
+
+        width: 100% !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+
+    .navbar .mobile-buttons a {
+
+        width: 100% !important;
+
+        height: 40px !important;
+        min-height: 40px !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        gap: 8px !important;
+
+        padding: 5px 10px !important;
+        margin: 0 !important;
+
+        color: #fff !important;
+
+        text-decoration: none !important;
+
+        font-size: 16px !important;
+
+        font-weight: 700 !important;
+
+        background: transparent !important;
+
+        border: none !important;
+
+        border-radius: 8px !important;
+
+        box-shadow: none !important;
+
+        transform: none !important;
+    }
+
+
+    .navbar .mobile-buttons a i {
+
+        width: 22px;
+
+        font-size: 17px;
+
+        text-align: center;
+    }
+
+
+    /* =================================================
+       PETGUARDIÃO PRO
+    ================================================= */
+
+    .navbar .mobile-buttons a.btn-pro {
+
+        height: 42px !important;
+        min-height: 42px !important;
+
+        margin: 3px 0 !important;
+
+        padding: 8px 12px !important;
+
+        border-radius: 25px !important;
+
+        background: linear-gradient(
+            135deg,
+            #ffd311 0%,
+            #8113ff 55%,
+            #5f1db4 100%
+        ) !important;
+
+        color: white !important;
+
+        box-shadow:
+            0 5px 15px rgba(255, 255, 255, .25) !important;
+    }
+
+
+    .navbar .mobile-buttons a.btn-pro i {
+        color: white !important;
+    }
+
+
+    /* =================================================
+       LINHA
+    ================================================= */
+
+    .navbar .mobile-menu hr {
+
+        margin: 8px 0 !important;
+
+        border: none !important;
+
+        border-top:
+            1px solid rgba(255, 255, 255, .22) !important;
+    }
+
+
+    /* =================================================
+       LINKS
+    ================================================= */
+
+    .navbar .mobile-menu ul {
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        gap: 2px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        list-style: none !important;
+    }
+
+
+    .navbar .mobile-menu li {
+
+        width: 100% !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+
+    .navbar .mobile-menu li a {
+
+        width: 100% !important;
+
+        height: 48px !important;
+        min-height: 48px !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+
+        justify-content: flex-start !important;
+
+        gap: 15px !important;
+
+        padding: 8px 15px !important;
+
+        margin: 0 !important;
+
+        color: white !important;
+
+        text-decoration: none !important;
+
+        font-size: 16px !important;
+
+        font-weight: 700 !important;
+
+        border-radius: 8px !important;
+
+        background: transparent !important;
+    }
+
+
+    .navbar .mobile-menu li a i {
+
+        width: 25px !important;
+
+        min-width: 25px !important;
+
+        text-align: center !important;
+
+        color: #ffb413 !important;
+
+        font-size: 19px !important;
+    }
+
+
+    .navbar .mobile-menu li a:hover {
+
+        background:
+            rgba(255,255,255,.08) !important;
+
+        color: #ffb413 !important;
+    }
+
+
+    /* =================================================
+       ESPAÇO PARA A BARRA INFERIOR
+    ================================================= */
+
+    body.guardioes {
+
+        padding-bottom: 75px !important;
+    }
+
+       .header-container {
+        display:none;
+
+    }
+
+    header{
+        display: none;
+    }
+
 }
+
+.formulario-contato{
+    display: none;
+}
+
+.caixa-link-whatsapp{
+    position: fixed;
+    top: px;
+    right: 15px;
+    z-index: 1000;
+}
+
+
+
+
 
  
 /* =========================================

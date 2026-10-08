@@ -23,10 +23,11 @@
  
     <!-- CSS principal -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header-geral.css">
 </head>
  
 <body class="guardioes">
-<<<<<<< HEAD
+
    <!-- =====================================================
          HEADER ORIGINAL
     ====================================================== -->
@@ -44,60 +45,94 @@
     <%- include("../partials/header-principal-2") %>
 
 <% } %>
-=======
+
+
+<!-- =========================================
+     MENU MOBILE
+========================================= -->
+ <a href="/" class="logo">
+            <i class="fa-solid fa-paw logo-icon"></i>
+            <span class="logo-text">PetSpace</span>
+        </a>
+<nav class="navbar" aria-label="Menu mobile">
  
-    <header class="guardioes-header">
- 
-        <section class="guardioes-header-container">
- 
-            <a href="#" class="guardioes-logo">
-                <i class="fa-solid fa-paw guardioes-logo-icon"></i>
- 
-                <span class="guardioes-logo-text">
-                    PetSpace
-                </span>
+    <section
+        id="mobile-menu"
+        class="mobile-menu"
+        aria-hidden="true">
+
+        <!-- BOTÕES -->
+        <section class="mobile-buttons">
+
+            <a href="/">
+                <i class="fa-solid fa-house"></i>
+                Início
             </a>
- 
-            <nav class="guardioes-nav">
-                <ul>
-                    <li>
-                        <a href="/">Início</a>
-                    </li>
- 
-                    <li>
-                        <a href="/compras">Compras</a>
-                    </li>
- 
-                    <li>
-                        <a href="/contato">Contato</a>
-                    </li>
-                </ul>
-            </nav>
- 
-            <section class="guardioes-nav-buttons">
- 
-                <button
-                    type="button"
-                    class="guardioes-btn guardioes-btn-secondary"
-                    id="guardioes-abrir-login">
-                    <a href=""></a>
-                    Entrar
-                </button>
- 
-                <a
-                    href="/cadastro"
-                    class="guardioes-btn guardioes-btn-primary"
-                >
-                    Cadastre-se
-                </a>
- 
-            </section>
- 
+
+            <a href="/login">
+                <i class="fa-solid fa-user"></i>
+                Entrar
+            </a>
+
+            <a href="/cadastro">
+                <i class="fa-solid fa-user-plus"></i>
+                Cadastre-se
+            </a>
+
+            <a href="/petguardioes" class="btn-pro">
+                <i class="fa-solid fa-crown"></i>
+                PetGuardião PRO
+            </a>
+
         </section>
- 
-    </header>
->>>>>>> 4ac6fc58e1249c798634658ebf144a418f8ddba8
- 
+
+        <hr>
+
+        <!-- LINKS -->
+        <ul>
+
+            <li>
+                <a href="#guardioes-beneficios">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Produtos
+                </a>
+            </li>
+
+            <li>
+                <a href="/compras">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Compras
+                </a>
+            </li>
+
+            <li>
+                <a href="/contato">
+                    <i class="fa-solid fa-phone"></i>
+                    Contato
+                </a>
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- BOTÃO INFERIOR -->
+
+    <button
+        id="menu-btn"
+        class="menu-btn"
+        type="button"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu">
+
+        <i class="fa-solid fa-bars"></i>
+
+    </button>
+
+</nav>
+    
  
     <main>
  
@@ -411,215 +446,627 @@
     <!-- JAVASCRIPT -->
     <script>
  
-        document.addEventListener("DOMContentLoaded", function () {
- 
-            /* =========================================
-               BOTÕES DOS PLANOS
-            ========================================= */
- 
-            const botoesAssinar =
-                document.querySelectorAll(".guardioes-assinar");
- 
-            const toast =
-                document.querySelector("#guardioes-toast");
- 
- 
-            function mostrarToast(mensagem) {
- 
-                if (!toast) {
+       document.addEventListener("DOMContentLoaded", function () {
+
+    /* =====================================================
+       TOAST
+    ===================================================== */
+
+    const toast = document.getElementById("guardioes-toast");
+
+    function mostrarToast(mensagem) {
+
+        if (!toast) {
+            return;
+        }
+
+        toast.textContent = mensagem;
+
+        toast.classList.add("guardioes-show");
+
+        setTimeout(function () {
+            toast.classList.remove("guardioes-show");
+        }, 3000);
+    }
+
+
+    /* =====================================================
+       BOTÕES DOS PLANOS
+    ===================================================== */
+
+    const botoesAssinar =
+        document.querySelectorAll(".guardioes-assinar");
+
+    botoesAssinar.forEach(function (botao) {
+
+        botao.addEventListener("click", function () {
+
+            const plano =
+                botao.getAttribute("data-plano");
+
+            mostrarToast(
+                "Você selecionou o plano " + plano + "!"
+            );
+
+        });
+
+    });
+
+
+    /* =====================================================
+       BOTÃO "EXPERIMENTE POR R$ 1,90"
+    ===================================================== */
+
+    const botaoPremium =
+        document.querySelector(".guardioes-botaopremium");
+
+    if (botaoPremium) {
+
+        botaoPremium.addEventListener(
+            "click",
+            function (evento) {
+
+                evento.preventDefault();
+
+                const planos =
+                    document.getElementById(
+                        "guardioes-planos"
+                    );
+
+                if (planos) {
+
+                    planos.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       MODAL DE LOGIN
+    ===================================================== */
+
+    const loginModal =
+        document.getElementById(
+            "guardioes-loginModal"
+        );
+
+    const abrirLogin =
+        document.getElementById(
+            "guardioes-abrir-login"
+        );
+
+    const fecharLogin =
+        document.getElementById(
+            "guardioes-fechar-login"
+        );
+
+    const loginBtn =
+        document.getElementById(
+            "guardioes-loginBtn"
+        );
+
+
+    /* =====================================================
+       ABRIR LOGIN
+    ===================================================== */
+
+    if (abrirLogin && loginModal) {
+
+        abrirLogin.addEventListener(
+            "click",
+            function (evento) {
+
+                evento.preventDefault();
+
+                if (typeof loginModal.showModal === "function") {
+
+                    loginModal.showModal();
+
+                } else {
+
+                    loginModal.setAttribute(
+                        "open",
+                        ""
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       FECHAR LOGIN
+    ===================================================== */
+
+    if (fecharLogin && loginModal) {
+
+        fecharLogin.addEventListener(
+            "click",
+            function () {
+
+                if (typeof loginModal.close === "function") {
+
+                    loginModal.close();
+
+                } else {
+
+                    loginModal.removeAttribute(
+                        "open"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       LOGIN
+    ===================================================== */
+
+    if (loginBtn && loginModal) {
+
+        loginBtn.addEventListener(
+            "click",
+            function (evento) {
+
+                const email =
+                    loginModal.querySelector(
+                        'input[type="email"]'
+                    );
+
+                const senha =
+                    loginModal.querySelector(
+                        'input[type="password"]'
+                    );
+
+
+                if (!email || !senha) {
                     return;
                 }
- 
-                toast.textContent = mensagem;
- 
-                toast.classList.add("guardioes-show");
- 
-                setTimeout(function () {
- 
-                    toast.classList.remove("guardioes-show");
- 
-                }, 3000);
-            }
- 
- 
-            botoesAssinar.forEach(function (botao) {
- 
-                botao.addEventListener("click", function () {
- 
-                    const plano =
-                        botao.getAttribute("data-plano");
- 
+
+
+                const emailValor =
+                    email.value.trim();
+
+                const senhaValor =
+                    senha.value.trim();
+
+
+                if (
+                    emailValor === "" ||
+                    senhaValor === ""
+                ) {
+
                     mostrarToast(
-                        "Você selecionou o plano " + plano + "!"
+                        "Preencha seu e-mail e sua senha."
                     );
- 
-                });
- 
-            });
- 
- 
-            /* =========================================
-               BOTÃO PREMIUM
-            ========================================= */
- 
-            const botaoPremium =
-                document.querySelector(".guardioes-botaopremium");
- 
- 
-            if (botaoPremium) {
- 
-                botaoPremium.addEventListener(
-                    "click",
-                    function (evento) {
- 
-                        evento.preventDefault();
- 
-                        const planos =
-                            document.querySelector(
-                                "#guardioes-planos"
-                            );
- 
-                        if (planos) {
- 
-                            planos.scrollIntoView({
-                                behavior: "smooth"
-                            });
- 
-                        }
- 
-                    }
+
+                    return;
+
+                }
+
+
+                evento.preventDefault();
+
+
+                if (
+                    typeof loginModal.close ===
+                    "function"
+                ) {
+
+                    loginModal.close();
+
+                } else {
+
+                    loginModal.removeAttribute(
+                        "open"
+                    );
+
+                }
+
+
+                mostrarToast(
+                    "Login realizado com sucesso!"
                 );
- 
+
             }
- 
- 
-            /* =========================================
-               MODAL DE LOGIN
-            ========================================= */
- 
-            const loginModal =
-                document.querySelector(
-                    "#guardioes-loginModal"
-                );
- 
-            const abrirLogin =
-                document.querySelector(
-                    "#guardioes-abrir-login"
-                );
- 
-            const fecharLogin =
-                document.querySelector(
-                    "#guardioes-fechar-login"
-                );
- 
-            const loginBtn =
-                document.querySelector(
-                    "#guardioes-loginBtn"
-                );
- 
- 
-            /* Abrir modal */
- 
-            if (abrirLogin && loginModal) {
- 
-                abrirLogin.addEventListener(
-                    "click",
-                    function () {
- 
-                        loginModal.showModal();
- 
-                    }
-                );
- 
-            }
- 
- 
-            /* Fechar modal */
- 
-            if (fecharLogin && loginModal) {
- 
-                fecharLogin.addEventListener(
-                    "click",
-                    function () {
- 
+        );
+
+    }
+
+
+    /* =====================================================
+       FECHAR MODAL CLICANDO FORA
+    ===================================================== */
+
+    if (loginModal) {
+
+        loginModal.addEventListener(
+            "click",
+            function (evento) {
+
+                const areaModal =
+                    loginModal.getBoundingClientRect();
+
+
+                const clicouFora =
+                    evento.clientX < areaModal.left ||
+                    evento.clientX > areaModal.right ||
+                    evento.clientY < areaModal.top ||
+                    evento.clientY > areaModal.bottom;
+
+
+                if (clicouFora) {
+
+                    if (
+                        typeof loginModal.close ===
+                        "function"
+                    ) {
+
                         loginModal.close();
- 
+
+                    } else {
+
+                        loginModal.removeAttribute(
+                            "open"
+                        );
+
                     }
-                );
- 
+
+                }
+
             }
- 
- 
-            /* Login */
- 
-            if (loginBtn && loginModal) {
- 
-                loginBtn.addEventListener(
-                    "click",
-                    function (evento) {
- 
-                        const email =
-                            loginModal.querySelector(
-                                'input[type="email"]'
-                            );
- 
-                        const senha =
-                            loginModal.querySelector(
-                                'input[type="password"]'
-                            );
- 
- 
-                        if (
-                            email.value.trim() !== "" &&
-                            senha.value.trim() !== ""
-                        ) {
- 
-                            evento.preventDefault();
- 
-                            loginModal.close();
- 
-                            mostrarToast(
-                                "Login realizado com sucesso!"
-                            );
- 
-                        }
- 
+        );
+
+    }
+
+
+    /* =====================================================
+       MENU MOBILE
+    ===================================================== */
+
+    const menuBtn =
+        document.getElementById(
+            "menu-btn"
+        );
+
+    const mobileMenu =
+        document.getElementById(
+            "mobile-menu"
+        );
+
+
+    if (menuBtn && mobileMenu) {
+
+        const menuIcon =
+            menuBtn.querySelector("i");
+
+
+        /* ---------------------------------------------
+           FUNÇÃO PARA ABRIR/FECHAR
+        --------------------------------------------- */
+
+        function alternarMenu() {
+
+            const menuAberto =
+                mobileMenu.classList.toggle(
+                    "active"
+                );
+
+
+            menuBtn.setAttribute(
+                "aria-expanded",
+                menuAberto ? "true" : "false"
+            );
+
+
+            mobileMenu.setAttribute(
+                "aria-hidden",
+                menuAberto ? "false" : "true"
+            );
+
+
+            /* TROCA O ÍCONE */
+
+            if (menuIcon) {
+
+                if (menuAberto) {
+
+                    menuIcon.classList.remove(
+                        "fa-bars"
+                    );
+
+                    menuIcon.classList.add(
+                        "fa-xmark"
+                    );
+
+                    menuBtn.setAttribute(
+                        "aria-label",
+                        "Fechar menu"
+                    );
+
+                } else {
+
+                    menuIcon.classList.remove(
+                        "fa-xmark"
+                    );
+
+                    menuIcon.classList.add(
+                        "fa-bars"
+                    );
+
+                    menuBtn.setAttribute(
+                        "aria-label",
+                        "Abrir menu"
+                    );
+
+                }
+
+            }
+
+        }
+
+
+        /* ---------------------------------------------
+           CLIQUE NO BOTÃO ☰
+        --------------------------------------------- */
+
+        menuBtn.addEventListener(
+            "click",
+            function (evento) {
+
+                evento.stopPropagation();
+
+                alternarMenu();
+
+            }
+        );
+
+
+        /* ---------------------------------------------
+           LINKS DO MENU
+        --------------------------------------------- */
+
+        const linksMenu =
+            mobileMenu.querySelectorAll("a");
+
+
+        linksMenu.forEach(function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    mobileMenu.classList.remove(
+                        "active"
+                    );
+
+
+                    menuBtn.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+
+                    mobileMenu.setAttribute(
+                        "aria-hidden",
+                        "true"
+                    );
+
+
+                    if (menuIcon) {
+
+                        menuIcon.classList.remove(
+                            "fa-xmark"
+                        );
+
+                        menuIcon.classList.add(
+                            "fa-bars"
+                        );
+
                     }
-                );
- 
-            }
- 
- 
-            /* Fechar modal clicando fora */
- 
-            if (loginModal) {
- 
-                loginModal.addEventListener(
-                    "click",
-                    function (evento) {
- 
-                        const areaModal =
-                            loginModal.getBoundingClientRect();
- 
-                        const clicouFora =
-                            evento.clientX < areaModal.left ||
-                            evento.clientX > areaModal.right ||
-                            evento.clientY < areaModal.top ||
-                            evento.clientY > areaModal.bottom;
- 
-                        if (clicouFora) {
- 
-                            loginModal.close();
- 
-                        }
- 
-                    }
-                );
- 
-            }
- 
+
+
+                    menuBtn.setAttribute(
+                        "aria-label",
+                        "Abrir menu"
+                    );
+
+                }
+            );
+
         });
- 
+
+
+        /* ---------------------------------------------
+           CLICAR FORA DO MENU
+        --------------------------------------------- */
+
+        document.addEventListener(
+            "click",
+            function (evento) {
+
+                const clicouNoMenu =
+                    mobileMenu.contains(
+                        evento.target
+                    );
+
+                const clicouNoBotao =
+                    menuBtn.contains(
+                        evento.target
+                    );
+
+
+                if (
+                    !clicouNoMenu &&
+                    !clicouNoBotao
+                ) {
+
+                    mobileMenu.classList.remove(
+                        "active"
+                    );
+
+
+                    menuBtn.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+
+                    mobileMenu.setAttribute(
+                        "aria-hidden",
+                        "true"
+                    );
+
+
+                    if (menuIcon) {
+
+                        menuIcon.classList.remove(
+                            "fa-xmark"
+                        );
+
+                        menuIcon.classList.add(
+                            "fa-bars"
+                        );
+
+                    }
+
+
+                    menuBtn.setAttribute(
+                        "aria-label",
+                        "Abrir menu"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* ---------------------------------------------
+           ESC DO TECLADO
+        --------------------------------------------- */
+
+        document.addEventListener(
+            "keydown",
+            function (evento) {
+
+                if (evento.key === "Escape") {
+
+                    mobileMenu.classList.remove(
+                        "active"
+                    );
+
+
+                    menuBtn.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+
+                    mobileMenu.setAttribute(
+                        "aria-hidden",
+                        "true"
+                    );
+
+
+                    if (menuIcon) {
+
+                        menuIcon.classList.remove(
+                            "fa-xmark"
+                        );
+
+                        menuIcon.classList.add(
+                            "fa-bars"
+                        );
+
+                    }
+
+
+                    menuBtn.setAttribute(
+                        "aria-label",
+                        "Abrir menu"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       FECHAR MENU QUANDO A TELA VOLTAR PARA DESKTOP
+    ===================================================== */
+
+    window.addEventListener(
+        "resize",
+        function () {
+
+            if (window.innerWidth > 768) {
+
+                if (mobileMenu) {
+
+                    mobileMenu.classList.remove(
+                        "active"
+                    );
+
+                    mobileMenu.setAttribute(
+                        "aria-hidden",
+                        "true"
+                    );
+
+                }
+
+
+                if (menuBtn) {
+
+                    menuBtn.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+
+
+                const menuIcon =
+                    menuBtn
+                        ? menuBtn.querySelector("i")
+                        : null;
+
+
+                if (menuIcon) {
+
+                    menuIcon.classList.remove(
+                        "fa-xmark"
+                    );
+
+                    menuIcon.classList.add(
+                        "fa-bars"
+                    );
+
+                }
+
+            }
+
+        }
+    );
+
+});
     </script>
  
 </body>

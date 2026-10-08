@@ -1,35 +1,54 @@
 <header>
-  <section class="container">
-    <a href="/" class="logo">
-      <i class="fa-solid fa-paw logo-icon"></i>
-      <span class="logo-text">PetSpace</span>
-    </a>
+    <section class="container">
 
-    <button class="menu-btn" aria-label="Abrir menu">
-      <i class="fa-solid fa-bars"></i>
-    </button>
+        <a href="/" class="logo">
+            <i class="fa-solid fa-paw logo-icon"></i>
+            <span class="logo-text">PetSpace</span>
+        </a>
 
+        <form class="search-container">
+            <input
+                type="search"
+                class="search-input"
+                placeholder="O que você procura?"
+                id="searchInput"
+            >
 
-    <form class="search-container">
-      <input type="search" class="search-input" placeholder="O que você procura?"id="searchInput">
-      <button class="search-btn" type="submit">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
-    </form>
+            <button class="search-btn" type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
 
+        <nav>
+            <ul>
+                <li><a href="/">Início</a></li>
 
-    <nav>
+                <li>
+                    <a href="/compras">
+                        Produtos
+                    </a>
+                </li>
 
-      <ul>
-        <li><a href="/">Início</a></li>
-        <li><a href="/compras" class="linkproduto">Produtos</a></li>
-        <li><a href="/contato">Contato</a></li>
-        <li><a href="/login" class="btn-login">Entrar</a></li>
-        <li><a href="/petguardioes" class="btn-pro"> <i class="fa-solid fa-crown"></i>PetGuardião PRO</a></li>
-      </ul>
-      </ul>
+                <li>
+                    <a href="/contato">
+                        Contato
+                    </a>
+                </li>
 
-    </nav>
+                <li>
+                    <a href="/login" class="btn-login">
+                        Entrar
+                    </a>
+                </li>
 
-  </section>
+                <li>
+                    <a href="/petguardioes" class="btn-pro">
+                        <i class="fa-solid fa-crown"></i>
+                        PetGuardião PRO
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+    </section>
 </header>
