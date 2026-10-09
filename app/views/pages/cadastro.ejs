@@ -1,122 +1,151 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="css/login.css">
-    <title>cadastro</title>
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Cadastro</title>
 </head>
+
 <body>
-    
 
-<section
- class="container">
-    <section
-     class="form"> 
-        <form action="/cadastro" id="formCadastro"> 
-            <section
-             class="form-header">
-                <section
-                 class="title">
+<%
+    let erroValidacao = {
+        nome: "",
+        sobrenome: "",
+        email: "",
+        senha: ""
+    };
+
+    let msgErro = {
+        nome: "",
+        sobrenome: "",
+        email: "",
+        senha: ""
+    };
+
+    if (erros && erros.errors) {
+        erros.errors.forEach(function(erro) {
+            if (erro.path && erro.path in erroValidacao) {
+                erroValidacao[erro.path] = "erro";
+                msgErro[erro.path] = erro.msg;
+            }
+        });
+    } else if (erros && Array.isArray(erros)) {
+        erros.forEach(function(erro) {
+            if (erro.path && erro.path in erroValidacao) {
+                erroValidacao[erro.path] = "erro";
+                msgErro[erro.path] = erro.msg;
+            }
+        });
+    }
+%>
+
+<section class="container">
+    <section class="form">
+
+        <form action="/cadastro" method="POST"
+              id="formCadastro" class="formulario">
+
+            <section class="form-header">
+                <section class="title">
                     <h1>Cadastre-se</h1>
-                </section
-                >
-            </section>
-      
-            <section
-             class="input-group">
-                <section
-                 class="input-box">
-                    <label for="firtname">Primeiro Nome </label>
-                    <input  
-                    type="text" 
-                    id="nome"
-                    name="firstname" 
-                    placeholder="Digite o Primeiro nome" 
-                    name="nome"
-                    pattern="[A-Za-zÀ-ÿ ]+"
-                     required
-                     minlength="3">
-                </section
-                >
-                           <section
-                            class="input-box">
-                    <label for="lastname">Sobrenome </label>
-                    <input  
-                    type="text"
-                    name="lastname" 
-                    placeholder="Digite o sobrenome nome" 
-                    type="text"
-                    required
-                    minlength="3">
-                </section
-                >
-                           <section
-                            class="input-box">
-                    <label for="email">Email </label>
-                         <input 
-                         placeholder="Email" 
-                         type="email"
-                         required>
-                
                 </section>
-                           <section
-                            class="input-box">
-                    <label for="password"> Senha </label>
-                    <input  
-                    type="password"
-                    name="password"
-                    placeholder="Digite sua senha"
-                    minlength="6"
-                    required
->
-                </section
-                >
-            </section>
-           
-
-            </section>
-                <button type="submit" class="login">Continue</button>
-
             </section>
 
-<script>
-const form = document.getElementById('formCadastro');
-const nome = document.getElementById('nome').value;
+            <section class="input-group">
 
-form.addEventListener('submit', function(event) {
+                <section class="input-box">
+                    <label for="nome">Nome</label>
 
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Digite seu nome"
+                        minlength="3"
+                        maxlength="15"
+                        pattern="[A-Za-zÀ-ÿ ]+"
+                        value="<%= valores ? valores.nome : '' %>"
+                        class="<%= erroValidacao.nome %>"
+                        required>
 
-    // verifica a validação HTML
-    if (!form.checkValidity()) {
-        return;
-    }
+                    <small><%= msgErro.nome %></small>
+                </section>
 
-    event.preventDefault();
+                <section class="input-box">
+                    <label for="sobrenome">Sobrenome</label>
 
-    const nome = document.getElementById('nome').value;
+                    <input
+                        type="text"
+                        id="sobrenome"
+                        name="sobrenome"
+                        placeholder="Digite seu sobrenome"
+                        minlength="3"
+                        maxlength="100"
+                        value="<%= valores ? valores.sobrenome : '' %>"
+                        class="<%= erroValidacao.sobrenome %>"
+                        required>
 
-    if (nome === 'admin') {
-        alert('Esse nome não pode ser utilizado.');
-        return;
-    }
+                    <small><%= msgErro.sobrenome %></small>
+                </section>
 
-    alert('Formulário válido!');
+                <section class="input-box">
+                    <label for="email">Email</label>
 
-    
-});
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Digite seu email"
+                        value="<%= valores ? valores.email : '' %>"
+                        class="<%= erroValidacao.email %>"
+                        required>
 
+                    <small><%= msgErro.email %></small>
+                </section>
 
-</script>
+                <section class="input-box">
+                    <label for="senha">Senha</label>
+
+                    <input
+                        type="password"
+                        id="senha"
+                        name="senha"
+                        placeholder="Digite sua senha"
+                        minlength="8"
+                        maxlength="72"
+                        class="<%= erroValidacao.senha %>"
+                        required>
+
+                    <small><%= msgErro.senha %></small>
+                </section>
+
+            </section>
+
+            <button type="submit" class="login">Cadastrar</button>
 
         </form>
     </section>
 </section>
+
+<script>
+    const form = document.getElementById("formCadastro");
+    const nome = document.getElementById("nome");
+
+    form.addEventListener("submit", function(event) {
+        if (nome.value.trim().toLowerCase() === "admin") {
+            event.preventDefault();
+            alert("Esse nome não pode ser utilizado.");
+        }
+    });
+</script>
+
 </body>
 </html>

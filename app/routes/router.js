@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { body, validationResult } = require("express-validator");
 
 router.get("/", (req, res) => {
     res.render("pages/index", {
@@ -41,23 +42,59 @@ router.post("/login", (req, res) => {
 });
 
 router.get("/cadastro", (req, res)=>{
-    res.render("pages/cadastro");
+  res.render("pages/cadastro", { "erros": null, "valores": {"nome":"","sobrenome":"","telefone":"","email":"","senha":""} ,"retorno":null });
 });
 
-router.get("/petguardioes", (req, res)=>{
-    res.render("pages/petguardioes",{
-        usuario: req.session.usuario || null
+router.get("/cadastro", (req, res) => {
+    res.render("pages/cadastro", {
+        erros: null,
+        valores: {
+            nome: "",
+            sobrenome: "",
+            email: "",
+            senha: ""
+        },
+        retorno: null
     });
 });
 
+router.post(
+    "/cadastro",
 
-router.get("/compras", (req, res) => {
+    body("nome")
+        .isLength({ min: 3, max: 15 })
+        .withMessage("Nome deve ter de 3 a 15 caracteres!"),
 
-    res.render("pages/compras",{
-        usuario: req.session.usuario || null
-    });
-});
+    body("sobrenome")
+        .isLength({ min: 3, max: 100 })
+        .withMessage("Sobrenome deve ter de 3 a 100 caracteres!"),
 
+    body("email")
+        .isEmail()
+        .withMessage("Email inválido!"),
+
+    body("senha")
+        .isLength({ min: 8, max: 72 })
+        .withMessage("Senha deve ter de 8 a 72 caracteres!"),
+
+    function (req, res) {
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            return res.status(400).render("pages/cadastro", {
+                erros: errors.array(),
+                valores: req.body,
+                retorno: null
+            });
+        }
+
+        return res.render("pages/cadastro", {
+            erros: null,
+            valores: req.body,
+            retorno: req.body
+        });
+    }
+);
 router.get("/contato", (req, res)=>{
     res.render("pages/contato", {
         usuario: req.session.usuario || null
