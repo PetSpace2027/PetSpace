@@ -13,6 +13,12 @@ router.get("/login", (req, res)=>{
 
 });
 
+router.get("/compras", (req, res)=>{
+    res.render("pages/compras");
+
+});
+
+
 router.post("/login", (req, res) => {
 
     const UserNome = req.body.nome;

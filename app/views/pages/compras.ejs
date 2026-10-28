@@ -1,238 +1,237 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/product.css">
+    <title>PetSpace Compras</title>
 
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    >
 
+    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap"
-        rel="stylesheet">
+        rel="stylesheet"
+    >
+
+    <!-- CSS da página -->
+    <link rel="stylesheet" href="/css/product.css">
 
 
-    <title>PetSpace Compras</title>
 </head>
+
 <body>
 
-<% if (!usuario) { %>
-
-    <%- include("../partials/header-index") %>
-
+    <!-- HEADER DINÂMICO -->
+    <% if (!usuario) { %>
+        <%- include("../partials/header-index") %>
 <% } else if (usuario.premium) { %>
+        <%- include("../partials/header-premium") %>
+    <% } else { %>
+        <%- include("../partials/header-logado") %>
+    <% } %>
 
-    <%- include("../partials/header-premium") %>
+       <!-- =====================================================
+         MENU MOBILE INFERIOR
+    ====================================================== -->
 
-<% } else { %>
+   
+ 
+ 
+                
+ 
+ 
+ 
+ 
 
-    <%- include("../partials/header-logado") %>
-
-<% } %>
-
-
-
-<!-- MENU MOBILE -->
-<nav class="navbar" aria-label="Menu mobile">
-
-    <section
-        id="mobile-menu"
-        class="mobile-menu"
-        aria-hidden="true">
-      
-
-        <section class="mobile-buttons">
-
-           
-
-            <a href="/">
-           
-                Inicio
-            </a>
-
-            <a href="/login">
-                <i class="fa-solid fa-user"></i>
-                Entrar
-            </a>
-
-            <a href="/cadastro">
-                <i class="fa-solid fa-user-plus"></i>
-                Cadastre-se
-            </a>
-
-            <a href="/petguardioes" class="btn-pro">
-                <i class="fa-solid fa-crown"></i>
-                PetGuardião PRO
-            </a>
-
-        </section>
-
-        <hr>
-
-        <ul>
-
-            <li>
-                <a href="#produtos">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    Produtos
-                </a>
-            </li>
-
-            <li>
-                <a href="/compras">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    Compras
-                </a>
-            </li>
-
-            <li>
-                <a href="/contato">
-                    <i class="fa-solid fa-phone"></i>
-                    Contato
-                </a>
-            </li>
-
-        </ul>
-
-    </section>
-
-
-    <button
-        id="menu-btn"
-        class="menu-btn"
-        type="button"
-        aria-label="Abrir menu"
-        aria-expanded="false"
-        aria-controls="mobile-menu">
-
-        <i class="fa-solid fa-bars"></i>
-
-    </button>
-
-</nav>
-
+    <!-- BANNER PRINCIPAL -->
     <section class="hero">
-        
         <article class="hero-text">
-
-            <h1> </h1>
+            <h1></h1>
             <p></p>
-
         </article>
-
-
-
-
     </section>
 
+    <!-- PRODUTOS -->
     <main class="main">
-        
         <section class="container" id="produtos">
-            <article class="products-grid" id="productsGrid">
-                <!--produtos por java-->
-
+            <article
+                class="products-grid"
+                id="productsGrid"
+                aria-label="Lista de produtos"
+            >
+                <!-- Produtos inseridos pelo JavaScript -->
             </article>
-
         </section>
     </main>
 
-
-
+    <!-- RODAPÉ -->
     <footer>
-            <section class="tudo-footer">
-                <section class="footer-content">
-                    <section class="footer-column">
-                        <h3>Sobre </h3>
-                        <p style="color:var( --paw-cream);margin-bottom: 20px;">PetSpace dedicado a um mundo mais
-                            sustentavel, e facil para voce e seus amiguinhos PetSpace
-                            um perfeito desenvolvimento ambiental.
-                        </p>
-                        <section class="social-links">
-                            <a href="#"><i class="fa-brands fa-facebook-f" style="color: rgb(0, 0, 0);"></i></a>
-                            <a href="#"><i class="fa-brands fa-instagram" style="color: rgb(0, 0, 0);"></i></a>
-                            <a href="#"><i class="fa-brands fa-twitter" style="color: rgb(0, 0, 0);"></i></a>
-                            <a href=""><i class="fa-brands fa-pinterest" style="color: rgb(0, 0, 0);"></i></a>
+        <section class="tudo-footer">
+            <section class="footer-content">
 
-                        </section>
-                    </section>
+                <section class="footer-column">
+                    <h3>Sobre</h3>
 
-                    <section class="footer-column">
-                        <h3>Clique Links</h3>
-                        <ul class="footer-links">
-                            <li><a href="#">Faça parte do nosso blog</a></li>
-                            <li><a href="#">Adione seu perfil de vendas</a></li>
-                            <li><a href="#">Curiosidades
+                    <p style="color: var(--paw-cream); margin-bottom: 20px;">
+                        O PetSpace é dedicado a um mundo mais sustentável
+                        e fácil para você e seus amiguinhos. Um espaço
+                        pensado para o bem-estar dos pets.
+                    </p>
 
+                    <section class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
 
-                        </ul>
-                    </section>
-                    <section class="footer-column">
-                        <h3>Entre em Contato conosco</h3>
-                        <ul class="footer-links">
-                            <li><i class="fa-solid fa-phone" style="color: rgb(255, 193, 59);"></i>+55 (99) 99999-9999
-                            </li>
-                            <li><i class="fa-solid fa-envelope" style="color: rgb(255, 193, 59);"></i>PetSpace@gmail.com
-                            </li>
-                            <li><i class="fa-solid fa-clock" style="color: rgb(255, 193, 59);"></i>9:00 as 18:00</li>
-                            <li><i class="fa-regular fa-map" style="color: rgb(255, 193, 59);"></i>9:00 as 18:00</li>
+                        <a href="#" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
 
+                        <a href="#" aria-label="Twitter">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
 
-
-
-                        </ul>
-
+                        <a href="#" aria-label="Pinterest">
+                            <i class="fa-brands fa-pinterest"></i>
+                        </a>
                     </section>
                 </section>
-            </section>
 
-           
-        </footer>
+                <section class="footer-column">
+                    <h3>Links úteis</h3>
+
+                    <ul class="footer-links">
+                        <li><a href="#">Faça parte do nosso blog</a></li>
+                        <li><a href="#">Adicione seu perfil de vendas</a></li>
+                        <li><a href="#">Curiosidades sobre pets</a></li>
+                    </ul>
+                </section>
+
+                <section class="footer-column">
+                    <h3>Entre em contato conosco</h3>
+
+                    <ul class="footer-links">
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            +55 (99) 99999-9999
+                        </li>
+
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            PetSpace@gmail.com
+                        </li>
+
+                        <li>
+                            <i class="fa-solid fa-clock"></i>
+                            9h às 18h
+                        </li>
+
+                        <li>
+                            <i class="fa-solid fa-map"></i>
+                            Atendimento online
+                        </li>
+                    </ul>
+                </section>
+
+            </section>
+        </section>
+    </footer>
+
+    <!-- CONTROLE DO MENU MOBILE -->
+   
+<!-- CONTROLE DO MENU MOBILE -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-    const menuBtn = document.querySelector("#menu-btn");
-    const mobileMenu = document.querySelector("#mobile-menu");
-
-    if (!menuBtn || !mobileMenu) {
-        console.log("Menu mobile não encontrado.");
-        return;
-    }
+    if (!menuBtn || !mobileMenu) return;
 
     const icon = menuBtn.querySelector("i");
 
-    menuBtn.addEventListener("click", () => {
+    function fecharMenu() {
+        mobileMenu.classList.remove("active");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.setAttribute("aria-label", "Abrir menu");
+        mobileMenu.setAttribute("aria-hidden", "true");
 
-        const aberto = mobileMenu.classList.toggle("active");
-
-        menuBtn.setAttribute("aria-expanded", aberto);
-        mobileMenu.setAttribute("aria-hidden", !aberto);
-
-        if (aberto) {
-
-            icon.classList.remove("fa-bars");
-            icon.classList.add("fa-xmark");
-
-        } else {
-
+        if (icon) {
             icon.classList.remove("fa-xmark");
             icon.classList.add("fa-bars");
-
         }
+    }
 
+    function alternarMenu(event) {
+        event.stopPropagation();
+
+        const aberto = !mobileMenu.classList.contains("active");
+
+        mobileMenu.classList.toggle("active", aberto);
+        menuBtn.setAttribute("aria-expanded", String(aberto));
+        menuBtn.setAttribute(
+            "aria-label",
+            aberto ? "Fechar menu" : "Abrir menu"
+        );
+        mobileMenu.setAttribute("aria-hidden", String(!aberto));
+
+        if (icon) {
+            icon.classList.toggle("fa-bars", !aberto);
+            icon.classList.toggle("fa-xmark", aberto);
+        }
+    }
+
+    menuBtn.addEventListener("click", alternarMenu);
+
+    mobileMenu.addEventListener("click", event => {
+        event.stopPropagation();
     });
 
+    mobileMenu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", fecharMenu);
+    });
+
+    document.addEventListener("click", event => {
+        if (
+            !mobileMenu.contains(event.target) &&
+            !menuBtn.contains(event.target)
+        ) {
+            fecharMenu();
+        }
+    });
+
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+            fecharMenu();
+        }
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 768) {
+            fecharMenu();
+        }
+    });
+
+    fecharMenu();
 });
 </script>
-    <script src="scripts/scripts.js"></script>
 
+<!-- SCRIPT DOS PRODUTOS -->
+<script src="/scripts/scripts.js"></script>
+
+
+    <!-- SCRIPT DOS PRODUTOS -->
+    <script src="/scripts/scripts.js"></script>
 
 </body>
-
 </html>
