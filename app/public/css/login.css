@@ -159,3 +159,45 @@ body{
 }
 
 
+/* Campos com erro */
+.input-box input.erro {
+    border: 2px solid #ff3333 !important;
+    box-shadow: 0 0 8px rgba(255, 51, 51, 0.45);
+}
+
+/* Mensagens de validação */
+.input-box .erro-texto {
+    display: block;
+    color: #ff4545;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.4;
+    margin: 7px 10px 0;
+    overflow-wrap: anywhere;
+}
+
+/* Esconde mensagens vazias */
+.input-box .erro-texto:empty {
+    display: none;
+}
+
+/* Estrutura do formulário */
+.form,
+.formulario,
+.input-group {
+    width: 100%;
+    min-width: 0;
+}
+
+.form-header {
+    margin-bottom: 20px;
+}
+
+.input-box input:focus {
+    outline: none;
+}
+
+.input-box input.erro:focus {
+    border-color: #ff3333 !important;
+    box-shadow: 0 0 10px rgba(255, 51, 51, 0.6);
+}

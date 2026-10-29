@@ -6,45 +6,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet"
+    <link
+        rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Cadastro</title>
+    <link rel="stylesheet" href="/css/login.css">
+
+    <title>Cadastro | PetSpace</title>
 </head>
 
 <body>
 
 <%
-    let erroValidacao = {
+    const campos = ["nome", "sobrenome", "email", "senha"];
+
+    const erroValidacao = {
         nome: "",
         sobrenome: "",
         email: "",
         senha: ""
     };
 
-    let msgErro = {
+    const msgErro = {
         nome: "",
         sobrenome: "",
         email: "",
         senha: ""
     };
 
-    if (erros && erros.errors) {
-        erros.errors.forEach(function(erro) {
-            if (erro.path && erro.path in erroValidacao) {
-                erroValidacao[erro.path] = "erro";
+    const listaErros = Array.isArray(erros)
+        ? erros
+        : (erros && Array.isArray(erros.errors) ? erros.errors : []);
+
+    listaErros.forEach(function(erro) {
+        if (erro.path && campos.includes(erro.path)) {
+            erroValidacao[erro.path] = "erro";
+
+            if (!msgErro[erro.path]) {
                 msgErro[erro.path] = erro.msg;
             }
-        });
-    } else if (erros && Array.isArray(erros)) {
-        erros.forEach(function(erro) {
-            if (erro.path && erro.path in erroValidacao) {
-                erroValidacao[erro.path] = "erro";
-                msgErro[erro.path] = erro.msg;
-            }
-        });
-    }
+        }
+    });
 %>
 
 <section class="container">
@@ -74,9 +76,11 @@
                         pattern="[A-Za-zÀ-ÿ ]+"
                         value="<%= valores ? valores.nome : '' %>"
                         class="<%= erroValidacao.nome %>"
+                        aria-invalid="<%= erroValidacao.nome ? 'true' : 'false' %>"
+                        aria-describedby="erro-nome"
                         required>
 
-                    <small><%= msgErro.nome %></small>
+                    <small id="erro-nome" class="erro-texto"><%= msgErro.nome %></small>
                 </section>
 
                 <section class="input-box">
@@ -91,24 +95,28 @@
                         maxlength="100"
                         value="<%= valores ? valores.sobrenome : '' %>"
                         class="<%= erroValidacao.sobrenome %>"
+                        aria-invalid="<%= erroValidacao.sobrenome ? 'true' : 'false' %>"
+                        aria-describedby="erro-sobrenome"
                         required>
 
-                    <small><%= msgErro.sobrenome %></small>
+                    <small id="erro-sobrenome" class="erro-texto"><%= msgErro.sobrenome %></small>
                 </section>
 
                 <section class="input-box">
-                    <label for="email">Email</label>
+                    <label for="email">E-mail</label>
 
                     <input
                         type="email"
                         id="email"
                         name="email"
-                        placeholder="Digite seu email"
+                        placeholder="Digite seu e-mail"
                         value="<%= valores ? valores.email : '' %>"
                         class="<%= erroValidacao.email %>"
+                        aria-invalid="<%= erroValidacao.email ? 'true' : 'false' %>"
+                        aria-describedby="erro-email"
                         required>
 
-                    <small><%= msgErro.email %></small>
+                    <small id="erro-email" class="erro-texto"><%= msgErro.email %></small>
                 </section>
 
                 <section class="input-box">
@@ -122,30 +130,25 @@
                         minlength="8"
                         maxlength="72"
                         class="<%= erroValidacao.senha %>"
+                        aria-invalid="<%= erroValidacao.senha ? 'true' : 'false' %>"
+                        aria-describedby="erro-senha"
                         required>
 
-                    <small><%= msgErro.senha %></small>
+                    <small id="erro-senha" class="erro-texto"><%= msgErro.senha %></small>
                 </section>
 
             </section>
 
             <button type="submit" class="login">Cadastrar</button>
 
+            <section class="register-link">
+                Já possui uma conta?
+                <a href="/login">Entrar</a>
+            </section>
+
         </form>
     </section>
 </section>
-
-<script>
-    const form = document.getElementById("formCadastro");
-    const nome = document.getElementById("nome");
-
-    form.addEventListener("submit", function(event) {
-        if (nome.value.trim().toLowerCase() === "admin") {
-            event.preventDefault();
-            alert("Esse nome não pode ser utilizado.");
-        }
-    });
-</script>
 
 </body>
 </html>
