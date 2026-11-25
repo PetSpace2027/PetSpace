@@ -1,0 +1,413 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gerenciamento de clientes do PetSpice.">
+
+    <title>Clientes - Administração PetSpice</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/adm.css">
+
+    <script src="/scripts/script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- NAVEGAÇÃO MOBILE -->
+    <nav class="mobile-navigation" aria-label="Navegação mobile">
+        <button
+            type="button"
+            id="menu-btn"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="sidebar-menu">
+
+            <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+        </button>
+    </nav>
+
+    <section class="container">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar-container" id="sidebar-container">
+
+            <header class="top">
+                <a href="/adm/" class="logo" aria-label="PetSpice - Página inicial">
+                    <img src="/imagem/paw.jpg" alt="">
+                    <span>PET<span class="danger">SPICE</span></span>
+                </a>
+
+                <button
+                    type="button"
+                    class="close"
+                    id="close-btn"
+                    aria-label="Fechar menu">
+
+                    <span class="material-symbols-outlined" aria-hidden="true">close</span>
+                </button>
+            </header>
+
+            <nav class="sidebar" id="sidebar-menu" aria-label="Menu principal">
+
+                <a href="/adm/">
+                    <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="/adm/clientes-adm" class="active" aria-current="page">
+                    <span class="material-symbols-outlined" aria-hidden="true">person</span>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="/adm/pedidos-adm">
+                    <span class="material-symbols-outlined" aria-hidden="true">receipt_long</span>
+                    <span>Pedidos</span>
+                </a>
+
+                <a href="/adm/analise-adm">
+                    <span class="material-symbols-outlined" aria-hidden="true">monitoring</span>
+                    <span>Análise de Dados</span>
+                </a>
+
+                <a href="/adm/mensagens-adm">
+                    <span class="material-symbols-outlined" aria-hidden="true">mail</span>
+                    <span>Mensagens</span>
+                    <span class="message-count">0</span>
+                </a>
+
+            
+                <a href="/adm/relatorio-adm">
+                    <span class="material-symbols-outlined" aria-hidden="true">report</span>
+                    <span>Relatórios</span>
+                </a>
+
+                <a href="/adm/config-adm">
+                    <span class="material-symbols-outlined" aria-hidden="true">settings</span>
+                    <span>Configurações</span>
+                </a>
+
+         
+
+            </nav>
+
+            <footer class="bottom">
+                <button type="button" id="logout-btn">
+                    <span class="material-symbols-outlined" aria-hidden="true">logout</span>
+                    <span>Sair</span>
+                </button>
+            </footer>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="clients-main">
+
+            <header class="main-header clients-header">
+                <section>
+                    <p class="text-muted">Gerenciamento da loja</p>
+                    <h1>Clientes</h1>
+                </section>
+
+                <button type="button" class="add-client-btn" id="open-client-form">
+                    <span class="material-symbols-outlined" aria-hidden="true">person_add</span>
+                    Novo cliente
+                </button>
+            </header>
+
+            <!-- RESUMO DE CLIENTES -->
+            <section class="client-summary" aria-label="Resumo de clientes">
+
+                <article class="client-summary-card">
+                    <span class="material-symbols-outlined" aria-hidden="true">groups</span>
+
+                    <section>
+                        <h2>Total de clientes</h2>
+                        <strong id="total-clients">0</strong>
+                    </section>
+                </article>
+
+                <article class="client-summary-card">
+                    <span class="material-symbols-outlined" aria-hidden="true">person_add</span>
+
+                    <section>
+                        <h2>Novos cadastros</h2>
+                        <strong id="new-clients">0</strong>
+                        <small>Nos últimos 30 dias</small>
+                    </section>
+                </article>
+
+            </section>
+
+            <!-- LISTA DE CLIENTES -->
+            <section class="clients-section" aria-labelledby="clients-title">
+
+                <header class="clients-section-header">
+                    <section>
+                        <h2 id="clients-title">Lista de clientes</h2>
+                        <p class="text-muted">Consulte e gerencie os clientes cadastrados.</p>
+                    </section>
+                </header>
+
+                <section class="clients-toolbar">
+
+                    <section class="client-search" role="search">
+                        <label for="search-client" class="visually-hidden">
+                            Pesquisar clientes
+                        </label>
+
+                        <span class="material-symbols-outlined" aria-hidden="true">
+                            search
+                        </span>
+
+                        <input
+                            type="search"
+                            id="search-client"
+                            placeholder="Buscar por nome, e-mail ou telefone..."
+                            autocomplete="off">
+                    </section>
+
+                    <button type="button" class="clear-search-btn" id="clear-search">
+                        Limpar busca
+                    </button>
+
+                </section>
+
+                <section class="clients-table-container">
+
+                    <table class="clients-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Cliente</th>
+                                <th scope="col">E-mail</th>
+                                <th scope="col">Telefone</th>
+                                <th scope="col">Cidade</th>
+                                <th scope="col">Cadastro</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="clients-list">
+                            <!-- Clientes inseridos pelo JavaScript -->
+                        </tbody>
+                    </table>
+
+                    <section class="empty-clients" id="empty-clients" hidden>
+                        <span class="material-symbols-outlined" aria-hidden="true">group_off</span>
+                        <h3>Nenhum cliente encontrado</h3>
+                        <p>Cadastre um cliente ou tente outra pesquisa.</p>
+                    </section>
+
+                </section>
+
+                <footer class="clients-footer">
+                    <p id="clients-count">Mostrando 0 clientes</p>
+                </footer>
+
+            </section>
+
+        </main>
+
+        <!-- PAINEL COMPLEMENTAR -->
+        <aside class="right" aria-label="Informações administrativas">
+
+            <header class="top">
+
+                <button
+                    type="button"
+                    class="theme-toggler"
+                    id="theme-toggler"
+                    aria-label="Alternar tema claro e escuro">
+
+                    <span class="material-symbols-outlined light-mode" aria-hidden="true">light_mode</span>
+                    <span class="material-symbols-outlined dark-mode" aria-hidden="true">dark_mode</span>
+
+                </button>
+
+                <section class="profile">
+
+                    <section class="info">
+                        <p>Olá, <strong>Administrador</strong></p>
+                        <small class="text-muted">Admin</small>
+                    </section>
+
+                    <figure class="profile-photo">
+                        <img src="/imagem/perfil.jpg" alt="Foto do administrador">
+                    </figure>
+
+                </section>
+
+            </header>
+
+            <!-- INFORMAÇÕES -->
+            <section class="recent-updates" aria-labelledby="updates-title">
+
+                <header>
+                    <h2 id="updates-title">Informações</h2>
+                </header>
+
+                <ul class="updates">
+
+                    <li class="update">
+                        <figure class="profile-photo">
+                            <span class="material-symbols-outlined" aria-hidden="true">group</span>
+                        </figure>
+
+                        <section class="message">
+                            <p><strong>Gerenciamento de clientes</strong></p>
+                            <small class="text-muted">
+                                Aqui você pode cadastrar, consultar, editar e excluir clientes.
+                            </small>
+                        </section>
+                    </li>
+
+                    <li class="update">
+                        <figure class="profile-photo">
+                            <span class="material-symbols-outlined" aria-hidden="true">save</span>
+                        </figure>
+
+                        <section class="message">
+                            <p><strong>Dados salvos</strong></p>
+                            <small class="text-muted">
+                                Os cadastros desta versão ficam armazenados neste navegador.
+                            </small>
+                        </section>
+                    </li>
+
+                </ul>
+
+            </section>
+
+            <!-- ATALHOS -->
+            <section class="recent-activity" aria-labelledby="activity-title">
+
+                <header>
+                    <h2 id="activity-title">Atalhos</h2>
+                </header>
+
+                <ul>
+                    <li class="activity">
+                        <span class="material-symbols-outlined" aria-hidden="true">person_add</span>
+                        <span>Adicionar um novo cliente</span>
+                    </li>
+
+                    <li class="activity">
+                        <span class="material-symbols-outlined" aria-hidden="true">search</span>
+                        <span>Pesquisar um cadastro</span>
+                    </li>
+
+                    <li class="activity">
+                        <span class="material-symbols-outlined" aria-hidden="true">edit</span>
+                        <span>Atualizar informações</span>
+                    </li>
+                </ul>
+
+            </section>
+
+        </aside>
+
+    </section>
+
+    <!-- CADASTRO E EDIÇÃO DE CLIENTES -->
+    <dialog class="client-dialog" id="client-dialog">
+
+        <form id="client-form" class="client-form">
+
+            <header class="dialog-header">
+                <section>
+                    <h2 id="dialog-title">Cadastrar cliente</h2>
+                    <p>Preencha os dados do cliente.</p>
+                </section>
+
+                <button
+                    type="button"
+                    class="dialog-close"
+                    id="close-client-form"
+                    aria-label="Fechar formulário">
+
+                    <span class="material-symbols-outlined" aria-hidden="true">close</span>
+                </button>
+            </header>
+
+            <input type="hidden" id="client-id">
+
+            <section class="form-field">
+                <label for="client-name">Nome completo *</label>
+                <input
+                    type="text"
+                    id="client-name"
+                    name="name"
+                    placeholder="Digite o nome completo"
+                    minlength="3"
+                    maxlength="80"
+                    required>
+            </section>
+
+            <section class="form-field">
+                <label for="client-email">E-mail *</label>
+                <input
+                    type="email"
+                    id="client-email"
+                    name="email"
+                    placeholder="exemplo@email.com"
+                    maxlength="120"
+                    required>
+            </section>
+
+            <section class="form-field">
+                <label for="client-phone">Telefone *</label>
+                <input
+                    type="tel"
+                    id="client-phone"
+                    name="phone"
+                    placeholder="(00) 00000-0000"
+                    maxlength="16"
+                    required>
+            </section>
+
+            <section class="form-field">
+                <label for="client-city">Cidade *</label>
+                <input
+                    type="text"
+                    id="client-city"
+                    name="city"
+                    placeholder="Digite a cidade"
+                    maxlength="80"
+                    required>
+            </section>
+
+            <section class="form-field">
+                <label for="client-address">Endereço</label>
+                <input
+                    type="text"
+                    id="client-address"
+                    name="address"
+                    placeholder="Rua, número e bairro"
+                    maxlength="150">
+            </section>
+
+            <footer class="dialog-actions">
+                <button type="button" class="cancel-btn" id="cancel-client-form">
+                    Cancelar
+                </button>
+
+                <button type="submit" class="save-client-btn">
+                    <span class="material-symbols-outlined" aria-hidden="true">save</span>
+                    Salvar cliente
+                </button>
+            </footer>
+
+        </form>
+
+    </dialog>
+
+    <!-- NOTIFICAÇÕES -->
+    <section class="client-toast" id="client-toast" role="status" aria-live="polite"></section>
+
+</body>
+</html>

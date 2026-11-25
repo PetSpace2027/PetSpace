@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gerenciamento de pedidos do PetSpice.">
+
+    <title>Pedidos - Administração PetSpice</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/adm.css">
+
+    <script src="/scripts/script.js" defer></script></head>
+
+<body>
+
+    <!-- NAVEGAÇÃO MOBILE -->
+    <nav class="mobile-navigation" aria-label="Navegação mobile">
+        <button type="button" id="menu-btn" aria-label="Abrir menu"
+            aria-expanded="false" aria-controls="sidebar-menu">
+            <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+        </button>
+    </nav>
+
+    <section class="container">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar-container" id="sidebar-container">
+
+            <header class="top">
+                <a href="/adm/" class="logo" aria-label="PetSpice - Página inicial">
+                    <img src="/imagem/paw.jpg" alt="">
+                    <span>PET<span class="danger">SPICE</span></span>
+                </a>
+
+                <button type="button" class="close" id="close-btn" aria-label="Fechar menu">
+                    <span class="material-symbols-outlined" aria-hidden="true">close</span>
+                </button>
+            </header>
+
+            <nav class="sidebar" id="sidebar-menu" aria-label="Menu principal">
+
+                <a href="/adm/">
+                    <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="/adm/clientes-adm">
+                    <span class="material-symbols-outlined" aria-hidden="true">person</span>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="/adm/pedidos-adm" class="active" aria-current="page">
+                    <span class="material-symbols-outlined" aria-hidden="true">receipt_long</span>
+                    <span>Pedidos</span>
+                </a>
+
+                <a href="/adm/analise-adm">
+                    <span class="material-symbols-outlined" aria-hidden="true">monitoring</span>
+                    <span>Análise de Dados</span>
+                </a>
+
+                <a href="/adm/mensagens-adm">
+                    <span class="material-symbols-outlined" aria-hidden="true">mail</span>
+                    <span>Mensagens</span>
+                    <span class="message-count">0</span>
+                </a>
+
+            
+
+                <a href="/adm/relatorio-adm">
+                    <span class="material-symbols-outlined" aria-hidden="true">report</span>
+                    <span>Relatórios</span>
+                </a>
+
+                <a href="/adm/config-adm">
+                    <span class="material-symbols-outlined" aria-hidden="true">settings</span>
+                    <span>Configurações</span>
+                </a>
+
+               
+
+            </nav>
+
+            <footer class="bottom">
+                <button type="button" id="logout-btn">
+                    <span class="material-symbols-outlined" aria-hidden="true">logout</span>
+                    <span>Sair</span>
+                </button>
+            </footer>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="orders-main">
+
+            <header class="main-header orders-header">
+                <section>
+                    <p class="text-muted">Gerenciamento da loja</p>
+                    <h1>Pedidos</h1>
+                </section>
+
+                <button type="button" class="add-order-btn" id="open-order-form">
+                    <span class="material-symbols-outlined" aria-hidden="true">add_shopping_cart</span>
+                    Novo pedido
+                </button>
+            </header>
+
+            <!-- INDICADORES -->
+            <section class="order-summary" aria-label="Resumo dos pedidos">
+
+                <article class="order-summary-card">
+                    <span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span>
+                    <section>
+                        <h2>Total de pedidos</h2>
+                        <strong id="total-orders">0</strong>
+                    </section>
+                </article>
+
+                <article class="order-summary-card">
+                    <span class="material-symbols-outlined" aria-hidden="true">schedule</span>
+                    <section>
+                        <h2>Pendentes</h2>
+                        <strong id="pending-orders">0</strong>
+                    </section>
+                </article>
+
+                <article class="order-summary-card">
+                    <span class="material-symbols-outlined" aria-hidden="true">local_shipping</span>
+                    <section>
+                        <h2>Em andamento</h2>
+                        <strong id="shipping-orders">0</strong>
+                    </section>
+                </article>
+
+                <article class="order-summary-card">
+                    <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+                    <section>
+                        <h2>Concluídos</h2>
+                        <strong id="completed-orders">0</strong>
+                    </section>
+                </article>
+
+            </section>
+
+            <!-- LISTA DE PEDIDOS -->
+            <section class="orders-section" aria-labelledby="orders-title">
+
+                <header class="orders-section-header">
+                    <section>
+                        <h2 id="orders-title">Todos os pedidos</h2>
+                        <p class="text-muted">Consulte e acompanhe os pedidos da loja.</p>
+                    </section>
+                </header>
+
+                <section class="orders-toolbar">
+
+                    <section class="order-search" role="search">
+                        <label for="search-order" class="visually-hidden">
+                            Pesquisar pedidos
+                        </label>
+
+                        <span class="material-symbols-outlined" aria-hidden="true">search</span>
+
+                        <input type="search" id="search-order"
+                            placeholder="Buscar por pedido, cliente ou produto..."
+                            autocomplete="off">
+                    </section>
+
+                    <label class="visually-hidden" for="filter-status">Filtrar por situação</label>
+                    <select id="filter-status" class="filter-status">
+                        <option value="todos">Todos os status</option>
+                        <option value="Pendente">Pendente</option>
+                        <option value="Processando">Processando</option>
+                        <option value="Enviado">Enviado</option>
+                        <option value="Concluído">Concluído</option>
+                        <option value="Cancelado">Cancelado</option>
+                    </select>
+
+                    <button type="button" class="clear-orders-btn" id="clear-order-filters">
+                        Limpar
+                    </button>
+
+                </section>
+
+                <section class="orders-table-container">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Pedido</th>
+                                <th scope="col">Cliente</th>
+                                <th scope="col">Produto</th>
+                                <th scope="col">Data</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="orders-list">
+                            <!-- Pedidos inseridos pelo JavaScript -->
+                        </tbody>
+                    </table>
+
+                    <section class="empty-orders" id="empty-orders" hidden>
+                        <span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span>
+                        <h3>Nenhum pedido encontrado</h3>
+                        <p>Cadastre um pedido ou altere os filtros da pesquisa.</p>
+                    </section>
+                </section>
+
+                <footer class="orders-footer">
+                    <p id="orders-count">Mostrando 0 pedidos</p>
+                </footer>
+
+            </section>
+
+        </main>
+
+        <!-- PAINEL DIREITO -->
+        <aside class="right" aria-label="Informações administrativas">
+
+            <header class="top">
+
+                <button type="button" class="theme-toggler" id="theme-toggler"
+                    aria-label="Alternar tema claro e escuro">
+
+                    <span class="material-symbols-outlined light-mode" aria-hidden="true">light_mode</span>
+                    <span class="material-symbols-outlined dark-mode" aria-hidden="true">dark_mode</span>
+
+                </button>
+
+                <section class="profile">
+                    <section class="info">
+                        <p>Olá, <strong>Administrador</strong></p>
+                        <small class="text-muted">Admin</small>
+                    </section>
+
+                    <figure class="profile-photo">
+                        <img src="/imagem/perfil.jpg" alt="Foto do administrador">
+                    </figure>
+                </section>
+
+            </header>
+
+            <section class="recent-updates" aria-labelledby="updates-title">
+                <header>
+                    <h2 id="updates-title">Informações</h2>
+                </header>
+
+                <ul class="updates">
+
+                    <li class="update">
+                        <figure class="profile-photo">
+                            <span class="material-symbols-outlined" aria-hidden="true">receipt_long</span>
+                        </figure>
+
+                        <section class="message">
+                            <p><strong>Gerenciamento de pedidos</strong></p>
+                            <small class="text-muted">
+                                Consulte pedidos, acompanhe entregas e atualize situações.
+                            </small>
+                        </section>
+                    </li>
+
+                    <li class="update">
+                        <figure class="profile-photo">
+                            <span class="material-symbols-outlined" aria-hidden="true">save</span>
+                        </figure>
+
+                        <section class="message">
+                            <p><strong>Dados salvos</strong></p>
+                            <small class="text-muted">
+                                Os pedidos desta versão ficam armazenados neste navegador.
+                            </small>
+                        </section>
+                    </li>
+
+                </ul>
+            </section>
+
+            <section class="recent-activity" aria-labelledby="activity-title">
+                <header>
+                    <h2 id="activity-title">Atalhos</h2>
+                </header>
+
+                <ul>
+                    <li class="activity">
+                        <span class="material-symbols-outlined" aria-hidden="true">add_shopping_cart</span>
+                        <span>Cadastrar novo pedido</span>
+                    </li>
+
+                    <li class="activity">
+                        <span class="material-symbols-outlined" aria-hidden="true">search</span>
+                        <span>Pesquisar pedido</span>
+                    </li>
+
+                    <li class="activity">
+                        <span class="material-symbols-outlined" aria-hidden="true">edit</span>
+                        <span>Atualizar situação</span>
+                    </li>
+                </ul>
+            </section>
+
+        </aside>
+
+    </section>
+
+    <!-- MODAL DE CADASTRO E EDIÇÃO -->
+    <dialog class="order-dialog" id="order-dialog">
+
+        <form id="order-form" class="order-form">
+
+            <header class="dialog-header">
+                <section>
+                    <h2 id="order-dialog-title">Cadastrar pedido</h2>
+                    <p>Preencha as informações do pedido.</p>
+                </section>
+
+                <button type="button" class="dialog-close" id="close-order-form"
+                    aria-label="Fechar formulário">
+                    <span class="material-symbols-outlined" aria-hidden="true">close</span>
+                </button>
+            </header>
+
+            <input type="hidden" id="order-id">
+
+            <section class="form-field">
+                <label for="order-client">Nome do cliente *</label>
+                <input type="text" id="order-client" maxlength="80"
+                    placeholder="Nome completo" required>
+            </section>
+
+            <section class="form-field">
+                <label for="order-product">Produto *</label>
+                <input type="text" id="order-product" maxlength="100"
+                    placeholder="Produto comprado" required>
+            </section>
+
+            <section class="form-field">
+                <label for="order-value">Valor total (R$) *</label>
+                <input type="number" id="order-value" min="0.01" step="0.01"
+                    placeholder="0,00" required>
+            </section>
+
+            <section class="form-field">
+                <label for="order-date">Data do pedido *</label>
+                <input type="date" id="order-date" required>
+            </section>
+
+            <section class="form-field">
+                <label for="order-status">Situação *</label>
+                <select id="order-status" required>
+                    <option value="Pendente">Pendente</option>
+                    <option value="Processando">Processando</option>
+                    <option value="Enviado">Enviado</option>
+                    <option value="Concluído">Concluído</option>
+                    <option value="Cancelado">Cancelado</option>
+                </select>
+            </section>
+
+            <footer class="dialog-actions">
+                <button type="button" class="cancel-btn" id="cancel-order-form">
+                    Cancelar
+                </button>
+
+                <button type="submit" class="save-order-btn">
+                    <span class="material-symbols-outlined" aria-hidden="true">save</span>
+                    Salvar pedido
+                </button>
+            </footer>
+
+        </form>
+
+    </dialog>
+
+    <!-- MODAL DE DETALHES -->
+    <dialog class="order-dialog details-dialog" id="details-dialog">
+        <section class="order-details">
+
+            <header class="dialog-header">
+                <section>
+                    <h2>Detalhes do pedido</h2>
+                    <p id="details-order-number">Pedido</p>
+                </section>
+
+                <button type="button" class="dialog-close" id="close-details"
+                    aria-label="Fechar detalhes">
+                    <span class="material-symbols-outlined" aria-hidden="true">close</span>
+                </button>
+            </header>
+
+            <dl id="order-details-content" class="details-content"></dl>
+
+            <footer class="dialog-actions">
+                <button type="button" class="cancel-btn" id="close-details-footer">
+                    Fechar
+                </button>
+            </footer>
+
+        </section>
+    </dialog>
+
+    <!-- NOTIFICAÇÕES -->
+    <section class="order-toast" id="order-toast" role="status" aria-live="polite"></section>
+
+</body>
+</html>

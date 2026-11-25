@@ -1,0 +1,432 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Painel administrativo da PetSpice.">
+
+    <title>Administração - PetSpice</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/adm.css">
+    <script src="/scripts/script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- NAVEGAÇÃO MOBILE FIXA: FICA FORA DO CONTAINER -->
+    <nav class="mobile-navigation" aria-label="Navegação mobile">
+
+        <button
+            type="button"
+            id="menu-btn"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="sidebar-menu">
+
+            <span class="material-symbols-outlined">menu</span>
+
+        </button>
+
+    </nav>
+
+    <section class="container">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar-container" id="sidebar-container">
+
+            <header class="top">
+
+                <a href="/adm/" class="logo">
+                    <img src="/imagem/paw.jpg" alt="Logo PetSpice">
+                    <h2>PET<span class="danger">SPICE</span></h2>
+                </a>
+
+                <button
+                    type="button"
+                    class="close"
+                    id="close-btn"
+                    aria-label="Fechar menu">
+
+                    <span class="material-symbols-outlined">close</span>
+
+                </button>
+
+            </header>
+
+            <nav class="sidebar" id="sidebar-menu" aria-label="Menu principal">
+
+                <a href="/adm/" class="active" aria-current="page">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+
+                <a href="/adm/clientes-adm">
+                    <span class="material-symbols-outlined">person</span>
+                    <h3>Clientes</h3>
+                </a>
+
+                <a href="/adm/pedidos-adm">
+                    <span class="material-symbols-outlined">receipt_long</span>
+                    <h3>Pedidos</h3>
+                </a>
+
+                <a href="/adm/analise-adm">
+                    <span class="material-symbols-outlined">monitoring</span>
+                    <h3>Análise de Dados</h3>
+                </a>
+
+                <a href="/adm/mensagens-adm">
+                    <span class="material-symbols-outlined">mail</span>
+                    <h3>Mensagens</h3>
+                    <span class="message-count">0</span>
+                </a>
+
+             
+
+                <a href="/adm/relatorio-adm">
+                    <span class="material-symbols-outlined">report</span>
+                    <h3>Relatórios</h3>
+                </a>
+
+                <a href="/adm/config-adm">
+                    <span class="material-symbols-outlined">settings</span>
+                    <h3>Configurações</h3>
+                </a>
+
+             
+
+            </nav>
+
+            <footer class="bottom">
+
+                <a href="#" id="logout-btn">
+                    <span class="material-symbols-outlined">logout</span>
+                    <h3>Sair</h3>
+                </a>
+
+            </footer>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main>
+
+            <header class="main-header">
+
+                <h1>Dashboard</h1>
+
+                <section class="date" aria-label="Filtro por data">
+                    <label for="dashboard-date">Período:</label>
+                    <input type="date" id="dashboard-date">
+                </section>
+
+            </header>
+
+            <!-- INDICADORES -->
+            <section class="insights" aria-label="Indicadores financeiros">
+
+                <article class="sales">
+
+                    <span class="material-symbols-outlined" aria-hidden="true">
+                        analytics
+                    </span>
+
+                    <section class="middle">
+
+                        <section class="left">
+                            <h2>Total de Vendas</h2>
+                            <h3>R$ 25.240,00</h3>
+                        </section>
+
+                        <section class="progress" aria-label="81 por cento">
+                            <svg viewBox="0 0 80 80" aria-hidden="true">
+                                <circle cx="40" cy="40" r="36"></circle>
+                            </svg>
+                            <section class="number">
+                                <p>81%</p>
+                            </section>
+                        </section>
+
+                    </section>
+
+                    <p class="text-muted">Últimas 24 horas</p>
+
+                </article>
+
+                <article class="expenses">
+
+                    <span class="material-symbols-outlined" aria-hidden="true">
+                        bar_chart
+                    </span>
+
+                    <section class="middle">
+
+                        <section class="left">
+                            <h2>Total de Despesas</h2>
+                            <h3>R$ 14.240,00</h3>
+                        </section>
+
+                        <section class="progress" aria-label="62 por cento">
+                            <svg viewBox="0 0 80 80" aria-hidden="true">
+                                <circle cx="40" cy="40" r="36"></circle>
+                            </svg>
+                            <section class="number">
+                                <p>62%</p>
+                            </section>
+                        </section>
+
+                    </section>
+
+                    <p class="text-muted">Últimas 24 horas</p>
+
+                </article>
+
+                <article class="income">
+
+                    <span class="material-symbols-outlined" aria-hidden="true">
+                        stacked_line_chart
+                    </span>
+
+                    <section class="middle">
+
+                        <section class="left">
+                            <h2>Lucro Total</h2>
+                            <h3>R$ 11.000,00</h3>
+                        </section>
+
+                        <section class="progress" aria-label="44 por cento">
+                            <svg viewBox="0 0 80 80" aria-hidden="true">
+                                <circle cx="40" cy="40" r="36"></circle>
+                            </svg>
+                            <section class="number">
+                                <p>44%</p>
+                            </section>
+                        </section>
+
+                    </section>
+
+                    <p class="text-muted">Últimas 24 horas</p>
+
+                </article>
+
+            </section>
+
+            <!-- PEDIDOS RECENTES -->
+            <section class="recent-orders">
+
+                <header>
+                    <h2>Pedidos Recentes</h2>
+                    <p class="text-muted">Acompanhe os últimos pedidos realizados.</p>
+                </header>
+
+                <section class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th scope="col">Produto</th>
+                                <th scope="col">Número</th>
+                                <th scope="col">Pagamento</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Detalhes</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Ração para Golden 15kg</td>
+                                <td>#84344</td>
+                                <td>Pix</td>
+                                <td class="warning">Pendente</td>
+                                <td><a href="pages/pedidos.html">Detalhes</a></td>
+                            </tr>
+
+                            <tr>
+                                <td>Ração para gatos 10kg</td>
+                                <td>#84345</td>
+                                <td>Cartão</td>
+                                <td class="success">Concluído</td>
+                                <td><a href="pages/pedidos.html">Detalhes</a></td>
+                            </tr>
+
+                            <tr>
+                                <td>Coleira ajustável</td>
+                                <td>#84346</td>
+                                <td>Pix</td>
+                                <td class="warning">Pendente</td>
+                                <td><a href="pages/pedidos.html">Detalhes</a></td>
+                            </tr>
+
+                            <tr>
+                                <td>Caminha para cachorro</td>
+                                <td>#84347</td>
+                                <td>Cartão</td>
+                                <td class="success">Concluído</td>
+                                <td><a href="pages/pedidos.html">Detalhes</a></td>
+                            </tr>
+
+                            <tr>
+                                <td>Brinquedo para gatos</td>
+                                <td>#84348</td>
+                                <td>Pix</td>
+                                <td class="warning">Pendente</td>
+                                <td><a href="pages/pedidos.html">Detalhes</a></td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </section>
+
+                <a href="pages/pedidos.html" class="primary">Mostrar Tudo</a>
+
+            </section>
+
+        </main>
+
+        <!-- PAINEL DIREITO -->
+        <aside class="right">
+
+            <header class="top">
+
+                <button
+                    type="button"
+                    class="theme-toggler"
+                    id="theme-toggler"
+                    aria-label="Alternar tema claro e escuro">
+
+                    <span class="material-symbols-outlined light-mode">light_mode</span>
+                    <span class="material-symbols-outlined dark-mode">dark_mode</span>
+
+                </button>
+
+                <section class="profile">
+                                                                                                                                          
+                    <section class="info">
+                        <p>Olá, <strong>Administrador</strong></p>
+                        <small class="text-muted">Admin</small>
+                    </section>
+
+                    <figure class="profile-photo">
+                        <img src="/imagem/perfil.jpg" alt="Foto do administrador">
+                    </figure>
+
+                </section>
+
+            </header>
+
+            <!-- ATUALIZAÇÕES RECENTES -->
+            <section class="recent-updates">
+
+                <header>
+                    <h2>Atualizações Recentes</h2>
+                </header>
+
+                <section class="updates">
+
+                    <article class="update">
+
+                        <figure class="profile-photo">
+                            <img src="/imagem/perfil.jpg" alt="">
+                        </figure>
+
+                        <section class="message">
+                            <p>Denis Salgado
+                                <strong>Olá! Gostaria de saber sobre meu pedido.</strong>
+                            </p>
+                            <small class="text-muted">Há 2 horas</small>
+                        </section>
+
+                    </article>
+
+                    <article class="update">
+
+                        <figure class="profile-photo">
+                            <img src="/imagem/perfil.jpg" alt="">
+                        </figure>
+
+                        <section class="message">
+                            <p>Maria Oliveira
+                                <strong>Vocês possuem produtos para gatos?</strong>
+                            </p>
+                            <small class="text-muted">Há 4 horas</small>
+                        </section>
+
+                    </article>
+
+                    <article class="update">
+
+                        <figure class="profile-photo">
+                            <img src="/imagem/perfil.jpg" alt="">
+                        </figure>
+
+                        <section class="message">
+                            <p>João Santos
+                                <strong>Preciso de ajuda com uma compra.</strong>
+                            </p>
+                            <small class="text-muted">Ontem</small>
+                        </section>
+
+                    </article>
+
+                    <article class="update">
+
+                        <figure class="profile-photo">
+                            <img src="/imagem/perfil.jpg" alt="">
+                        </figure>
+
+                        <section class="message">
+                            <p>Ana Costa
+                                <strong>Gostaria de informações sobre uma doação.</strong>
+                            </p>
+                            <small class="text-muted">Ontem</small>
+                        </section>
+
+                    </article>
+
+                </section>
+
+                <a href="mensagens.html" class="primary">
+                    Ver todas as mensagens
+                </a>
+
+            </section>
+
+            <!-- ATIVIDADES -->
+            <section class="recent-activity">
+
+                <header>
+                    <h2>Atividades</h2>
+                </header>
+
+                <article class="activity">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <p>Novo pedido recebido.</p>
+                </article>
+
+                <article class="activity">
+                    <span class="material-symbols-outlined">person_add</span>
+                    <p>Novo cliente cadastrado.</p>
+                </article>
+
+                <article class="activity">
+                    <span class="material-symbols-outlined">inventory</span>
+                    <p>Produto atualizado.</p>
+                </article>
+
+            </section>
+
+        </aside>
+
+    </section>
+
+</body>
+</html>

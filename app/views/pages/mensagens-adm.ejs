@@ -1,0 +1,581 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gerenciamento de mensagens dos clientes PetSpice.">
+
+    <title>Mensagens - PetSpice</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/adm.css">
+
+    <script src="/scripts/script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- NAVEGAÇÃO MOBILE -->
+
+    <nav class="mobile-navigation" aria-label="Navegação mobile">
+
+        <button
+            type="button"
+            id="menu-btn"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="sidebar-menu">
+
+            <span class="material-symbols-outlined">menu</span>
+
+        </button>
+
+    </nav>
+
+    <div class="container">
+
+        <!-- MENU LATERAL -->
+
+        <aside class="sidebar-container" id="sidebar-container">
+
+            <header class="top">
+
+                <a href="/adm/" class="logo">
+                    <img src="/imagem/paw.jpg" alt="Logo PetSpice">
+                    <h2>PET<span class="danger">SPICE</span></h2>
+                </a>
+
+                <button type="button" class="close" id="close-btn" aria-label="Fechar menu">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+
+            </header>
+
+            <nav class="sidebar" id="sidebar-menu" aria-label="Menu principal">
+
+                <a href="/adm/">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+
+                <a href="/adm/clientes-adm">
+                    <span class="material-symbols-outlined">person</span>
+                    <h3>Clientes</h3>
+                </a>
+
+                <a href="/adm/pedidos-adm">
+                    <span class="material-symbols-outlined">receipt_long</span>
+                    <h3>Pedidos</h3>
+                </a>
+
+                <a href="/adm/analise-adm">
+                    <span class="material-symbols-outlined">monitoring</span>
+                    <h3>Análise de Dados</h3>
+                </a>
+
+         <a href="/adm/mensagens-adm" class="active" aria-current="page">
+                    <span class="material-symbols-outlined">mail</span>
+                    <h3>Mensagens</h3>
+                    <span class="message-count">0</span>
+                </a>
+
+
+                <a href="/adm/relatorio-adm">
+                    <span class="material-symbols-outlined">report</span>
+                    <h3>Relatórios</h3>
+                </a>
+
+                <a href="/adm/config-adm">
+                    <span class="material-symbols-outlined">settings</span>
+                    <h3>Configurações</h3>
+                </a>
+
+             
+            </nav>
+
+            <footer class="bottom">
+
+                <a href="#" id="logout-btn">
+                    <span class="material-symbols-outlined">logout</span>
+                    <h3>Sair</h3>
+                </a>
+
+            </footer>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+
+        <main class="messages-main">
+
+            <header class="main-header messages-header">
+
+                <section>
+                    <h1>Mensagens</h1>
+                    <p class="text-muted">Acompanhe e responda às mensagens dos seus clientes.</p>
+                </section>
+
+                <button type="button" class="mark-all-btn" id="mark-all-read">
+                    <span class="material-symbols-outlined">done_all</span>
+                    Marcar todas como lidas
+                </button>
+
+            </header>
+
+            <!-- INDICADORES -->
+
+            <section class="message-summary" aria-label="Resumo das mensagens">
+
+                <article class="message-summary-card">
+
+                    <span class="material-symbols-outlined">mail</span>
+
+                    <section>
+                        <h2>Total de mensagens</h2>
+                        <strong id="total-messages">6</strong>
+                    </section>
+
+                </article>
+
+                <article class="message-summary-card">
+
+                    <span class="material-symbols-outlined">mark_email_unread</span>
+
+                    <section>
+                        <h2>Não lidas</h2>
+                        <strong id="unread-messages">4</strong>
+                    </section>
+
+                </article>
+
+                <article class="message-summary-card">
+
+                    <span class="material-symbols-outlined">drafts</span>
+
+                    <section>
+                        <h2>Lidas</h2>
+                        <strong id="read-messages">2</strong>
+                    </section>
+
+                </article>
+
+            </section>
+
+            <!-- CAIXA DE ENTRADA -->
+
+            <section class="messages-section">
+
+                <header class="messages-section-header">
+
+                    <section>
+                        <h2>Caixa de entrada</h2>
+                        <p class="text-muted">Gerencie as conversas recebidas.</p>
+                    </section>
+
+                </header>
+
+                <!-- PESQUISA E FILTROS -->
+
+                <section class="messages-toolbar" aria-label="Pesquisa e filtros">
+
+                    <label class="message-search">
+
+                        <span class="material-symbols-outlined" aria-hidden="true">search</span>
+
+                        <input
+                            type="search"
+                            id="message-search"
+                            placeholder="Pesquisar por nome ou assunto..."
+                            aria-label="Pesquisar mensagens">
+
+                    </label>
+
+                    <label class="visually-hidden" for="message-filter">
+                        Filtrar mensagens
+                    </label>
+
+                    <select id="message-filter" class="message-filter">
+
+                        <option value="all">Todas</option>
+                        <option value="unread">Não lidas</option>
+                        <option value="read">Lidas</option>
+
+                    </select>
+
+                </section>
+
+                <!-- LISTA E CONVERSA -->
+
+                <section class="messages-content">
+
+                    <nav class="message-list" id="message-list" aria-label="Lista de mensagens">
+
+                        <button
+                            type="button"
+                            class="message-item unread selected"
+                            data-message-id="1"
+                            aria-pressed="true">
+
+                            <span class="message-avatar">DS</span>
+
+                            <span class="message-preview">
+
+                                <span class="message-item-top">
+                                    <strong>Denis Salgado</strong>
+                                    <small>14:30</small>
+                                </span>
+
+                                <span class="message-subject">Dúvida sobre pedido</span>
+
+                                <span class="message-excerpt">
+                                    Olá! Gostaria de saber sobre meu pedido...
+                                </span>
+
+                            </span>
+
+                            <span class="unread-indicator" aria-label="Não lida"></span>
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="message-item unread"
+                            data-message-id="2"
+                            aria-pressed="false">
+
+                            <span class="message-avatar">MO</span>
+
+                            <span class="message-preview">
+
+                                <span class="message-item-top">
+                                    <strong>Maria Oliveira</strong>
+                                    <small>12:15</small>
+                                </span>
+
+                                <span class="message-subject">Produtos para gatos</span>
+
+                                <span class="message-excerpt">
+                                    Vocês possuem produtos para gatos?
+                                </span>
+
+                            </span>
+
+                            <span class="unread-indicator" aria-label="Não lida"></span>
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="message-item unread"
+                            data-message-id="3"
+                            aria-pressed="false">
+
+                            <span class="message-avatar">JS</span>
+
+                            <span class="message-preview">
+
+                                <span class="message-item-top">
+                                    <strong>João Santos</strong>
+                                    <small>11:40</small>
+                                </span>
+
+                                <span class="message-subject">Ajuda com compra</span>
+
+                                <span class="message-excerpt">
+                                    Preciso de ajuda com uma compra.
+                                </span>
+
+                            </span>
+
+                            <span class="unread-indicator" aria-label="Não lida"></span>
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="message-item unread"
+                            data-message-id="4"
+                            aria-pressed="false">
+
+                            <span class="message-avatar">AC</span>
+
+                            <span class="message-preview">
+
+                                <span class="message-item-top">
+                                    <strong>Ana Costa</strong>
+                                    <small>Ontem</small>
+                                </span>
+
+                                <span class="message-subject">Informações sobre doação</span>
+
+                                <span class="message-excerpt">
+                                    Gostaria de informações sobre uma doação.
+                                </span>
+
+                            </span>
+
+                            <span class="unread-indicator" aria-label="Não lida"></span>
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="message-item"
+                            data-message-id="5"
+                            aria-pressed="false">
+
+                            <span class="message-avatar">PC</span>
+
+                            <span class="message-preview">
+
+                                <span class="message-item-top">
+                                    <strong>Pedro Costa</strong>
+                                    <small>Ontem</small>
+                                </span>
+
+                                <span class="message-subject">Formas de pagamento</span>
+
+                                <span class="message-excerpt">
+                                    Quais formas de pagamento são aceitas?
+                                </span>
+
+                            </span>
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="message-item"
+                            data-message-id="6"
+                            aria-pressed="false">
+
+                            <span class="message-avatar">LF</span>
+
+                            <span class="message-preview">
+
+                                <span class="message-item-top">
+                                    <strong>Lucas Ferreira</strong>
+                                    <small>16/11</small>
+                                </span>
+
+                                <span class="message-subject">Elogio ao atendimento</span>
+
+                                <span class="message-excerpt">
+                                    Gostei muito do atendimento de vocês!
+                                </span>
+
+                            </span>
+
+                        </button>
+
+                    </nav>
+
+                    <!-- VISUALIZAÇÃO DA MENSAGEM -->
+
+                    <article class="message-detail" id="message-detail" aria-label="Mensagem selecionada">
+
+                        <section class="message-empty" id="message-empty" hidden>
+
+                            <span class="material-symbols-outlined">mark_email_read</span>
+
+                            <h2>Nenhuma mensagem selecionada</h2>
+
+                            <p>Escolha uma mensagem para visualizar a conversa.</p>
+
+                        </section>
+
+                        <section class="message-view" id="message-view">
+
+                            <header class="message-detail-header">
+
+                                <section class="message-sender">
+
+                                    <span class="message-avatar large" id="detail-avatar">DS</span>
+
+                                    <section>
+                                        <h2 id="detail-name">Denis Salgado</h2>
+                                        <p id="detail-email">denis@email.com</p>
+                                    </section>
+
+                                </section>
+
+                                <button
+                                    type="button"
+                                    class="message-delete-btn"
+                                    id="delete-message"
+                                    aria-label="Excluir mensagem">
+
+                                    <span class="material-symbols-outlined">delete</span>
+
+                                </button>
+
+                            </header>
+
+                            <section class="message-subject-detail">
+
+                                <span class="text-muted">Assunto:</span>
+                                <h3 id="detail-subject">Dúvida sobre pedido</h3>
+
+                                <small id="detail-date">18 de novembro de 2026 às 14:30</small>
+
+                            </section>
+
+                            <section class="message-body" aria-label="Conteúdo da mensagem">
+
+                                <p id="detail-body">
+                                    Olá! Tudo bem?
+
+                                    Gostaria de saber como está o andamento do meu pedido.
+                                    Realizei a compra recentemente e gostaria de receber
+                                    uma atualização sobre a entrega.
+
+                                    Desde já, agradeço pela atenção!
+                                </p>
+
+                            </section>
+
+                            <form class="reply-form" id="reply-form">
+
+                                <label for="reply-message">Responder mensagem</label>
+
+                                <textarea
+                                    id="reply-message"
+                                    rows="4"
+                                    placeholder="Digite sua resposta..."
+                                    required></textarea>
+
+                                <button type="submit" class="send-reply-btn">
+
+                                    <span class="material-symbols-outlined">send</span>
+                                    Enviar resposta
+
+                                </button>
+
+                            </form>
+
+                        </section>
+
+                    </article>
+
+                </section>
+
+                <!-- ESTADO VAZIO DA PESQUISA -->
+
+                <section class="empty-messages" id="empty-messages" hidden>
+
+                    <span class="material-symbols-outlined">search_off</span>
+
+                    <h2>Nenhuma mensagem encontrada</h2>
+
+                    <p>Tente pesquisar por outro nome ou assunto.</p>
+
+                </section>
+
+            </section>
+
+        </main>
+
+        <!-- PAINEL DIREITO -->
+
+        <aside class="right">
+
+            <header class="top">
+
+                <button
+                    type="button"
+                    class="theme-toggler"
+                    id="theme-toggler"
+                    aria-label="Alternar tema claro e escuro">
+
+                    <span class="material-symbols-outlined light-mode">light_mode</span>
+                    <span class="material-symbols-outlined dark-mode">dark_mode</span>
+
+                </button>
+
+                <section class="profile">
+
+                    <section class="info">
+                        <p>Olá, <strong>Administrador</strong></p>
+                        <small class="text-muted">Admin</small>
+                    </section>
+
+                    <figure class="profile-photo">
+                        <img src="/imagem/perfil.jpg" alt="Foto do administrador">
+                    </figure>
+
+                </section>
+
+            </header>
+
+            <!-- ATUALIZAÇÕES RECENTES -->
+
+            <section class="recent-updates">
+
+                <header>
+                    <h2>Atualizações Recentes</h2>
+                </header>
+
+                <section class="updates">
+
+                    <article class="update">
+
+                        <figure class="profile-photo">
+                            <span class="material-symbols-outlined">mail</span>
+                        </figure>
+
+                        <section class="message">
+                            <p>Denis Salgado <strong>Enviou uma nova mensagem.</strong></p>
+                            <small class="text-muted">Há alguns minutos</small>
+                        </section>
+
+                    </article>
+
+                    <article class="update">
+
+                        <figure class="profile-photo">
+                            <span class="material-symbols-outlined">mail</span>
+                        </figure>
+
+                        <section class="message">
+                            <p>Maria Oliveira <strong>Enviou uma nova mensagem.</strong></p>
+                            <small class="text-muted">Há algumas horas</small>
+                        </section>
+
+                    </article>
+
+                </section>
+
+                <a href="mensagens.html" class="primary">Ver caixa de entrada</a>
+
+            </section>
+
+            <!-- ATIVIDADES -->
+
+            <section class="recent-activity">
+
+                <header>
+                    <h2>Atividades</h2>
+                </header>
+
+                <article class="activity">
+                    <span class="material-symbols-outlined">mark_email_unread</span>
+                    <p>Novas mensagens recebidas.</p>
+                </article>
+
+                <article class="activity">
+                    <span class="material-symbols-outlined">done_all</span>
+                    <p>Mensagens respondidas.</p>
+                </article>
+
+            </section>
+
+        </aside>
+
+    </div>
+
+</body>
+</html>

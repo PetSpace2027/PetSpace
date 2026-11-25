@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Análise de dados, vendas e desempenho do PetSpice.">
+
+    <title>Análise de Dados - PetSpice</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/adm.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/scripts/script.js" defer></script>
+</head>
+
+<body>
+
+    <nav class="mobile-navigation" aria-label="Navegação mobile">
+        <button type="button" id="menu-btn" aria-label="Abrir menu"
+            aria-expanded="false" aria-controls="sidebar-menu">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </nav>
+
+    <div class="container">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar-container" id="sidebar-container">
+
+            <header class="top">
+                <a href="/adm/" class="logo">
+                    <img src="/imagem/paw.jpg" alt="Logo PetSpice">
+                    <h2>PET<span class="danger">SPICE</span></h2>
+                </a>
+
+                <button type="button" class="close" id="close-btn" aria-label="Fechar menu">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </header>
+
+            <nav class="sidebar" id="sidebar-menu" aria-label="Menu principal">
+
+                <a href="/adm/">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+
+                <a href="/adm/clientes-adm">
+                    <span class="material-symbols-outlined">person</span>
+                    <h3>Clientes</h3>
+                </a>
+
+                <a href="/adm/pedidos-adm">
+                    <span class="material-symbols-outlined">receipt_long</span>
+                    <h3>Pedidos</h3>
+                </a>
+
+                <a href="/adm/analise-adm" class="active" aria-current="page">
+                    <span class="material-symbols-outlined">monitoring</span>
+                    <h3>Análise de Dados</h3>
+                </a>
+
+                <a href="/adm/mensagens-adm">
+                    <span class="material-symbols-outlined">mail</span>
+                    <h3>Mensagens</h3>
+                    <span class="message-count">0</span>
+                </a>
+
+
+                <a href="/adm/relatorio-adm">
+                    <span class="material-symbols-outlined">report</span>
+                    <h3>Relatórios</h3>
+                </a>
+
+                <a href="/adm/config-adm">
+                    <span class="material-symbols-outlined">settings</span>
+                    <h3>Configurações</h3>
+                </a>
+
+            
+
+            </nav>
+
+            <footer class="bottom">
+                <a href="#" id="logout-btn">
+                    <span class="material-symbols-outlined">logout</span>
+                    <h3>Sair</h3>
+                </a>
+            </footer>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="analytics-main">
+
+            <header class="main-header analytics-header">
+                <section>
+                    <h1>Análise de Dados</h1>
+                    <p class="text-muted">Acompanhe o desempenho e os resultados do PetSpice.</p>
+                </section>
+
+                <section class="analytics-filter">
+                    <label for="analytics-period">Período:</label>
+                    <select id="analytics-period">
+                        <option value="7">Últimos 7 dias</option>
+                        <option value="30" selected>Últimos 30 dias</option>
+                        <option value="90">Últimos 90 dias</option>
+                        <option value="365">Este ano</option>
+                    </select>
+                </section>
+            </header>
+
+            <!-- INDICADORES -->
+            <section class="analytics-summary" aria-label="Indicadores de desempenho">
+
+                <article class="analytics-card">
+                    <span class="material-symbols-outlined">payments</span>
+                    <section>
+                        <h2>Faturamento</h2>
+                        <strong id="analytics-revenue">R$ 25.240,00</strong>
+                        <p class="positive">↑ 12,5% no período</p>
+                    </section>
+                </article>
+
+                <article class="analytics-card">
+                    <span class="material-symbols-outlined">shopping_bag</span>
+                    <section>
+                        <h2>Total de pedidos</h2>
+                        <strong id="analytics-orders">248</strong>
+                        <p class="positive">↑ 8,2% no período</p>
+                    </section>
+                </article>
+
+                <article class="analytics-card">
+                    <span class="material-symbols-outlined">trending_up</span>
+                    <section>
+                        <h2>Ticket médio</h2>
+                        <strong id="analytics-ticket">R$ 101,77</strong>
+                        <p class="positive">↑ 5,4% no período</p>
+                    </section>
+                </article>
+
+                <article class="analytics-card">
+                    <span class="material-symbols-outlined">inventory_2</span>
+                    <section>
+                        <h2>Produtos vendidos</h2>
+                        <strong id="analytics-products">386</strong>
+                        <p class="positive">↑ 9,7% no período</p>
+                    </section>
+                </article>
+
+            </section>
+
+            <!-- GRÁFICO DE FATURAMENTO -->
+            <section class="analytics-panel revenue-panel">
+                <header class="panel-header">
+                    <section>
+                        <h2>Faturamento ao longo do tempo</h2>
+                        <p class="text-muted">Evolução das vendas no período selecionado.</p>
+                    </section>
+                    <span class="material-symbols-outlined" aria-hidden="true">show_chart</span>
+                </header>
+
+                <section class="chart-container chart-large">
+                    <canvas id="revenue-chart" role="img"
+                        aria-label="Gráfico de linha mostrando a evolução do faturamento">
+                    </canvas>
+                </section>
+            </section>
+
+            <!-- GRÁFICOS SECUNDÁRIOS -->
+            <section class="analytics-charts" aria-label="Outras análises">
+
+                <article class="analytics-panel">
+                    <header class="panel-header">
+                        <section>
+                            <h2>Vendas por categoria</h2>
+                            <p class="text-muted">Distribuição das vendas.</p>
+                        </section>
+                        <span class="material-symbols-outlined" aria-hidden="true">donut_large</span>
+                    </header>
+
+                    <section class="chart-container chart-doughnut">
+                        <canvas id="category-chart" role="img"
+                            aria-label="Gráfico de rosca com vendas por categoria">
+                        </canvas>
+                    </section>
+                </article>
+
+                <article class="analytics-panel">
+                    <header class="panel-header">
+                        <section>
+                            <h2>Situação dos pedidos</h2>
+                            <p class="text-muted">Pedidos por status.</p>
+                        </section>
+                        <span class="material-symbols-outlined" aria-hidden="true">receipt_long</span>
+                    </header>
+
+                    <div class="chart-container chart-doughnut">
+                        <canvas id="status-chart" role="img"
+                            aria-label="Gráfico de rosca com situação dos pedidos">
+                        </canvas>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- PRODUTOS MAIS VENDIDOS -->
+            <section class="analytics-panel products-panel">
+                <header class="panel-header">
+                    <section>
+                        <h2>Produtos mais vendidos</h2>
+                        <p class="text-muted">Os produtos com maior quantidade de vendas.</p>
+                    </section>
+                    <span class="material-symbols-outlined" aria-hidden="true">leaderboard</span>
+                </header>
+
+                <div class="chart-container chart-products">
+                    <canvas id="products-chart" role="img"
+                        aria-label="Gráfico de barras dos produtos mais vendidos">
+                    </canvas>
+                </div>
+            </section>
+
+            <p class="analytics-disclaimer">
+                <span class="material-symbols-outlined" aria-hidden="true">info</span>
+                Dados demonstrativos para visualização. Os resultados reais serão exibidos após a integração com o banco de dados.
+            </p>
+
+        </main>
+
+        <!-- PAINEL DIREITO -->
+        <aside class="right">
+
+            <header class="top">
+                <button type="button" class="theme-toggler" id="theme-toggler"
+                    aria-label="Alternar tema claro e escuro">
+                    <span class="material-symbols-outlined light-mode">light_mode</span>
+                    <span class="material-symbols-outlined dark-mode">dark_mode</span>
+                </button>
+
+                <section class="profile">
+                    <section class="info">
+                        <p>Olá, <strong>Administrador</strong></p>
+                        <small class="text-muted">Admin</small>
+                    </section>
+
+                    <figure class="profile-photo">
+                        <img src="/imagem/perfil.jpg" alt="Foto do administrador">
+                    </figure>
+                </section>
+            </header>
+
+            <section class="recent-updates">
+                <header>
+                    <h2>Atualizações Recentes</h2>
+                </header>
+
+                <section class="updates">
+
+                    <article class="update">
+                        <figure class="profile-photo">
+                            <img src="/imagem/perfil.jpg" alt="">
+                        </figure>
+                        <section class="message">
+                            <p>Denis Salgado
+                                <strong>Olá! Gostaria de saber sobre meu pedido.</strong>
+                            </p>
+                            <small class="text-muted">Há 2 horas</small>
+                        </section>
+                    </article>
+
+                    <article class="update">
+                        <figure class="profile-photo">
+                            <img src="/imagem/perfil.jpg" alt="">
+                        </figure>
+                        <section class="message">
+                            <p>Maria Oliveira
+                                <strong>Vocês possuem produtos para gatos?</strong>
+                            </p>
+                            <small class="text-muted">Há 4 horas</small>
+                        </section>
+                    </article>
+
+                    <article class="update">
+                        <figure class="profile-photo">
+                            <img src="/imagem/perfil.jpg" alt="">
+                        </figure>
+                        <section class="message">
+                            <p>João Santos
+                                <strong>Preciso de ajuda com uma compra.</strong>
+                            </p>
+                            <small class="text-muted">Ontem</small>
+                        </section>
+                    </article>
+
+                    <article class="update">
+                        <figure class="profile-photo">
+                            <img src="/imagem/perfil.jpg" alt="">
+                        </figure>
+                        <section class="message">
+                            <p>Ana Costa
+                                <strong>Gostaria de informações sobre uma doação.</strong>
+                            </p>
+                            <small class="text-muted">Ontem</small>
+                        </section>
+                    </article>
+
+                </section>
+
+                <a href="mensagens.html" class="primary">Ver todas as mensagens</a>
+            </section>
+
+            <section class="recent-activity">
+                <header>
+                    <h2>Atividades</h2>
+                </header>
+
+                <article class="activity">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <p>Novo pedido recebido.</p>
+                </article>
+
+                <article class="activity">
+                    <span class="material-symbols-outlined">person_add</span>
+                    <p>Novo cliente cadastrado.</p>
+                </article>
+
+                <article class="activity">
+                    <span class="material-symbols-outlined">inventory</span>
+                    <p>Produto atualizado.</p>
+                </article>
+            </section>
+
+        </aside>
+
+    </div>
+
+</body>
+</html>

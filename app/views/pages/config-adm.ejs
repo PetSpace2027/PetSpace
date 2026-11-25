@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Configurações administrativas do PetSpice.">
+
+    <title>Configurações - Administração PetSpice</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+    <link rel="stylesheet" href="/css/adm.css">
+</head>
+
+<body>
+
+    <section
+     class="container">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar-container" id="sidebar-container">
+
+            <nav class="sidebar" aria-label="Menu principal">
+
+                <header class="top">
+                    <a href="/adm/" class="logo">
+                            <img src="/imagem/paw.jpg" alt="Logo PetSpice">
+                    <h2>PET<span class="danger">SPICE</span></h2>
+                    </a>
+
+                    <button type="button" class="close" id="close-btn" aria-label="Fechar menu">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </header>
+
+                <ul class="side-menu">
+                    <li>
+                        <a href="/adm/">
+                            <span class="material-symbols-outlined">dashboard</span>
+                            <h3>Dashboard</h3>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/adm/clientes-adm">
+                            <span class="material-symbols-outlined">group</span>
+                            <h3>Clientes</h3>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/adm/pedidos-adm">
+                            <span class="material-symbols-outlined">shopping_bag</span>
+                            <h3>Pedidos</h3>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/adm/analise-adm">
+                            <span class="material-symbols-outlined">monitoring</span>
+                            <h3>Análise de Dados</h3>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/adm/mensagens-adm">
+                            <span class="material-symbols-outlined">mail</span>
+                            <h3>Mensagens</h3>
+                        </a>
+                    </li>
+
+             
+
+                    <li>
+                        <a href="/adm/relatorio-adm">
+                            <span class="material-symbols-outlined">description</span>
+                            <h3>Relatórios</h3>
+                        </a>
+                    </li>
+
+                    <li class="active">
+                        <a href="/adm/config-adm" aria-current="page">
+                            <span class="material-symbols-outlined">settings</span>
+                            <h3>Configurações</h3>
+                        </a>
+                    </li>
+                </ul>
+
+                <footer class="bottom">
+                    <a href="/adm/login">
+                        <span class="material-symbols-outlined">logout</span>
+                        <h3>Sair</h3>
+                    </a>
+                </footer>
+
+            </nav>
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="config-main">
+
+            <header class="config-header">
+                <section
+                >
+                    <h1>Configurações</h1>
+                    <p>Gerencie as preferências e informações da sua conta.</p>
+                </section
+                >
+
+                <span class="material-symbols-outlined">settings</span>
+            </header>
+
+            <!-- PERFIL -->
+            <section class="config-section" aria-labelledby="profile-title">
+
+                <header class="config-section-header">
+                    <span class="material-symbols-outlined">account_circle</span>
+
+                    <section
+                    >
+                        <h2 id="profile-title">Perfil do administrador</h2>
+                        <p>Atualize suas informações pessoais.</p>
+                    </section
+                    >
+                </header>
+
+                <form class="config-form">
+
+                    <section
+                     class="config-field">
+                        <label for="admin-name">Nome completo</label>
+                        <input type="text" id="admin-name" name="nome" placeholder="Digite seu nome">
+                    </section
+                    >
+
+                    <section
+                     class="config-field">
+                        <label for="admin-email">E-mail</label>
+                        <input type="email" id="admin-email" name="email" placeholder="admin@petspice.com">
+                    </section
+                    >
+
+                    <section
+                     class="config-field">
+                        <label for="admin-phone">Telefone</label>
+                        <input type="tel" id="admin-phone" name="telefone" placeholder="(00) 00000-0000">
+                    </section
+                    >
+
+                    <button type="submit" class="config-save-btn">
+                        Salvar alterações
+                    </button>
+
+                </form>
+            </section>
+
+            <!-- SEGURANÇA -->
+            <section class="config-section" aria-labelledby="security-title">
+
+                <header class="config-section-header">
+                    <span class="material-symbols-outlined">lock</span>
+
+                    <section
+                    >
+                        <h2 id="security-title">Segurança</h2>
+                        <p>Gerencie a proteção da sua conta.</p>
+                    </section
+                    >
+                </header>
+
+                <form class="config-form">
+
+                    <section
+                     class="config-field">
+                        <label for="current-password">Senha atual</label>
+                        <input type="password" id="current-password" name="senha-atual"
+                            placeholder="Digite sua senha atual">
+                    </section
+                    >
+
+                    <section
+                     class="config-field">
+                        <label for="new-password">Nova senha</label>
+                        <input type="password" id="new-password" name="nova-senha"
+                            placeholder="Digite sua nova senha">
+                    </section
+                    >
+
+                    <section
+                     class="config-field">
+                        <label for="confirm-password">Confirmar nova senha</label>
+                        <input type="password" id="confirm-password" name="confirmar-senha"
+                            placeholder="Confirme sua nova senha">
+                    </section
+                    >
+
+                    <button type="submit" class="config-save-btn">
+                        Atualizar senha
+                    </button>
+
+                </form>
+            </section>
+
+            <!-- NOTIFICAÇÕES -->
+            <section class="config-section" aria-labelledby="notifications-title">
+
+                <header class="config-section-header">
+                    <span class="material-symbols-outlined">notifications</span>
+
+                    <section
+                    >
+                        <h2 id="notifications-title">Notificações</h2>
+                        <p>Escolha quais avisos deseja receber.</p>
+                    </section
+                    >
+                </header>
+
+                <section
+                 class="config-options">
+
+                    <label class="config-option">
+                        <span>
+                            <strong>Novos pedidos</strong>
+                            <small>Receber avisos quando um pedido for realizado.</small>
+                        </span>
+                        <input type="checkbox" name="novos-pedidos" checked>
+                    </label>
+
+                    <label class="config-option">
+                        <span>
+                            <strong>Novas mensagens</strong>
+                            <small>Receber avisos de mensagens dos clientes.</small>
+                        </span>
+                        <input type="checkbox" name="novas-mensagens" checked>
+                    </label>
+
+                    <label class="config-option">
+                        <span>
+                            <strong>Estoque baixo</strong>
+                            <small>Ser avisado quando um produto estiver acabando.</small>
+                        </span>
+                        <input type="checkbox" name="estoque-baixo" checked>
+                    </label>
+
+                </section
+                >
+            </section>
+
+            <!-- APARÊNCIA -->
+            <section class="config-section" aria-labelledby="appearance-title">
+
+                <header class="config-section-header">
+                    <span class="material-symbols-outlined">palette</span>
+
+                    <section
+                    >
+                        <h2 id="appearance-title">Aparência</h2>
+                        <p>Personalize a visualização do painel.</p>
+                    </section
+                    >
+                </header>
+
+                <section
+                 class="config-option">
+                    <span>
+                        <strong>Modo escuro</strong>
+                        <small>Ative ou desative o tema escuro do painel.</small>
+                    </span>
+
+                    <button type="button" id="config-theme-toggle" class="config-theme-btn"
+                        aria-label="Alternar modo escuro">
+                        <span class="material-symbols-outlined">dark_mode</span>
+                    </button>
+                </section
+                >
+
+            </section>
+
+        </main>
+
+        <!-- PAINEL DIREITO -->
+        <aside class="right">
+
+
+
+                   <button
+                    type="button"
+                    class="theme-toggler"
+                    id="theme-toggler"
+                    aria-label="Alternar tema claro e escuro">
+
+                    <span class="material-symbols-outlined light-mode">light_mode</span>
+                    <span class="material-symbols-outlined dark-mode">dark_mode</span>
+
+                </button>
+
+
+           
+                <section class="profile">
+
+                    <section class="info">
+                        <p>Olá, <strong>Administrador</strong></p>
+                        <small class="text-muted">Admin</small>
+                    </section>
+
+                    <figure class="profile-photo">
+                        <img src="/imagem/perfil.jpg" alt="Foto do administrador">
+                    </figure>
+
+                </section>
+
+            </header>
+
+            <section class="recent-updates">
+                <h2>Informações da conta</h2>
+
+                <section
+                 class="updates">
+                    <article class="update">
+                        <span class="material-symbols-outlined">verified_user</span>
+
+                        <section
+                        >
+                            <h3>Conta administrativa</h3>
+                            <small>Gerencie seus dados e preferências.</small>
+                        </section
+                        >
+                    </article>
+
+                    <article class="update">
+                        <span class="material-symbols-outlined">security</span>
+
+                        <section
+                        >
+                            <h3>Segurança</h3>
+                            <small>Mantenha sua conta protegida.</small>
+                        </section
+                        >
+                    </article>
+                </section
+                >
+            </section>
+
+        </aside>
+
+    </section
+    >
+
+    <!-- MENU MOBILE -->
+    <nav class="mobile-navigation" aria-label="Navegação mobile">
+        <button type="button" id="menu-btn" aria-label="Abrir menu">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </nav>
+
+    <script src="/scripts/script.js"></script>
+
+</body>
+</html>

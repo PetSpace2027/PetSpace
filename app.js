@@ -33,8 +33,11 @@ app.use(express.urlencoded({extended:true}));
 
 //requisitar arquivos de rotas
 const rota = require("./app/routes/router");
+const rotaAdm = require("./app/routes/router-adm");
+
 // indicar o local de uso das rotas
 app.use("/", rota);
+app.use("/adm", rotaAdm);
 // ("/") indica a raiz do site 
 // http://localhost:3000
 

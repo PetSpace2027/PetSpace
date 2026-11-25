@@ -1,0 +1,394 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Relatórios administrativos do PetSpice.">
+
+    <title>Relatórios - Administração PetSpice</title>
+
+    <link rel="stylesheet" href="/css/adm.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <script src="/scripts/script.js" defer></script>
+</head>
+
+
+<body>
+
+    <!-- NAVEGAÇÃO MOBILE -->
+    <nav class="mobile-navigation" aria-label="Navegação mobile">
+
+        <button
+            type="button"
+            id="menu-btn"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="sidebar-menu">
+
+            <span class="material-symbols-outlined">menu</span>
+
+        </button>
+
+    </nav>
+
+    <!-- ESTRUTURA PRINCIPAL -->
+    <section class="container">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar-container" id="sidebar-container">
+
+            <header class="top">
+
+                <a href="/adm/" class="logo">
+                    <img src="/imagem/paw.jpg" alt="Logo PetSpice">
+                    <h2>PET<span class="danger">SPICE</span></h2>
+                </a>
+
+                <button
+                    type="button"
+                    class="close"
+                    id="close-btn"
+                    aria-label="Fechar menu">
+
+                    <span class="material-symbols-outlined">close</span>
+
+                </button>
+
+            </header>
+
+            <nav class="sidebar" id="sidebar-menu" aria-label="Menu principal">
+
+                <a href="/adm/">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+
+                <a href="/adm/clientes-adm">
+                    <span class="material-symbols-outlined">person</span>
+                    <h3>Clientes</h3>
+                </a>
+
+                <a href="/adm/pedidos-adm">
+                    <span class="material-symbols-outlined">receipt_long</span>
+                    <h3>Pedidos</h3>
+                </a>
+
+                <a href="/adm/analise-adm">
+                    <span class="material-symbols-outlined">monitoring</span>
+                    <h3>Análise de Dados</h3>
+                </a>
+
+                <a href="/adm/mensagens-adm">
+                    <span class="material-symbols-outlined">mail</span>
+                    <h3>Mensagens</h3>
+                    <span class="message-count">0</span>
+                </a>
+
+                <a href="/adm/relatorio-adm" class="active" aria-current="page">
+                    <span class="material-symbols-outlined">report</span>
+                    <h3>Relatórios</h3>
+                </a>
+
+                <a href="/adm/config-adm">
+                    <span class="material-symbols-outlined">settings</span>
+                    <h3>Configurações</h3>
+                </a>
+
+             
+            </nav>
+
+            <footer class="bottom">
+
+                <a href="#" id="logout-btn">
+                    <span class="material-symbols-outlined">logout</span>
+                    <h3>Sair</h3>
+                </a>
+
+            </footer>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="reports-main">
+
+            <!-- CABEÇALHO -->
+            <header class="main-header reports-header">
+
+                <section>
+                    <h1>Relatórios</h1>
+                    <p>Acompanhe o desempenho e os resultados do PetSpice.</p>
+                </section>
+
+                <button type="button" id="print-report" class="report-print-btn">
+                    <span class="material-symbols-outlined">download</span>
+                    Exportar relatório
+                </button>
+
+            </header>
+
+            <!-- FILTRO DE PERÍODO -->
+            <section class="report-filters" aria-label="Filtros dos relatórios">
+
+                <form id="report-filter-form">
+
+                    <label for="report-period">Período do relatório</label>
+
+                    <select id="report-period" name="periodo">
+                        <option value="7">Últimos 7 dias</option>
+                        <option value="30" selected>Últimos 30 dias</option>
+                        <option value="90">Últimos 90 dias</option>
+                        <option value="365">Último ano</option>
+                    </select>
+
+                    <button type="submit">
+                        Aplicar filtro
+                    </button>
+
+                </form>
+
+                <p id="report-period-description">
+                    Exibindo dados dos últimos 30 dias.
+                </p>
+
+            </section>
+
+            <!-- INDICADORES GERAIS -->
+            <section class="reports-overview" aria-labelledby="overview-title">
+
+                <header>
+                    <h2 id="overview-title">Visão geral</h2>
+                    <p>Principais indicadores do estabelecimento.</p>
+                </header>
+
+                <section class="reports-summary">
+
+                    <article class="report-card">
+                        <span class="material-symbols-outlined">payments</span>
+
+                        <section>
+                            <h3>Faturamento total</h3>
+                            <p id="report-revenue">R$ 0,00</p>
+                            <small>Vendas e mensalidades</small>
+                        </section>
+                    </article>
+
+                    <article class="report-card">
+                        <span class="material-symbols-outlined">shopping_bag</span>
+
+                        <section>
+                            <h3>Pedidos realizados</h3>
+                            <p id="report-orders">0</p>
+                            <small>Total de pedidos</small>
+                        </section>
+                    </article>
+
+                    <article class="report-card">
+
+                        <section>
+                            <h3>Planos ativos</h3>
+                            <p id="report-plans">0</p>
+                            <small>Assinaturas ativas</small>
+                        </section>
+                    </article>
+
+                    <article class="report-card">
+                        <span class="material-symbols-outlined">group</span>
+
+                        <section>
+                            <h3>Clientes cadastrados</h3>
+                            <p id="report-clients">0</p>
+                            <small>Clientes da loja</small>
+                        </section>
+                    </article>
+
+                </section>
+
+            </section>
+
+            <!-- RELATÓRIO FINANCEIRO -->
+            <section class="report-section" aria-labelledby="financial-title">
+
+                <header class="report-section-header">
+                    <section>
+                        <h2 id="financial-title">Relatório financeiro</h2>
+                        <p>Controle das receitas e movimentações financeiras.</p>
+                    </section>
+                </header>
+
+                <section class="financial-summary">
+
+                    <article>
+                        <h3>Vendas de produtos</h3>
+                        <p id="report-product-sales">R$ 0,00</p>
+                    </article>
+
+                    <article>
+                        <h3>Mensalidades dos planos</h3>
+                        <p id="report-plan-revenue">R$ 0,00</p>
+                    </article>
+
+                    <article>
+                        <h3>Pagamentos pendentes</h3>
+                        <p id="report-pending">R$ 0,00</p>
+                    </article>
+
+                    <article>
+                        <h3>Reembolsos</h3>
+                        <p id="report-refunds">R$ 0,00</p>
+                    </article>
+
+                </section>
+
+            </section>
+
+            <!-- RELATÓRIO DE PLANOS -->
+            <section class="report-section" aria-labelledby="health-title">
+
+                <header class="report-section-header">
+                    <section>
+                        <h2 id="health-title">Planos de saúde pet</h2>
+                        <p>Acompanhe as assinaturas e a utilização dos serviços veterinários.</p>
+                    </section>
+                </header>
+
+                <section class="health-summary">
+
+                    <article>
+                        <span class="material-symbols-outlined">verified</span>
+                        <h3>Planos ativos</h3>
+                        <p id="active-health-plans">0</p>
+                    </article>
+
+                    <article>
+                        <span class="material-symbols-outlined">person_add</span>
+                        <h3>Novas adesões</h3>
+                        <p id="new-health-plans">0</p>
+                    </article>
+
+                    <article>
+                        <span class="material-symbols-outlined">cancel</span>
+                        <h3>Planos cancelados</h3>
+                        <p id="canceled-health-plans">0</p>
+                    </article>
+
+                    <article>
+                        <span class="material-symbols-outlined">medical_services</span>
+                        <h3>Atendimentos realizados</h3>
+                        <p id="health-appointments">0</p>
+                    </article>
+
+                </section>
+
+            </section>
+
+            <!-- RELATÓRIO DE PRODUTOS -->
+            <section class="report-section" aria-labelledby="products-title">
+
+                <header class="report-section-header">
+                    <section>
+                        <h2 id="products-title">Desempenho dos produtos</h2>
+                        <p>Informações sobre vendas e disponibilidade do estoque.</p>
+                    </section>
+                </header>
+
+                <section class="products-report-grid">
+
+                    <article>
+                        <span class="material-symbols-outlined">trending_up</span>
+                        <h3>Produtos mais vendidos</h3>
+                        <ol id="best-selling-products">
+                            <li>Nenhum dado disponível.</li>
+                        </ol>
+                    </article>
+
+                    <article>
+                        <span class="material-symbols-outlined">inventory</span>
+                        <h3>Estoque baixo</h3>
+                        <ol id="low-stock-products">
+                            <li>Nenhum dado disponível.</li>
+                        </ol>
+                    </article>
+
+                </section>
+
+            </section>
+
+            <!-- RELATÓRIO DE CLIENTES E PETS -->
+            <section class="report-section" aria-labelledby="customers-title">
+
+                <header class="report-section-header">
+                    <section>
+                        <h2 id="customers-title">Clientes e animais</h2>
+                        <p>Informações sobre os clientes e seus animais cadastrados.</p>
+                    </section>
+                </header>
+
+                <section class="customers-report-grid">
+
+                    <article>
+                        <span class="material-symbols-outlined">person_add</span>
+                        <h3>Novos clientes</h3>
+                        <p id="new-customers">0</p>
+                    </article>
+
+                    <article>
+                        <span class="material-symbols-outlined">pets</span>
+                        <h3>Pets cadastrados</h3>
+                        <p id="registered-pets">0</p>
+                    </article>
+
+                    <article>
+                        <span class="material-symbols-outlined">favorite</span>
+                        <h3>Pets com plano de saúde</h3>
+                        <p id="pets-with-plan">0</p>
+                    </article>
+
+                </section>
+
+            </section>
+
+            <!-- RODAPÉ -->
+            <footer class="reports-footer">
+                <p>PetSpice &copy; 2026 - Sistema de Administração</p>
+            </footer>
+
+        </main>
+
+        <!-- PAINEL DIREITO -->
+
+      
+        <aside class="right">
+                   <button
+                    type="button"
+                    class="theme-toggler"
+                    id="theme-toggler"
+                    aria-label="Alternar tema claro e escuro">
+
+                    <span class="material-symbols-outlined light-mode">light_mode</span>
+                    <span class="material-symbols-outlined dark-mode">dark_mode</span>
+
+                </button>
+
+
+         
+
+        </aside>
+
+    </section>
+
+</body>
+
+</html>
