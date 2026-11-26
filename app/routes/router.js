@@ -18,6 +18,12 @@ router.get("/compras", (req, res)=>{
 
 });
 
+router.get("/petguardioes", (req, res)=>{
+    res.render("pages/petguardioes");
+
+});
+
+
 
 router.post("/login", (req, res) => {
 
